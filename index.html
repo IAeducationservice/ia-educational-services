@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IA Educational Services | 3D Career Guidance</title>
+    <title>IA Educational Services | Modern 3D Career Guidance</title>
     
     <!-- Google Fonts & FontAwesome -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -11,9 +11,9 @@
 
     <style>
         :root {
-            --bg-color: #070a12;
-            --card-bg: rgba(255, 255, 255, 0.04);
-            --card-border: rgba(255, 255, 255, 0.12);
+            --bg-color: #060911;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --card-border: rgba(255, 255, 255, 0.15);
             --accent-blue: #00d2ff;
             --accent-purple: #9254de;
             --accent-green: #25D366;
@@ -24,27 +24,27 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
         body { background-color: var(--bg-color); color: var(--text-main); overflow-x: hidden; }
 
-        /* AMBIENT LIGHTING */
+        /* AMBIENT GLOW BACKGROUNDS */
         .glow-1 {
-            position: absolute; width: 500px; height: 500px;
-            background: radial-gradient(circle, rgba(0,210,255,0.18) 0%, transparent 70%);
-            top: -100px; left: -100px; z-index: -1;
+            position: absolute; width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(0,210,255,0.2) 0%, transparent 70%);
+            top: -150px; left: -150px; z-index: -1;
         }
         .glow-2 {
-            position: absolute; width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(146,84,222,0.15) 0%, transparent 70%);
-            top: 400px; right: -150px; z-index: -1;
+            position: absolute; width: 700px; height: 700px;
+            background: radial-gradient(circle, rgba(146,84,222,0.18) 0%, transparent 70%);
+            top: 600px; right: -200px; z-index: -1;
         }
 
         /* NAVIGATION */
         nav {
             display: flex; justify-content: space-between; align-items: center;
-            padding: 20px 8%; background: rgba(7, 10, 18, 0.8);
-            backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 100;
+            padding: 20px 8%; background: rgba(6, 9, 17, 0.85);
+            backdrop-filter: blur(15px); position: sticky; top: 0; z-index: 100;
             border-bottom: 1px solid var(--card-border);
         }
         .logo {
-            font-weight: 800; font-size: 1.4rem;
+            font-weight: 800; font-size: 1.5rem;
             background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
@@ -52,112 +52,131 @@
         /* HERO SECTION */
         .hero {
             display: flex; align-items: center; justify-content: space-between;
-            padding: 60px 8%; min-height: 75vh; gap: 40px;
+            padding: 70px 8% 50px 8%; min-height: 80vh; gap: 40px;
         }
-        .hero-text { max-width: 550px; }
+        .hero-text { max-width: 580px; }
         .hero-quote {
-            color: var(--accent-blue); font-size: 0.95rem; font-weight: 600;
-            margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px;
+            color: var(--accent-blue); font-size: 0.95rem; font-weight: 700;
+            margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;
+            background: rgba(0, 210, 255, 0.1); padding: 6px 16px; border-radius: 20px;
+            display: inline-block; border: 1px solid rgba(0, 210, 255, 0.3);
         }
-        .hero-text h1 { font-size: 3rem; line-height: 1.2; margin-bottom: 20px; font-weight: 800; }
+        .hero-text h1 { font-size: 3.2rem; line-height: 1.2; margin-bottom: 20px; font-weight: 800; }
         .hero-text h1 span {
             background: linear-gradient(90deg, #00d2ff, #9254de);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
-        .hero-text p { color: var(--text-sub); font-size: 1.05rem; margin-bottom: 30px; line-height: 1.6; }
+        .hero-text p { color: var(--text-sub); font-size: 1.1rem; margin-bottom: 30px; line-height: 1.6; }
 
-        /* 3D FLOATING DISPLAY */
+        /* HERO 3D GRAPHIC DISPLAY */
         .hero-3d-stage {
-            position: relative; width: 340px; height: 340px;
+            position: relative; width: 360px; height: 360px;
             display: flex; justify-content: center; align-items: center;
+            perspective: 1000px;
         }
         .center-card {
-            width: 240px; height: 240px;
-            background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+            width: 260px; height: 260px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02));
             border: 1px solid var(--card-border); border-radius: 24px;
             backdrop-filter: blur(20px); display: flex; flex-direction: column;
             justify-content: center; align-items: center;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.6); animation: mainFloat 4s ease-in-out infinite;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.7); animation: floatMain 4s ease-in-out infinite;
         }
-        .center-card i { font-size: 3.8rem; color: var(--accent-blue); margin-bottom: 15px; }
+        .center-card i { font-size: 4rem; color: var(--accent-blue); margin-bottom: 15px; }
 
         .floating-badge {
-            position: absolute; background: rgba(11, 15, 25, 0.9);
-            border: 1px solid var(--card-border); padding: 10px 16px; border-radius: 16px;
+            position: absolute; background: rgba(11, 15, 25, 0.92);
+            border: 1px solid var(--card-border); padding: 12px 20px; border-radius: 18px;
             display: flex; align-items: center; gap: 10px; backdrop-filter: blur(10px);
-            font-size: 0.85rem; font-weight: 600;
+            font-size: 0.9rem; font-weight: 600; box-shadow: 0 15px 30px rgba(0,0,0,0.5);
         }
-        .badge-doctor { top: 10px; left: -20px; border-left: 3px solid #ff4d4f; }
-        .badge-engineer { bottom: 20px; right: -20px; border-left: 3px solid var(--accent-blue); }
-        .badge-degree { top: -20px; right: 20px; border-left: 3px solid var(--accent-purple); }
+        .badge-doctor { top: 10px; left: -25px; border-left: 4px solid #ff4d4f; }
+        .badge-engineer { bottom: 20px; right: -25px; border-left: 4px solid var(--accent-blue); }
+        .badge-degree { top: -20px; right: 20px; border-left: 4px solid var(--accent-purple); }
 
-        @keyframes mainFloat {
-            0%, 100% { transform: translateY(0px) rotateX(4deg); }
-            50% { transform: translateY(-12px) rotateX(-4deg); }
-        }
-
-        /* DUAL VIEW TOGGLE CONTROLLER */
-        .toggle-section { text-align: center; margin: 20px 0; }
-        .toggle-box {
-            display: inline-flex; background: rgba(255, 255, 255, 0.06);
-            border: 1px solid var(--card-border); border-radius: 40px; padding: 6px; gap: 8px;
-        }
-        .toggle-btn {
-            background: transparent; border: none; color: var(--text-sub);
-            padding: 10px 24px; border-radius: 30px; font-weight: 600; cursor: pointer; transition: 0.3s;
-        }
-        .toggle-btn.active {
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
-            color: #fff; box-shadow: 0 4px 15px rgba(0, 210, 255, 0.3);
+        @keyframes floatMain {
+            0%, 100% { transform: translateY(0px) rotateX(5deg) rotateY(-5deg); }
+            50% { transform: translateY(-15px) rotateX(-5deg) rotateY(5deg); }
         }
 
-        /* VIEW CONTAINERS */
-        .view-container { padding: 40px 8%; display: none; animation: fadeIn 0.4s ease; }
-        .view-container.active-view { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        /* SECTION HEADERS */
+        .section-header { text-align: center; margin-bottom: 50px; padding: 0 8%; }
+        .section-header h2 { font-size: 2.5rem; font-weight: 800; margin-bottom: 10px; }
+        .section-header p { color: var(--text-sub); font-size: 1.05rem; }
 
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; }
-        .glass-card {
+        /* 1. QUICK OVERVIEW SECTION (TOP SCROLL) */
+        .quick-section { padding: 60px 8%; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        
+        .quick-card {
             background: var(--card-bg); border: 1px solid var(--card-border);
-            backdrop-filter: blur(15px); border-radius: 20px; padding: 30px; position: relative;
+            backdrop-filter: blur(15px); border-radius: 20px; padding: 35px 25px;
+            transition: all 0.4s ease; position: relative; overflow: hidden;
         }
-        .glass-card i.card-icon { font-size: 2.2rem; margin-bottom: 15px; color: var(--accent-blue); }
-        .glass-card h3 { margin-bottom: 10px; font-size: 1.25rem; }
-        .glass-card p { color: var(--text-sub); font-size: 0.92rem; line-height: 1.6; }
+        .quick-card:hover { transform: translateY(-10px); border-color: var(--accent-blue); box-shadow: 0 20px 40px rgba(0, 210, 255, 0.2); }
+        .quick-card i { font-size: 2.5rem; margin-bottom: 20px; color: var(--accent-blue); }
+        .quick-card h3 { font-size: 1.35rem; margin-bottom: 12px; }
+        .quick-card p { color: var(--text-sub); font-size: 0.95rem; line-height: 1.6; }
 
-        /* STEP 2: GAMIFIED 3-CLICK MATCHER */
-        .matcher-section { padding: 60px 8%; background: rgba(255,255,255,0.01); border-top: 1px solid var(--card-border); }
-        .section-header { text-align: center; margin-bottom: 40px; }
-        .section-header h2 { font-size: 2.2rem; }
-        .section-header p { color: var(--text-sub); }
-
+        /* 2. INTERACTIVE MATCHER WIDGET */
+        .matcher-section { padding: 70px 8%; background: rgba(255, 255, 255, 0.015); border-top: 1px solid var(--card-border); border-bottom: 1px solid var(--card-border); }
         .step-block { margin-bottom: 30px; }
-        .step-block h4 { margin-bottom: 15px; color: var(--accent-blue); }
+        .step-block h4 { margin-bottom: 15px; color: var(--accent-blue); font-size: 1.1rem; }
         .option-group { display: flex; gap: 15px; flex-wrap: wrap; }
         .opt-btn {
             background: var(--card-bg); border: 1px solid var(--card-border);
-            color: var(--text-main); padding: 12px 20px; border-radius: 12px; cursor: pointer; transition: 0.3s;
+            color: var(--text-main); padding: 14px 24px; border-radius: 14px; cursor: pointer; transition: 0.3s; font-weight: 600;
         }
-        .opt-btn:hover, .opt-btn.selected {
-            border-color: var(--accent-blue); background: rgba(0, 210, 255, 0.15); color: #fff;
-        }
+        .opt-btn:hover, .opt-btn.selected { border-color: var(--accent-blue); background: rgba(0, 210, 255, 0.2); color: #fff; box-shadow: 0 0 20px rgba(0, 210, 255, 0.3); }
 
-        /* STEP 4: WHATSAPP TRIGGER & COUNSELOR SPOTLIGHT */
-        .conversion-flex { display: flex; gap: 30px; align-items: center; margin-top: 30px; flex-wrap: wrap; }
-        .whatsapp-btn {
-            background: var(--accent-green); color: #fff; padding: 16px 32px; border-radius: 35px;
-            font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 10px;
-            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); transition: 0.3s; border: none; cursor: pointer; font-size: 1rem;
+        /* 3. DETAILED ROADMAP WITH RICH VISUAL CARDS */
+        .detailed-section { padding: 80px 8%; }
+        .image-card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 35px; }
+        
+        .image-card {
+            background: var(--card-bg); border: 1px solid var(--card-border);
+            border-radius: 24px; overflow: hidden; backdrop-filter: blur(15px);
+            transition: all 0.4s ease; transform-style: preserve-3d;
         }
-        .whatsapp-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6); }
+        .image-card:hover { transform: translateY(-12px) scale(1.02); border-color: var(--accent-blue); box-shadow: 0 25px 50px rgba(0, 210, 255, 0.25); }
+        
+        .card-img-wrapper {
+            width: 100%; height: 200px; overflow: hidden; position: relative;
+        }
+        .card-img-wrapper img {
+            width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;
+        }
+        .image-card:hover .card-img-wrapper img { transform: scale(1.1); }
+        
+        .card-body { padding: 30px; }
+        .card-tag {
+            display: inline-block; padding: 4px 14px; border-radius: 20px; font-size: 0.75rem;
+            font-weight: 700; text-transform: uppercase; margin-bottom: 15px;
+            background: rgba(0, 210, 255, 0.15); color: var(--accent-blue); border: 1px solid rgba(0, 210, 255, 0.3);
+        }
+        .card-body h3 { font-size: 1.4rem; margin-bottom: 12px; }
+        .card-body p { color: var(--text-sub); font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px; }
+        
+        .roadmap-list { list-style: none; padding-left: 0; margin-bottom: 20px; }
+        .roadmap-list li { color: var(--text-main); font-size: 0.9rem; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+        .roadmap-list li i { color: var(--accent-blue); font-size: 0.8rem; }
+
+        /* ACTION TRIGGER & COUNSELOR SPOTLIGHT */
+        .conversion-flex { display: flex; gap: 30px; align-items: center; margin-top: 40px; flex-wrap: wrap; }
+        .whatsapp-btn {
+            background: var(--accent-green); color: #fff; padding: 18px 36px; border-radius: 40px;
+            font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 12px;
+            box-shadow: 0 4px 25px rgba(37, 211, 102, 0.4); transition: 0.3s; border: none; cursor: pointer; font-size: 1.05rem;
+        }
+        .whatsapp-btn:hover { transform: translateY(-4px); box-shadow: 0 10px 35px rgba(37, 211, 102, 0.6); }
 
         .counselor-card {
             background: var(--card-bg); border: 1px solid var(--card-border);
-            border-radius: 20px; padding: 25px; display: flex; align-items: center; gap: 20px; flex: 1; min-width: 280px;
+            border-radius: 24px; padding: 30px; display: flex; align-items: center; gap: 20px; flex: 1; min-width: 300px;
         }
         .avatar-box {
-            width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
-            display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: #fff;
+            width: 70px; height: 70px; border-radius: 50%; background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: #fff; flex-shrink: 0;
         }
 
         footer { text-align: center; padding: 40px 8%; border-top: 1px solid var(--card-border); color: var(--text-sub); }
@@ -179,81 +198,61 @@
         <button onclick="scrollToMatcher()" class="opt-btn" style="border-color: var(--accent-blue);">Find My Path</button>
     </nav>
 
-    <!-- STEP 1: HERO & HOOK -->
+    <!-- HERO SECTION WITH INTRO QUOTE -->
     <section class="hero">
         <div class="hero-text">
-            <div class="hero-quote">Turn Confusion into Clarity</div>
-            <h1>Shape Your Future in <span>High-Earning Fields</span></h1>
-            <p>Unsure which path to choose after 10th, 12th, or Diploma? Get personalized 1-on-1 counseling to unlock medical specializations, engineering branches, and high-paying tech careers.</p>
+            <div class="hero-quote">Personalized Guidance</div>
+            <h1>"Every student’s potential is unique. <span>We provide 1-on-1 personalized guidance</span> to help you land your dream college and profession."</h1>
+            <p>From Medical Specializations and Engineering Branches to Diploma and Professional Degrees—explore your complete roadmap below.</p>
         </div>
 
         <div class="hero-3d-stage">
             <div class="center-card">
                 <i class="fa-solid fa-graduation-cap"></i>
                 <h4 style="margin-bottom: 5px;">3D Guidance</h4>
-                <p style="color: var(--text-sub); font-size: 0.8rem;">Interactive Career Maps</p>
+                <p style="color: var(--text-sub); font-size: 0.85rem;">Career Map Explorer</p>
             </div>
-            <div class="floating-badge badge-doctor"><i class="fa-solid fa-user-doctor" style="color: #ff4d4f;"></i> Medical</div>
+            <div class="floating-badge badge-doctor"><i class="fa-solid fa-user-doctor" style="color: #ff4d4f;"></i> Medicine</div>
             <div class="floating-badge badge-engineer"><i class="fa-solid fa-gears" style="color: #00d2ff;"></i> Engineering</div>
-            <div class="floating-badge badge-degree"><i class="fa-solid fa-certificate" style="color: #9254de;"></i> Diploma/Degrees</div>
+            <div class="floating-badge badge-degree"><i class="fa-solid fa-certificate" style="color: #9254de;"></i> Degrees</div>
         </div>
     </section>
 
-    <!-- VIEW TOGGLE CONTROLLER -->
-    <div class="toggle-section">
-        <div class="toggle-box">
-            <button class="toggle-btn active" onclick="switchView('quick')">⚡ Quick 1-Min Summary</button>
-            <button class="toggle-btn" onclick="switchView('detailed')">📖 Detailed Roadmap</button>
+    <!-- 1. QUICK 1-MIN OVERVIEW (APPEARS FIRST ON SCROLL) -->
+    <section class="quick-section">
+        <div class="section-header">
+            <h2>⚡ Quick 1-Min Summary</h2>
+            <p>Instant clarity for high-demand pathways right after 10th, 12th, or Diploma.</p>
         </div>
-    </div>
 
-    <!-- QUICK VIEW CONTAINER (DEFAULT) -->
-    <div id="quick-view" class="view-container active-view">
         <div class="grid-3">
-            <div class="glass-card">
-                <i class="fa-solid fa-bolt card-icon" style="color: #ffeb3b;"></i>
-                <h3>Fast Stream Pick</h3>
-                <p>Diagnostic evaluation after 10th or 12th to instantly match your personality with top salary streams.</p>
+            <div class="quick-card">
+                <i class="fa-solid fa-bolt" style="color: #ffeb3b;"></i>
+                <h3>Fast Stream Selection</h3>
+                <p>Diagnostic evaluation after 10th or 12th to match your natural aptitudes directly with high-demand academic streams.</p>
             </div>
-            <div class="glass-card">
-                <i class="fa-solid fa-user-doctor card-icon" style="color: #ff4d4f;"></i>
+
+            <div class="quick-card">
+                <i class="fa-solid fa-heart-pulse" style="color: #ff4d4f;"></i>
                 <h3>Medical & Healthcare</h3>
-                <p>Direct breakdown of MBBS, BDS, Radiology, Bio-Tech, and high-demand specialized health sciences.</p>
+                <p>Overview of direct entry medical tech, MBBS, BDS, Radiology, Bio-Technology, and Nursing career tracks.</p>
             </div>
-            <div class="glass-card">
-                <i class="fa-solid fa-microchip card-icon" style="color: #00d2ff;"></i>
-                <h3>Engineering & Tech</h3>
-                <p>Explore Aeronautical, Computer Science, AI/ML, and Polytechnic lateral entry B.Tech routes.</p>
+
+            <div class="quick-card">
+                <i class="fa-solid fa-microchip" style="color: #00d2ff;"></i>
+                <h3>Engineering & Technology</h3>
+                <p>Key insights on Aeronautical, AI/ML, Robotics, Computer Science, and Polytechnic lateral B.Tech entry.</p>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- DETAILED VIEW CONTAINER -->
-    <div id="detailed-view" class="view-container">
-        <div class="grid-3">
-            <div class="glass-card">
-                <h3>Comprehensive Stream Matrix</h3>
-                <p>Complete evaluation comparing State vs. National entrance exams, Science/Commerce/Arts pathways, and 4-year financial ROI projections for post-10th and 12th candidates.</p>
-            </div>
-            <div class="glass-card">
-                <h3>Polytechnic & ITI Advancement</h3>
-                <p>Step-by-step guidance on lateral entry into 2nd-year B.Tech, specialized industrial certifications, and immediate high-earning operational job placements.</p>
-            </div>
-            <div class="glass-card">
-                <h3>Niche High-Tech Specializations</h3>
-                <p>Deep dive into specialized sub-fields: Aeronautical Maintenance Engineering (AME), Robotic Surgery Assistance, Healthcare Data Analytics, and Cloud Infrastructure architecture.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- STEP 2 & STEP 4: INTERACTIVE 3-CLICK MATCHER & WHATSAPP CONVERSION -->
+    <!-- 2. INTERACTIVE 3-CLICK MATCHER WIDGET -->
     <section class="matcher-section" id="matcher">
         <div class="section-header">
-            <h2>Find Your Career Match</h2>
-            <p>Select your 3 choices below to generate your personalized action plan.</p>
+            <h2>🎯 Find Your Career Match</h2>
+            <p>Select your 3 preferences below to generate a pre-filled instant guidance plan.</p>
         </div>
 
-        <!-- Step Choice 1 -->
         <div class="step-block">
             <h4>1. Current Educational Stage:</h4>
             <div class="option-group" id="group-stage">
@@ -263,7 +262,6 @@
             </div>
         </div>
 
-        <!-- Step Choice 2 -->
         <div class="step-block">
             <h4>2. Primary Interest Field:</h4>
             <div class="option-group" id="group-interest">
@@ -273,7 +271,6 @@
             </div>
         </div>
 
-        <!-- Step Choice 3 -->
         <div class="step-block">
             <h4>3. Main Career Goal:</h4>
             <div class="option-group" id="group-goal">
@@ -283,19 +280,98 @@
             </div>
         </div>
 
-        <!-- Conversion Triggers & Counselor Spotlight -->
         <div class="conversion-flex">
             <button class="whatsapp-btn" onclick="sendToWhatsApp()">
-                <i class="fa-brands fa-whatsapp" style="font-size: 1.4rem;"></i> Get My Customized Plan
+                <i class="fa-brands fa-whatsapp" style="font-size: 1.5rem;"></i> Get My Customized Plan
             </button>
 
             <div class="counselor-card">
                 <div class="avatar-box"><i class="fa-solid fa-user-tie"></i></div>
                 <div>
-                    <h4 style="margin-bottom: 2px;">1-on-1 Mentorship</h4>
-                    <p style="color: var(--text-sub); font-size: 0.85rem;">Direct guidance with our lead career expert.</p>
+                    <h4 style="margin-bottom: 2px;">1-on-1 Expert Counseling</h4>
+                    <p style="color: var(--text-sub); font-size: 0.9rem;">Direct advisory with our senior mentor.</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- 3. DETAILED ROADMAP WITH RICH PICTURE CARDS (CONTINUOUS SCROLL) -->
+    <section class="detailed-section">
+        <div class="section-header">
+            <h2>📖 Detailed Visual Roadmaps</h2>
+            <p>Explore step-by-step career pathways, specialization choices, and salary prospects.</p>
+        </div>
+
+        <div class="image-card-grid">
+            
+            <!-- Card 1: Medical & Doctor Fields -->
+            <div class="image-card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80" alt="Doctor and Medical Equipment">
+                </div>
+                <div class="card-body">
+                    <span class="card-tag" style="color: #ff4d4f; border-color: rgba(255,77,79,0.3); background: rgba(255,77,79,0.15);">High Earning Field</span>
+                    <h3>Medical & Health Sciences</h3>
+                    <p>Comprehensive roadmaps covering traditional healthcare and specialized high-earning medical technology careers.</p>
+                    <ul class="roadmap-list">
+                        <li><i class="fa-solid fa-check-circle"></i> MBBS, BDS, BAMS Entrance Strategies</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Radiology & Diagnostic Medical Tech</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Bio-Medical Engineering & Surgery Tech</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Card 2: Engineering & Machinery -->
+            <div class="image-card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" alt="Engineering and Robotics Machinery">
+                </div>
+                <div class="card-body">
+                    <span class="card-tag">In-Demand Tech</span>
+                    <h3>Engineering & Machinery</h3>
+                    <p>Step-by-step guidance across core engineering streams, modern high-tech systems, and advanced machinery.</p>
+                    <ul class="roadmap-list">
+                        <li><i class="fa-solid fa-check-circle"></i> Aeronautical & Aerospace Systems</li>
+                        <li><i class="fa-solid fa-check-circle"></i> AI, Robotics & Autonomous Systems</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Mechanical, Civil & Electrical Design</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Card 3: Polytechnic & Lateral Entry -->
+            <div class="image-card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80" alt="Technical Diploma Training">
+                </div>
+                <div class="card-body">
+                    <span class="card-tag" style="color: #00e676; border-color: rgba(0,230,118,0.3); background: rgba(0,230,118,0.15);">Practical Growth</span>
+                    <h3>Polytechnic & ITI Pathways</h3>
+                    <p>Direct career advancement for technical diploma holders wanting fast-track engineering entry.</p>
+                    <ul class="roadmap-list">
+                        <li><i class="fa-solid fa-check-circle"></i> Direct 2nd-Year B.Tech Lateral Entry</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Industrial Automation & Gear Certifications</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Immediate Operational Job Placement</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Card 4: Post-10th & 12th Stream Selection -->
+            <div class="image-card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80" alt="Students in University Graduation Coats">
+                </div>
+                <div class="card-body">
+                    <span class="card-tag" style="color: #9254de; border-color: rgba(146,84,222,0.3); background: rgba(146,84,222,0.15);">Foundation Level</span>
+                    <h3>Stream Selection & Degrees</h3>
+                    <p>Structural stream mapping between Science, Commerce, and Arts to ensure maximum career flexibility.</p>
+                    <ul class="roadmap-list">
+                        <li><i class="fa-solid fa-check-circle"></i> 10th to 12th Subject Optimization</li>
+                        <li><i class="fa-solid fa-check-circle"></i> National vs. State Level Entrance Exam Mapping</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Degree to High-Salary Career Mapping</li>
+                    </ul>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -305,33 +381,12 @@
 
     <!-- INTERACTIVE JAVASCRIPT -->
     <script>
-        // Track Student Selections
         let userChoices = {
             stage: 'After 10th',
             interest: 'Medical & Healthcare',
             goal: 'High Salary Potential'
         };
 
-        // Switch Quick vs Detailed View
-        function switchView(viewType) {
-            const btns = document.querySelectorAll('.toggle-btn');
-            const quickView = document.getElementById('quick-view');
-            const detailedView = document.getElementById('detailed-view');
-
-            btns.forEach(b => b.classList.remove('active'));
-
-            if (viewType === 'quick') {
-                btns[0].classList.add('active');
-                quickView.classList.add('active-view');
-                detailedView.classList.remove('active-view');
-            } else {
-                btns[1].classList.add('active');
-                detailedView.classList.add('active-view');
-                quickView.classList.remove('active-view');
-            }
-        }
-
-        // Option Selection Handler
         function selectOpt(category, value) {
             userChoices[category] = value;
             const container = document.getElementById(`group-${category}`);
@@ -344,14 +399,12 @@
             });
         }
 
-        // Scroll to Matcher Widget
         function scrollToMatcher() {
             document.getElementById('matcher').scrollIntoView({ behavior: 'smooth' });
         }
 
-        // Generate Pre-Filled WhatsApp Message
         function sendToWhatsApp() {
-            const phoneNumber = "9822206864" 
+            const phoneNumber = "9822206864"; // Replace with your target phone number
             const text = `Hi, I am currently at stage: *${userChoices.stage}*. My main interest field is *${userChoices.interest}* and my primary goal is *${userChoices.goal}*. Please provide me with personalized career guidance!`;
             const encodedText = encodeURIComponent(text);
             window.open(`https://wa.me/${phoneNumber}?text=${encodedText}`, '_blank');
