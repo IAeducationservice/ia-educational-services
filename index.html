@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IA Educational Services | Modern 3D Career Guidance</title>
+    <title>IA Educational Services | 3D Career Guidance</title>
     
     <!-- Google Fonts & FontAwesome -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -33,7 +33,7 @@
         .glow-2 {
             position: absolute; width: 700px; height: 700px;
             background: radial-gradient(circle, rgba(146,84,222,0.18) 0%, transparent 70%);
-            top: 600px; right: -200px; z-index: -1;
+            top: 700px; right: -200px; z-index: -1;
         }
 
         /* NAVIGATION */
@@ -57,8 +57,8 @@
         .hero-text { max-width: 580px; }
         .hero-quote {
             color: var(--accent-blue); font-size: 0.95rem; font-weight: 700;
-            margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;
-            background: rgba(0, 210, 255, 0.1); padding: 6px 16px; border-radius: 20px;
+            margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;
+            background: rgba(0, 210, 255, 0.1); padding: 8px 18px; border-radius: 20px;
             display: inline-block; border: 1px solid rgba(0, 210, 255, 0.3);
         }
         .hero-text h1 { font-size: 3.2rem; line-height: 1.2; margin-bottom: 20px; font-weight: 800; }
@@ -68,7 +68,7 @@
         }
         .hero-text p { color: var(--text-sub); font-size: 1.1rem; margin-bottom: 30px; line-height: 1.6; }
 
-        /* HERO 3D GRAPHIC DISPLAY */
+        /* HERO 3D STAGE */
         .hero-3d-stage {
             position: relative; width: 360px; height: 360px;
             display: flex; justify-content: center; align-items: center;
@@ -104,21 +104,7 @@
         .section-header h2 { font-size: 2.5rem; font-weight: 800; margin-bottom: 10px; }
         .section-header p { color: var(--text-sub); font-size: 1.05rem; }
 
-        /* 1. QUICK OVERVIEW SECTION (TOP SCROLL) */
-        .quick-section { padding: 60px 8%; }
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        
-        .quick-card {
-            background: var(--card-bg); border: 1px solid var(--card-border);
-            backdrop-filter: blur(15px); border-radius: 20px; padding: 35px 25px;
-            transition: all 0.4s ease; position: relative; overflow: hidden;
-        }
-        .quick-card:hover { transform: translateY(-10px); border-color: var(--accent-blue); box-shadow: 0 20px 40px rgba(0, 210, 255, 0.2); }
-        .quick-card i { font-size: 2.5rem; margin-bottom: 20px; color: var(--accent-blue); }
-        .quick-card h3 { font-size: 1.35rem; margin-bottom: 12px; }
-        .quick-card p { color: var(--text-sub); font-size: 0.95rem; line-height: 1.6; }
-
-        /* 2. INTERACTIVE MATCHER WIDGET */
+        /* INTERACTIVE MATCHER WIDGET */
         .matcher-section { padding: 70px 8%; background: rgba(255, 255, 255, 0.015); border-top: 1px solid var(--card-border); border-bottom: 1px solid var(--card-border); }
         .step-block { margin-bottom: 30px; }
         .step-block h4 { margin-bottom: 15px; color: var(--accent-blue); font-size: 1.1rem; }
@@ -129,9 +115,9 @@
         }
         .opt-btn:hover, .opt-btn.selected { border-color: var(--accent-blue); background: rgba(0, 210, 255, 0.2); color: #fff; box-shadow: 0 0 20px rgba(0, 210, 255, 0.3); }
 
-        /* 3. DETAILED ROADMAP WITH RICH VISUAL CARDS */
-        .detailed-section { padding: 80px 8%; }
-        .image-card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 35px; }
+        /* VISUAL ROADMAP GRID WITH REAL PROFESSION IMAGES */
+        .roadmap-section { padding: 80px 8%; }
+        .image-card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 35px; }
         
         .image-card {
             background: var(--card-bg); border: 1px solid var(--card-border);
@@ -141,7 +127,7 @@
         .image-card:hover { transform: translateY(-12px) scale(1.02); border-color: var(--accent-blue); box-shadow: 0 25px 50px rgba(0, 210, 255, 0.25); }
         
         .card-img-wrapper {
-            width: 100%; height: 200px; overflow: hidden; position: relative;
+            width: 100%; height: 220px; overflow: hidden; position: relative;
         }
         .card-img-wrapper img {
             width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;
@@ -157,9 +143,9 @@
         .card-body h3 { font-size: 1.4rem; margin-bottom: 12px; }
         .card-body p { color: var(--text-sub); font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px; }
         
-        .roadmap-list { list-style: none; padding-left: 0; margin-bottom: 20px; }
-        .roadmap-list li { color: var(--text-main); font-size: 0.9rem; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
-        .roadmap-list li i { color: var(--accent-blue); font-size: 0.8rem; }
+        .roadmap-list { list-style: none; padding-left: 0; }
+        .roadmap-list li { color: var(--text-main); font-size: 0.9rem; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        .roadmap-list li i { color: var(--accent-blue); font-size: 0.85rem; }
 
         /* ACTION TRIGGER & COUNSELOR SPOTLIGHT */
         .conversion-flex { display: flex; gap: 30px; align-items: center; margin-top: 40px; flex-wrap: wrap; }
@@ -203,7 +189,7 @@
         <div class="hero-text">
             <div class="hero-quote">Personalized Guidance</div>
             <h1>"Every student’s potential is unique. <span>We provide 1-on-1 personalized guidance</span> to help you land your dream college and profession."</h1>
-            <p>From Medical Specializations and Engineering Branches to Diploma and Professional Degrees—explore your complete roadmap below.</p>
+            <p>From Medical Specializations and Engineering Branches to Technical Diplomas and University Degrees—explore your complete pathway below.</p>
         </div>
 
         <div class="hero-3d-stage">
@@ -218,39 +204,11 @@
         </div>
     </section>
 
-    <!-- 1. QUICK 1-MIN OVERVIEW (APPEARS FIRST ON SCROLL) -->
-    <section class="quick-section">
-        <div class="section-header">
-            <h2>⚡ Quick 1-Min Summary</h2>
-            <p>Instant clarity for high-demand pathways right after 10th, 12th, or Diploma.</p>
-        </div>
-
-        <div class="grid-3">
-            <div class="quick-card">
-                <i class="fa-solid fa-bolt" style="color: #ffeb3b;"></i>
-                <h3>Fast Stream Selection</h3>
-                <p>Diagnostic evaluation after 10th or 12th to match your natural aptitudes directly with high-demand academic streams.</p>
-            </div>
-
-            <div class="quick-card">
-                <i class="fa-solid fa-heart-pulse" style="color: #ff4d4f;"></i>
-                <h3>Medical & Healthcare</h3>
-                <p>Overview of direct entry medical tech, MBBS, BDS, Radiology, Bio-Technology, and Nursing career tracks.</p>
-            </div>
-
-            <div class="quick-card">
-                <i class="fa-solid fa-microchip" style="color: #00d2ff;"></i>
-                <h3>Engineering & Technology</h3>
-                <p>Key insights on Aeronautical, AI/ML, Robotics, Computer Science, and Polytechnic lateral B.Tech entry.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- 2. INTERACTIVE 3-CLICK MATCHER WIDGET -->
+    <!-- INTERACTIVE 3-CLICK MATCHER WIDGET -->
     <section class="matcher-section" id="matcher">
         <div class="section-header">
             <h2>🎯 Find Your Career Match</h2>
-            <p>Select your 3 preferences below to generate a pre-filled instant guidance plan.</p>
+            <p>Select your preferences below to generate your personalized action plan.</p>
         </div>
 
         <div class="step-block">
@@ -295,79 +253,79 @@
         </div>
     </section>
 
-    <!-- 3. DETAILED ROADMAP WITH RICH PICTURE CARDS (CONTINUOUS SCROLL) -->
-    <section class="detailed-section">
+    <!-- VISUAL ROADMAP GRID WITH REAL IMAGES -->
+    <section class="roadmap-section">
         <div class="section-header">
-            <h2>📖 Detailed Visual Roadmaps</h2>
-            <p>Explore step-by-step career pathways, specialization choices, and salary prospects.</p>
+            <h2>Explore Career Pathways</h2>
+            <p>Visualizing your journey from foundational studies to high-earning professions.</p>
         </div>
 
         <div class="image-card-grid">
             
-            <!-- Card 1: Medical & Doctor Fields -->
+            <!-- Card 1: Students in Degree Coats & Hats -->
             <div class="image-card">
                 <div class="card-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80" alt="Doctor and Medical Equipment">
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80" alt="Students in graduation hats and coats">
                 </div>
                 <div class="card-body">
-                    <span class="card-tag" style="color: #ff4d4f; border-color: rgba(255,77,79,0.3); background: rgba(255,77,79,0.15);">High Earning Field</span>
-                    <h3>Medical & Health Sciences</h3>
-                    <p>Comprehensive roadmaps covering traditional healthcare and specialized high-earning medical technology careers.</p>
-                    <ul class="roadmap-list">
-                        <li><i class="fa-solid fa-check-circle"></i> MBBS, BDS, BAMS Entrance Strategies</li>
-                        <li><i class="fa-solid fa-check-circle"></i> Radiology & Diagnostic Medical Tech</li>
-                        <li><i class="fa-solid fa-check-circle"></i> Bio-Medical Engineering & Surgery Tech</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Card 2: Engineering & Machinery -->
-            <div class="image-card">
-                <div class="card-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" alt="Engineering and Robotics Machinery">
-                </div>
-                <div class="card-body">
-                    <span class="card-tag">In-Demand Tech</span>
-                    <h3>Engineering & Machinery</h3>
-                    <p>Step-by-step guidance across core engineering streams, modern high-tech systems, and advanced machinery.</p>
-                    <ul class="roadmap-list">
-                        <li><i class="fa-solid fa-check-circle"></i> Aeronautical & Aerospace Systems</li>
-                        <li><i class="fa-solid fa-check-circle"></i> AI, Robotics & Autonomous Systems</li>
-                        <li><i class="fa-solid fa-check-circle"></i> Mechanical, Civil & Electrical Design</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Card 3: Polytechnic & Lateral Entry -->
-            <div class="image-card">
-                <div class="card-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80" alt="Technical Diploma Training">
-                </div>
-                <div class="card-body">
-                    <span class="card-tag" style="color: #00e676; border-color: rgba(0,230,118,0.3); background: rgba(0,230,118,0.15);">Practical Growth</span>
-                    <h3>Polytechnic & ITI Pathways</h3>
-                    <p>Direct career advancement for technical diploma holders wanting fast-track engineering entry.</p>
-                    <ul class="roadmap-list">
-                        <li><i class="fa-solid fa-check-circle"></i> Direct 2nd-Year B.Tech Lateral Entry</li>
-                        <li><i class="fa-solid fa-check-circle"></i> Industrial Automation & Gear Certifications</li>
-                        <li><i class="fa-solid fa-check-circle"></i> Immediate Operational Job Placement</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Card 4: Post-10th & 12th Stream Selection -->
-            <div class="image-card">
-                <div class="card-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80" alt="Students in University Graduation Coats">
-                </div>
-                <div class="card-body">
-                    <span class="card-tag" style="color: #9254de; border-color: rgba(146,84,222,0.3); background: rgba(146,84,222,0.15);">Foundation Level</span>
-                    <h3>Stream Selection & Degrees</h3>
-                    <p>Structural stream mapping between Science, Commerce, and Arts to ensure maximum career flexibility.</p>
+                    <span class="card-tag" style="color: #9254de; border-color: rgba(146,84,222,0.3); background: rgba(146,84,222,0.15);">Degree Pathways</span>
+                    <h3>University & Stream Selection</h3>
+                    <p>Strategic stream choices after 10th and 12th ensuring smooth admission into top degree programs.</p>
                     <ul class="roadmap-list">
                         <li><i class="fa-solid fa-check-circle"></i> 10th to 12th Subject Optimization</li>
-                        <li><i class="fa-solid fa-check-circle"></i> National vs. State Level Entrance Exam Mapping</li>
-                        <li><i class="fa-solid fa-check-circle"></i> Degree to High-Salary Career Mapping</li>
+                        <li><i class="fa-solid fa-check-circle"></i> National Entrance Exam Strategies</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Direct Degree to High-Salary Mapping</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Card 2: Doctor & Medical Equipment Machines -->
+            <div class="image-card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80" alt="Doctor with medical equipment and diagnostic machines">
+                </div>
+                <div class="card-body">
+                    <span class="card-tag" style="color: #ff4d4f; border-color: rgba(255,77,79,0.3); background: rgba(255,77,79,0.15);">Medical Fields</span>
+                    <h3>Medical & Health Sciences</h3>
+                    <p>Detailed roadmaps covering doctors, surgical tech, radiology, and advanced medical machinery.</p>
+                    <ul class="roadmap-list">
+                        <li><i class="fa-solid fa-check-circle"></i> MBBS, BDS, BAMS Entrance Preparation</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Radiology & Diagnostic Equipment Tech</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Biomedical Engineering Specialties</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Card 3: Engineer with Mechanical Gears & Machinery -->
+            <div class="image-card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" alt="Engineer working on mechanism gears and heavy machinery">
+                </div>
+                <div class="card-body">
+                    <span class="card-tag">Engineering Tech</span>
+                    <h3>Engineering & Machinery</h3>
+                    <p>Guidance across core engineering systems, industrial mechanism gears, robotics, and aerospace.</p>
+                    <ul class="roadmap-list">
+                        <li><i class="fa-solid fa-check-circle"></i> Aeronautical & Aerospace Systems</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Mechanical Gears & Industrial Machinery</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Robotics & AI Integration</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Card 4: Technical Diploma & Practical Training -->
+            <div class="image-card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80" alt="Technical diploma hands-on training">
+                </div>
+                <div class="card-body">
+                    <span class="card-tag" style="color: #00e676; border-color: rgba(0,230,118,0.3); background: rgba(0,230,118,0.15);">Diploma & ITI</span>
+                    <h3>Polytechnic & Fast Placement</h3>
+                    <p>Direct career advancement for technical diploma holders aiming for fast-track B.Tech lateral entry.</p>
+                    <ul class="roadmap-list">
+                        <li><i class="fa-solid fa-check-circle"></i> Direct 2nd-Year B.Tech Lateral Entry</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Technical Industry Certifications</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Immediate Operational Job Placement</li>
                     </ul>
                 </div>
             </div>
@@ -404,7 +362,7 @@
         }
 
         function sendToWhatsApp() {
-            const phoneNumber = "9822206864"; // Replace with your target phone number
+            const phoneNumber = "9822206864"; // Replace with your phone number
             const text = `Hi, I am currently at stage: *${userChoices.stage}*. My main interest field is *${userChoices.interest}* and my primary goal is *${userChoices.goal}*. Please provide me with personalized career guidance!`;
             const encodedText = encodeURIComponent(text);
             window.open(`https://wa.me/${phoneNumber}?text=${encodedText}`, '_blank');
