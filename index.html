@@ -6,7 +6,7 @@
     <title>IA Educational Services | 3D Career Guidance</title>
     
     <!-- Google Fonts & FontAwesome -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -26,25 +26,25 @@
 
         /* AMBIENT GLOW BACKGROUNDS */
         .glow-1 {
-            position: absolute; width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(0,210,255,0.2) 0%, transparent 70%);
-            top: -150px; left: -150px; z-index: -1;
+            position: absolute; width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(0,210,255,0.15) 0%, transparent 70%);
+            top: -100px; left: -100px; z-index: -1;
         }
         .glow-2 {
-            position: absolute; width: 700px; height: 700px;
-            background: radial-gradient(circle, rgba(146,84,222,0.18) 0%, transparent 70%);
-            top: 700px; right: -200px; z-index: -1;
+            position: absolute; width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(146,84,222,0.15) 0%, transparent 70%);
+            top: 600px; right: -150px; z-index: -1;
         }
 
         /* NAVIGATION */
         nav {
             display: flex; justify-content: space-between; align-items: center;
-            padding: 20px 8%; background: rgba(6, 9, 17, 0.85);
+            padding: 18px 8%; background: rgba(6, 9, 17, 0.85);
             backdrop-filter: blur(15px); position: sticky; top: 0; z-index: 100;
             border-bottom: 1px solid var(--card-border);
         }
         .logo {
-            font-weight: 800; font-size: 1.5rem;
+            font-weight: 700; font-size: 1.3rem;
             background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
@@ -52,124 +52,129 @@
         /* HERO SECTION */
         .hero {
             display: flex; align-items: center; justify-content: space-between;
-            padding: 70px 8% 50px 8%; min-height: 80vh; gap: 40px;
+            padding: 60px 8% 40px 8%; min-height: 75vh; gap: 40px;
         }
-        .hero-text { max-width: 580px; }
+        .hero-text { max-width: 560px; }
         .hero-quote {
-            color: var(--accent-blue); font-size: 0.95rem; font-weight: 700;
+            color: var(--accent-blue); font-size: 0.85rem; font-weight: 600;
             margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;
-            background: rgba(0, 210, 255, 0.1); padding: 8px 18px; border-radius: 20px;
+            background: rgba(0, 210, 255, 0.1); padding: 6px 14px; border-radius: 20px;
             display: inline-block; border: 1px solid rgba(0, 210, 255, 0.3);
         }
-        .hero-text h1 { font-size: 3.2rem; line-height: 1.2; margin-bottom: 20px; font-weight: 800; }
+        .hero-text h1 { font-size: 2.2rem; line-height: 1.3; margin-bottom: 18px; font-weight: 700; }
         .hero-text h1 span {
             background: linear-gradient(90deg, #00d2ff, #9254de);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
-        .hero-text p { color: var(--text-sub); font-size: 1.1rem; margin-bottom: 30px; line-height: 1.6; }
+        .hero-text p { color: var(--text-sub); font-size: 1rem; margin-bottom: 25px; line-height: 1.6; font-weight: 400; }
 
-        /* HERO 3D STAGE */
+        /* HERO RIGHT SIDE 3D PICTURE FRAME */
         .hero-3d-stage {
-            position: relative; width: 360px; height: 360px;
+            position: relative; width: 340px; height: 340px;
             display: flex; justify-content: center; align-items: center;
             perspective: 1000px;
         }
-        .center-card {
-            width: 260px; height: 260px;
-            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02));
-            border: 1px solid var(--card-border); border-radius: 24px;
-            backdrop-filter: blur(20px); display: flex; flex-direction: column;
-            justify-content: center; align-items: center;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.7); animation: floatMain 4s ease-in-out infinite;
+        .hero-picture-card {
+            width: 270px; height: 270px; border-radius: 24px;
+            border: 1px solid var(--card-border); overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.7); backdrop-filter: blur(20px);
+            animation: floatMain 4s ease-in-out infinite; position: relative;
         }
-        .center-card i { font-size: 4rem; color: var(--accent-blue); margin-bottom: 15px; }
+        .hero-picture-card img {
+            width: 100%; height: 100%; object-fit: cover;
+        }
+        .hero-img-overlay {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            background: linear-gradient(to top, rgba(6, 9, 17, 0.9), transparent);
+            padding: 15px; text-align: center; font-size: 0.85rem; font-weight: 600; color: #fff;
+        }
 
         .floating-badge {
             position: absolute; background: rgba(11, 15, 25, 0.92);
-            border: 1px solid var(--card-border); padding: 12px 20px; border-radius: 18px;
-            display: flex; align-items: center; gap: 10px; backdrop-filter: blur(10px);
-            font-size: 0.9rem; font-weight: 600; box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+            border: 1px solid var(--card-border); padding: 10px 16px; border-radius: 16px;
+            display: flex; align-items: center; gap: 8px; backdrop-filter: blur(10px);
+            font-size: 0.85rem; font-weight: 600; box-shadow: 0 15px 30px rgba(0,0,0,0.5); z-index: 2;
         }
-        .badge-doctor { top: 10px; left: -25px; border-left: 4px solid #ff4d4f; }
-        .badge-engineer { bottom: 20px; right: -25px; border-left: 4px solid var(--accent-blue); }
-        .badge-degree { top: -20px; right: 20px; border-left: 4px solid var(--accent-purple); }
+        .badge-doctor { top: 10px; left: -20px; border-left: 4px solid #ff4d4f; }
+        .badge-engineer { bottom: 15px; right: -20px; border-left: 4px solid var(--accent-blue); }
+        .badge-degree { top: -15px; right: 15px; border-left: 4px solid var(--accent-purple); }
 
         @keyframes floatMain {
-            0%, 100% { transform: translateY(0px) rotateX(5deg) rotateY(-5deg); }
-            50% { transform: translateY(-15px) rotateX(-5deg) rotateY(5deg); }
+            0%, 100% { transform: translateY(0px) rotateX(4deg) rotateY(-4deg); }
+            50% { transform: translateY(-12px) rotateX(-4deg) rotateY(4deg); }
         }
 
-        /* SECTION HEADERS */
-        .section-header { text-align: center; margin-bottom: 50px; padding: 0 8%; }
-        .section-header h2 { font-size: 2.5rem; font-weight: 800; margin-bottom: 10px; }
-        .section-header p { color: var(--text-sub); font-size: 1.05rem; }
+        /* BALANCED SECTION HEADERS */
+        .section-header { text-align: center; margin-bottom: 40px; padding: 0 8%; }
+        .section-header h2 { font-size: 1.8rem; font-weight: 700; margin-bottom: 8px; }
+        .section-header p { color: var(--text-sub); font-size: 0.95rem; font-weight: 400; }
 
         /* INTERACTIVE MATCHER WIDGET */
-        .matcher-section { padding: 70px 8%; background: rgba(255, 255, 255, 0.015); border-top: 1px solid var(--card-border); border-bottom: 1px solid var(--card-border); }
-        .step-block { margin-bottom: 30px; }
-        .step-block h4 { margin-bottom: 15px; color: var(--accent-blue); font-size: 1.1rem; }
-        .option-group { display: flex; gap: 15px; flex-wrap: wrap; }
+        .matcher-section { padding: 60px 8%; background: rgba(255, 255, 255, 0.015); border-top: 1px solid var(--card-border); border-bottom: 1px solid var(--card-border); }
+        .step-block { margin-bottom: 25px; }
+        .step-block h4 { margin-bottom: 12px; color: var(--accent-blue); font-size: 0.95rem; font-weight: 600; }
+        .option-group { display: flex; gap: 12px; flex-wrap: wrap; }
         .opt-btn {
             background: var(--card-bg); border: 1px solid var(--card-border);
-            color: var(--text-main); padding: 14px 24px; border-radius: 14px; cursor: pointer; transition: 0.3s; font-weight: 600;
+            color: var(--text-main); padding: 10px 20px; border-radius: 12px; cursor: pointer; transition: 0.3s; font-size: 0.9rem; font-weight: 500;
         }
-        .opt-btn:hover, .opt-btn.selected { border-color: var(--accent-blue); background: rgba(0, 210, 255, 0.2); color: #fff; box-shadow: 0 0 20px rgba(0, 210, 255, 0.3); }
+        .opt-btn:hover, .opt-btn.selected { border-color: var(--accent-blue); background: rgba(0, 210, 255, 0.2); color: #fff; box-shadow: 0 0 15px rgba(0, 210, 255, 0.25); }
 
-        /* VISUAL ROADMAP GRID WITH REAL PROFESSION IMAGES */
-        .roadmap-section { padding: 80px 8%; }
-        .image-card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 35px; }
+        /* VISUAL ROADMAP GRID WITH REAL IMAGES */
+        .roadmap-section { padding: 70px 8%; }
+        .image-card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 30px; }
         
         .image-card {
             background: var(--card-bg); border: 1px solid var(--card-border);
-            border-radius: 24px; overflow: hidden; backdrop-filter: blur(15px);
+            border-radius: 20px; overflow: hidden; backdrop-filter: blur(15px);
             transition: all 0.4s ease; transform-style: preserve-3d;
         }
-        .image-card:hover { transform: translateY(-12px) scale(1.02); border-color: var(--accent-blue); box-shadow: 0 25px 50px rgba(0, 210, 255, 0.25); }
+        .image-card:hover { transform: translateY(-8px); border-color: var(--accent-blue); box-shadow: 0 20px 40px rgba(0, 210, 255, 0.2); }
         
         .card-img-wrapper {
-            width: 100%; height: 220px; overflow: hidden; position: relative;
+            width: 100%; height: 200px; overflow: hidden; position: relative;
         }
         .card-img-wrapper img {
             width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;
         }
-        .image-card:hover .card-img-wrapper img { transform: scale(1.1); }
+        .image-card:hover .card-img-wrapper img { transform: scale(1.08); }
         
-        .card-body { padding: 30px; }
+        .card-body { padding: 24px; }
         .card-tag {
-            display: inline-block; padding: 4px 14px; border-radius: 20px; font-size: 0.75rem;
-            font-weight: 700; text-transform: uppercase; margin-bottom: 15px;
+            display: inline-block; padding: 4px 12px; border-radius: 16px; font-size: 0.7rem;
+            font-weight: 600; text-transform: uppercase; margin-bottom: 12px;
             background: rgba(0, 210, 255, 0.15); color: var(--accent-blue); border: 1px solid rgba(0, 210, 255, 0.3);
         }
-        .card-body h3 { font-size: 1.4rem; margin-bottom: 12px; }
-        .card-body p { color: var(--text-sub); font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px; }
+        .card-body h3 { font-size: 1.2rem; font-weight: 600; margin-bottom: 10px; }
+        .card-body p { color: var(--text-sub); font-size: 0.88rem; line-height: 1.5; margin-bottom: 16px; font-weight: 400; }
         
         .roadmap-list { list-style: none; padding-left: 0; }
-        .roadmap-list li { color: var(--text-main); font-size: 0.9rem; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
-        .roadmap-list li i { color: var(--accent-blue); font-size: 0.85rem; }
+        .roadmap-list li { color: var(--text-main); font-size: 0.85rem; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; font-weight: 400; }
+        .roadmap-list li i { color: var(--accent-blue); font-size: 0.8rem; }
 
         /* ACTION TRIGGER & COUNSELOR SPOTLIGHT */
-        .conversion-flex { display: flex; gap: 30px; align-items: center; margin-top: 40px; flex-wrap: wrap; }
+        .conversion-flex { display: flex; gap: 25px; align-items: center; margin-top: 35px; flex-wrap: wrap; }
         .whatsapp-btn {
-            background: var(--accent-green); color: #fff; padding: 18px 36px; border-radius: 40px;
-            font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 12px;
-            box-shadow: 0 4px 25px rgba(37, 211, 102, 0.4); transition: 0.3s; border: none; cursor: pointer; font-size: 1.05rem;
+            background: var(--accent-green); color: #fff; padding: 14px 30px; border-radius: 30px;
+            font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 10px;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.35); transition: 0.3s; border: none; cursor: pointer; font-size: 0.95rem;
         }
-        .whatsapp-btn:hover { transform: translateY(-4px); box-shadow: 0 10px 35px rgba(37, 211, 102, 0.6); }
+        .whatsapp-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5); }
 
         .counselor-card {
             background: var(--card-bg); border: 1px solid var(--card-border);
-            border-radius: 24px; padding: 30px; display: flex; align-items: center; gap: 20px; flex: 1; min-width: 300px;
+            border-radius: 20px; padding: 22px; display: flex; align-items: center; gap: 16px; flex: 1; min-width: 280px;
         }
         .avatar-box {
-            width: 70px; height: 70px; border-radius: 50%; background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
-            display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: #fff; flex-shrink: 0;
+            width: 55px; height: 55px; border-radius: 50%; background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: #fff; flex-shrink: 0;
         }
 
-        footer { text-align: center; padding: 40px 8%; border-top: 1px solid var(--card-border); color: var(--text-sub); }
+        footer { text-align: center; padding: 35px 8%; border-top: 1px solid var(--card-border); color: var(--text-sub); font-size: 0.85rem; }
 
         @media (max-width: 900px) {
             .hero { flex-direction: column; text-align: center; }
-            .hero-3d-stage { margin-top: 20px; }
+            .hero-3d-stage { margin-top: 15px; }
         }
     </style>
 </head>
@@ -184,19 +189,19 @@
         <button onclick="scrollToMatcher()" class="opt-btn" style="border-color: var(--accent-blue);">Find My Path</button>
     </nav>
 
-    <!-- HERO SECTION WITH INTRO QUOTE -->
+    <!-- HERO SECTION -->
     <section class="hero">
         <div class="hero-text">
             <div class="hero-quote">Personalized Guidance</div>
-            <h1>"Every student’s potential is unique. <span>We provide 1-on-1 personalized guidance</span> to help you land your dream college and profession."</h1>
-            <p>From Medical Specializations and Engineering Branches to Technical Diplomas and University Degrees—explore your complete pathway below.</p>
+            <h1>"Every student’s potential is unique. <span>We provide 1-on-1 guidance</span> to help you land your dream college and profession."</h1>
+            <p>From Medical Specializations and Engineering Branches to Technical Diplomas and University Degrees—explore your pathway below.</p>
         </div>
 
+        <!-- HERO RIGHT SIDE: PICTURE FRAME INSTEAD OF PLAIN TEXT BOX -->
         <div class="hero-3d-stage">
-            <div class="center-card">
-                <i class="fa-solid fa-graduation-cap"></i>
-                <h4 style="margin-bottom: 5px;">3D Guidance</h4>
-                <p style="color: var(--text-sub); font-size: 0.85rem;">Career Map Explorer</p>
+            <div class="hero-picture-card">
+                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80" alt="Students in graduation hats and coats">
+                <div class="hero-img-overlay">Graduation & Degree Success</div>
             </div>
             <div class="floating-badge badge-doctor"><i class="fa-solid fa-user-doctor" style="color: #ff4d4f;"></i> Medicine</div>
             <div class="floating-badge badge-engineer"><i class="fa-solid fa-gears" style="color: #00d2ff;"></i> Engineering</div>
@@ -207,7 +212,7 @@
     <!-- INTERACTIVE 3-CLICK MATCHER WIDGET -->
     <section class="matcher-section" id="matcher">
         <div class="section-header">
-            <h2>🎯 Find Your Career Match</h2>
+            <h2>Find Your Career Match</h2>
             <p>Select your preferences below to generate your personalized action plan.</p>
         </div>
 
@@ -240,20 +245,20 @@
 
         <div class="conversion-flex">
             <button class="whatsapp-btn" onclick="sendToWhatsApp()">
-                <i class="fa-brands fa-whatsapp" style="font-size: 1.5rem;"></i> Get My Customized Plan
+                <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i> Get My Customized Plan
             </button>
 
             <div class="counselor-card">
                 <div class="avatar-box"><i class="fa-solid fa-user-tie"></i></div>
                 <div>
-                    <h4 style="margin-bottom: 2px;">1-on-1 Expert Counseling</h4>
-                    <p style="color: var(--text-sub); font-size: 0.9rem;">Direct advisory with our senior mentor.</p>
+                    <h4 style="font-size: 0.95rem; font-weight: 600; margin-bottom: 2px;">1-on-1 Expert Counseling</h4>
+                    <p style="color: var(--text-sub); font-size: 0.85rem;">Direct advisory with our senior mentor.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- VISUAL ROADMAP GRID WITH REAL IMAGES -->
+    <!-- VISUAL ROADMAP GRID WITH PICTURES -->
     <section class="roadmap-section">
         <div class="section-header">
             <h2>Explore Career Pathways</h2>
@@ -265,29 +270,29 @@
             <!-- Card 1: Students in Degree Coats & Hats -->
             <div class="image-card">
                 <div class="card-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80" alt="Students in graduation hats and coats">
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80" alt="Students in graduation coats and hats">
                 </div>
                 <div class="card-body">
                     <span class="card-tag" style="color: #9254de; border-color: rgba(146,84,222,0.3); background: rgba(146,84,222,0.15);">Degree Pathways</span>
-                    <h3>University & Stream Selection</h3>
-                    <p>Strategic stream choices after 10th and 12th ensuring smooth admission into top degree programs.</p>
+                    <h3>University & Degree Programs</h3>
+                    <p>Strategic stream choices after 10th and 12th ensuring admission into top degree programs.</p>
                     <ul class="roadmap-list">
                         <li><i class="fa-solid fa-check-circle"></i> 10th to 12th Subject Optimization</li>
                         <li><i class="fa-solid fa-check-circle"></i> National Entrance Exam Strategies</li>
-                        <li><i class="fa-solid fa-check-circle"></i> Direct Degree to High-Salary Mapping</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Direct Degree to Career Mapping</li>
                     </ul>
                 </div>
             </div>
 
-            <!-- Card 2: Doctor & Medical Equipment Machines -->
+            <!-- Card 2: Doctor with Medical Machines -->
             <div class="image-card">
                 <div class="card-img-wrapper">
                     <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80" alt="Doctor with medical equipment and diagnostic machines">
                 </div>
                 <div class="card-body">
                     <span class="card-tag" style="color: #ff4d4f; border-color: rgba(255,77,79,0.3); background: rgba(255,77,79,0.15);">Medical Fields</span>
-                    <h3>Medical & Health Sciences</h3>
-                    <p>Detailed roadmaps covering doctors, surgical tech, radiology, and advanced medical machinery.</p>
+                    <h3>Medical & Diagnostic Sciences</h3>
+                    <p>Roadmaps covering doctors, surgical tech, radiology, and medical equipment machines.</p>
                     <ul class="roadmap-list">
                         <li><i class="fa-solid fa-check-circle"></i> MBBS, BDS, BAMS Entrance Preparation</li>
                         <li><i class="fa-solid fa-check-circle"></i> Radiology & Diagnostic Equipment Tech</li>
@@ -296,19 +301,19 @@
                 </div>
             </div>
 
-            <!-- Card 3: Engineer with Mechanical Gears & Machinery -->
+            <!-- Card 3: Engineer with Mechanism Gears -->
             <div class="image-card">
                 <div class="card-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" alt="Engineer working on mechanism gears and heavy machinery">
+                    <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" alt="Engineer working on mechanism gears and machinery">
                 </div>
                 <div class="card-body">
                     <span class="card-tag">Engineering Tech</span>
-                    <h3>Engineering & Machinery</h3>
-                    <p>Guidance across core engineering systems, industrial mechanism gears, robotics, and aerospace.</p>
+                    <h3>Engineering & Mechanism Systems</h3>
+                    <p>Guidance across engineering streams, mechanical gears, robotics, and industrial machinery.</p>
                     <ul class="roadmap-list">
                         <li><i class="fa-solid fa-check-circle"></i> Aeronautical & Aerospace Systems</li>
-                        <li><i class="fa-solid fa-check-circle"></i> Mechanical Gears & Industrial Machinery</li>
-                        <li><i class="fa-solid fa-check-circle"></i> Robotics & AI Integration</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Mechanical Gears & Heavy Machinery</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Robotics & Automation Integration</li>
                     </ul>
                 </div>
             </div>
@@ -316,12 +321,12 @@
             <!-- Card 4: Technical Diploma & Practical Training -->
             <div class="image-card">
                 <div class="card-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80" alt="Technical diploma hands-on training">
+                    <img src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80" alt="Technical diploma hands-on workshop">
                 </div>
                 <div class="card-body">
                     <span class="card-tag" style="color: #00e676; border-color: rgba(0,230,118,0.3); background: rgba(0,230,118,0.15);">Diploma & ITI</span>
-                    <h3>Polytechnic & Fast Placement</h3>
-                    <p>Direct career advancement for technical diploma holders aiming for fast-track B.Tech lateral entry.</p>
+                    <h3>Polytechnic & Direct Job Entry</h3>
+                    <p>Career advancement for technical diploma holders aiming for fast-track B.Tech lateral entry.</p>
                     <ul class="roadmap-list">
                         <li><i class="fa-solid fa-check-circle"></i> Direct 2nd-Year B.Tech Lateral Entry</li>
                         <li><i class="fa-solid fa-check-circle"></i> Technical Industry Certifications</li>
