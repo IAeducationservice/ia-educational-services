@@ -11,15 +11,44 @@
 
     <style>
         :root {
-            --bg-color: #060911;
-            --card-bg: rgba(255, 255, 255, 0.05);
-            --card-border: rgba(255, 255, 255, 0.15);
-            --accent-blue: #00d2ff;
-            --accent-purple: #9254de;
-            --accent-green: #25D366;
-            --text-main: #ffffff;
-            --text-sub: #a0aec0;
-        }
+    --bg-color: #080c14;
+    --card-bg: rgba(255, 255, 255, 0.04);
+    --card-border: rgba(255, 255, 255, 0.12);
+    
+    /* Dynamic Color Palette */
+    --accent-cyan: #00f2fe;
+    --accent-purple: #9d4edd;
+    --accent-pink: #ff2a85;
+    --accent-amber: #ffb703;
+    --accent-green: #00e676;
+    
+    /* Gradients */
+    --grad-primary: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+    --grad-degree: linear-gradient(135deg, #9d4edd 0%, #ff2a85 100%);
+    --grad-medical: linear-gradient(135deg, #ff2a85 0%, #ff758c 100%);
+    --grad-engineering: linear-gradient(135deg, #00f2fe 0%, #00e676 100%);
+    --grad-diploma: linear-gradient(135deg, #ffb703 0%, #ff7518 100%);
+
+    --text-main: #ffffff;
+    --text-sub: #a0aec0;
+}
+
+/* Multi-colored background glow mesh */
+.glow-1 {
+    position: absolute; width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(157, 78, 221, 0.25) 0%, transparent 70%);
+    top: -150px; left: -100px; z-index: -1;
+}
+.glow-2 {
+    position: absolute; width: 650px; height: 650px;
+    background: radial-gradient(circle, rgba(255, 42, 133, 0.2) 0%, transparent 70%);
+    top: 500px; right: -150px; z-index: -1;
+}
+.glow-3 {
+    position: absolute; width: 550px; height: 550px;
+    background: radial-gradient(circle, rgba(0, 242, 254, 0.2) 0%, transparent 70%);
+    top: 1200px; left: -100px; z-index: -1;
+}
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
         body { background-color: var(--bg-color); color: var(--text-main); overflow-x: hidden; }
