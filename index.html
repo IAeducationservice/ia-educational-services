@@ -88,7 +88,7 @@
         }
 
         /* SECTION HEADERS */
-        .section-header { text-align: center; margin-bottom: 40px; padding: 0 8%; }
+        .section-header { text-align: center; margin-bottom: 30px; padding: 0 8%; }
         .section-header h2 { font-size: 1.8rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.5px; }
         .section-header p { color: var(--text-sub); font-size: 0.95rem; font-weight: 400; }
 
@@ -102,6 +102,75 @@
             color: var(--text-main); padding: 10px 20px; border-radius: 14px; cursor: pointer; transition: 0.3s; font-size: 0.9rem; font-weight: 500;
         }
         .opt-btn:hover, .opt-btn.selected { border-color: var(--accent-cyan); background: #ffffff; color: var(--accent-cyan); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+
+        /* DYNAMIC QUALIFICATION & MATCHING CARD */
+        .qualification-card {
+            background: var(--bg-main);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 650px;
+            margin: 30px auto 0 auto;
+            text-align: left;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.03);
+        }
+        .privacy-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 0.8rem; color: var(--accent-cyan); background: rgba(2, 132, 199, 0.08);
+            padding: 6px 14px; border-radius: 20px; margin-bottom: 20px; font-weight: 500;
+        }
+        .form-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px;
+        }
+        @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
+        
+        .form-group label {
+            display: block; font-size: 0.85rem; font-weight: 600; color: var(--text-main); margin-bottom: 6px;
+        }
+        .form-group input, .form-group select {
+            width: 100%; padding: 12px 14px; border-radius: 12px;
+            border: 1px solid var(--card-border); background: var(--bg-secondary);
+            font-size: 0.9rem; color: var(--text-main); outline: none; transition: 0.3s;
+        }
+        .form-group input:focus, .form-group select:focus {
+            border-color: var(--accent-cyan); box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+        }
+
+        .action-btn-main {
+            width: 100%; background: var(--accent-cyan); color: #fff; border: none;
+            padding: 14px; border-radius: 14px; font-weight: 600; font-size: 0.95rem;
+            cursor: pointer; transition: 0.3s; text-align: center;
+        }
+        .action-btn-main:hover { background: #0274b3; }
+
+        /* RESULTS DISPLAY CONTAINER */
+        .results-container {
+            display: none; margin-top: 25px; padding-top: 20px; border-top: 1px solid var(--card-border);
+        }
+        .matched-college-item {
+            background: var(--bg-secondary); border: 1px solid var(--card-border);
+            padding: 14px 18px; border-radius: 14px; margin-bottom: 12px;
+            display: flex; justify-content: space-between; align-items: center; gap: 10px;
+        }
+        .matched-college-item h5 { font-size: 0.95rem; font-weight: 600; color: var(--text-main); }
+        .matched-college-item p { font-size: 0.8rem; color: var(--text-sub); }
+        
+        .apply-seat-btn {
+            background: var(--accent-green); color: #fff; border: none;
+            padding: 8px 16px; border-radius: 20px; font-size: 0.82rem; font-weight: 600;
+            cursor: pointer; transition: 0.3s; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+        }
+
+        .unsatisfied-box {
+            background: #ffffff; border: 1px dashed var(--accent-cyan);
+            padding: 18px; border-radius: 14px; margin-top: 20px; text-align: center;
+        }
+        .unsatisfied-box p { font-size: 0.85rem; color: var(--text-sub); margin-bottom: 10px; }
+        .custom-req-btn {
+            background: transparent; color: var(--accent-cyan); border: 1px solid var(--accent-cyan);
+            padding: 8px 18px; border-radius: 20px; font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: 0.3s;
+        }
+        .custom-req-btn:hover { background: rgba(2, 132, 199, 0.08); }
 
         /* ROADMAP GRID WITH APPLE LIGHT CARDS */
         .roadmap-section { padding: 70px 8%; }
@@ -190,9 +259,10 @@
     <section class="matcher-section" id="matcher">
         <div class="section-header">
             <h2>Find Your Career Path</h2>
-            <p>Select your background and primary objective to build your action plan.</p>
+            <p>Select your background and primary objective to evaluate your eligible college seats.</p>
         </div>
 
+        <!-- STEP 1: STAGE -->
         <div class="step-block" style="text-align: center;">
             <h4>1. Current Educational Stage</h4>
             <div class="option-group" id="group-stage">
@@ -202,6 +272,7 @@
             </div>
         </div>
 
+        <!-- STEP 2: INTEREST -->
         <div class="step-block" style="text-align: center;">
             <h4>2. Primary Interest Field</h4>
             <div class="option-group" id="group-interest">
@@ -211,6 +282,7 @@
             </div>
         </div>
 
+        <!-- STEP 3: GOAL -->
         <div class="step-block" style="text-align: center;">
             <h4>3. Main Career Goal</h4>
             <div class="option-group" id="group-goal">
@@ -220,9 +292,58 @@
             </div>
         </div>
 
+        <!-- DYNAMIC INPUT & QUALIFICATION FORM -->
+        <div class="qualification-card">
+            <div class="privacy-badge">
+                <i class="fa-solid fa-user-shield"></i> 100% Confidential Data Guarantee
+            </div>
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Academic Performance / Marks (%)</label>
+                    <select id="user-percentage">
+                        <option value="Above 85%">Above 85% (Distinction)</option>
+                        <option value="70% - 85%">70% - 85% (First Class)</option>
+                        <option value="50% - 70%">50% - 70% (Second Class)</option>
+                        <option value="Pursuing / Awaiting Result">Pursuing / Awaiting Results</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Preferred Study Region</label>
+                    <select id="user-region">
+                        <option value="Local State / Nearby Cities">Local State / Nearby Cities</option>
+                        <option value="Pan-India Premier Campuses">Pan-India Premier Campuses</option>
+                        <option value="International / Overseas Universities">International / Overseas</option>
+                    </select>
+                </div>
+            </div>
+
+            <button class="action-btn-main" onclick="generateMatchedColleges()">
+                <i class="fa-solid fa-magnifying-glass-location"></i> Calculate Eligible College Seats
+            </button>
+
+            <!-- RESULTS LIST DISPLAY -->
+            <div class="results-container" id="results-box">
+                <h4 style="font-size: 0.9rem; color: var(--text-sub); margin-bottom: 12px; text-transform: uppercase;">Pre-Screened Matched Institutions:</h4>
+
+                <div id="matched-list">
+                    <!-- Dynamic Matches Injected Here -->
+                </div>
+
+                <!-- UNSATISFIED OPTION BOX -->
+                <div class="unsatisfied-box">
+                    <p><strong>Don't see your desired college or targeted score limit?</strong></p>
+                    <button class="custom-req-btn" onclick="requestCustomCounseling()">
+                        <i class="fa-solid fa-headset"></i> Request Direct Counselor Intervention
+                    </button>
+                </div>
+            </div>
+        </div>
+
         <div class="conversion-flex">
             <button class="whatsapp-btn" onclick="sendToWhatsApp()">
-                <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i> Connect via WhatsApp
+                <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i> Direct WhatsApp Connect
             </button>
 
             <div class="counselor-card">
@@ -319,7 +440,7 @@
         <p>© 2026 IA Educational Services. All rights reserved. Contact: +91 9822206864</p>
     </footer>
 
-    <!-- INTERACTIVE JAVASCRIPT -->
+    <!-- INTERACTIVE FUNNEL JAVASCRIPT -->
     <script>
         let userChoices = {
             stage: 'After 10th',
@@ -337,17 +458,58 @@
                     btn.classList.add('selected');
                 }
             });
+            // Hide previous results when user changes top choices to encourage recalculation
+            document.getElementById('results-box').style.display = 'none';
         }
 
         function scrollToMatcher() {
             document.getElementById('matcher').scrollIntoView({ behavior: 'smooth' });
         }
 
+        function generateMatchedColleges() {
+            const perc = document.getElementById('user-percentage').value;
+            const reg = document.getElementById('user-region').value;
+            const listContainer = document.getElementById('matched-list');
+            
+            listContainer.innerHTML = `
+                <div class="matched-college-item">
+                    <div>
+                        <h5>Premier ${userChoices.interest} Technical Institute</h5>
+                        <p>Eligibility: ${perc} | Location: ${reg}</p>
+                    </div>
+                    <button class="apply-seat-btn" onclick="applyDirect('Premier ${userChoices.interest} Technical Institute')">
+                        <i class="fa-solid fa-paper-plane"></i> Apply Seat
+                    </button>
+                </div>
+                <div class="matched-college-item">
+                    <div>
+                        <h5>Autonomous Global ${userChoices.stage} Academy</h5>
+                        <p>Eligibility: Direct Seat Mapping Available | ${reg}</p>
+                    </div>
+                    <button class="apply-seat-btn" onclick="applyDirect('Autonomous Global Academy')">
+                        <i class="fa-solid fa-paper-plane"></i> Apply Seat
+                    </button>
+                </div>
+            `;
+
+            document.getElementById('results-box').style.display = 'block';
+        }
+
+        function applyDirect(collegeName) {
+            const perc = document.getElementById('user-percentage').value;
+            const text = `Hello IA Educational Services, I evaluated my profile on your site:\n\n- Stage: ${userChoices.stage}\n- Stream: ${userChoices.interest}\n- Marks: ${perc}\n- Goal: ${userChoices.goal}\n\nI want to apply for direct seat allocation at: *${collegeName}*. Please contact me with the process.`;
+            window.open(`https://wa.me/919822206864?text=${encodeURIComponent(text)}`, '_blank');
+        }
+
+        function requestCustomCounseling() {
+            const perc = document.getElementById('user-percentage').value;
+            const text = `Hello Counselor, I checked the eligible college options for my ${userChoices.stage} (${userChoices.interest}), but I am looking for a specific target college/university. I would like a 1-on-1 counseling session to discuss custom seat mapping.`;
+            window.open(`https://wa.me/919822206864?text=${encodeURIComponent(text)}`, '_blank');
+        }
+
         function sendToWhatsApp() {
-            const phoneNumber = "919822206864";
-            const text = `Hi, I am currently at stage: *${userChoices.stage}*. My main interest field is *${userChoices.interest}* and my primary goal is *${userChoices.goal}*. Please provide me with personalized guidance!`;
-            const encodedText = encodeURIComponent(text);
-            window.open(`https://wa.me/${phoneNumber}?text=${encodedText}`, '_blank');
+            const text = `Hi, I am currently at stage: *${userChoices.stage}*. My main interest field is *${userChoices.interest}* and my primary goal is *${userChoices.goal}*. Please provide me with personalized counseling!`;
+            window.open(`https://wa.me/919822206864?text=${encodeURIComponent(text)}`, '_blank');
         }
     </script>
 </body>
