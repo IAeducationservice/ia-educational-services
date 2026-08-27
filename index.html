@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IA Educational Services | Global Career Guidance</title>
+    <title>IA Educational Services | CAP & College Admission Portal</title>
     
     <!-- Google Fonts & FontAwesome -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -11,14 +11,14 @@
 
     <style>
         :root {
-            /* Apple Soft Light Palette (Muted, Non-Glare) */
+            /* Apple Soft Light Palette */
             --bg-main: #f5f5f7;
             --bg-secondary: #ffffff;
             --card-glass: rgba(255, 255, 255, 0.7);
             --card-border: rgba(0, 0, 0, 0.08);
             --card-border-hover: rgba(0, 0, 0, 0.2);
             
-            /* Soft Pastel Accents */
+            /* Accents */
             --accent-purple: #8e44ad;
             --accent-pink: #d81b60;
             --accent-cyan: #0284c7;
@@ -39,10 +39,7 @@
             backdrop-filter: blur(20px); position: sticky; top: 0; z-index: 100;
             border-bottom: 1px solid var(--card-border);
         }
-        .logo {
-            font-weight: 700; font-size: 1.25rem; letter-spacing: -0.5px;
-            color: var(--text-main);
-        }
+        .logo { font-weight: 700; font-size: 1.25rem; letter-spacing: -0.5px; color: var(--text-main); }
         .nav-btn {
             background: rgba(0, 0, 0, 0.05); border: 1px solid var(--card-border);
             color: var(--text-main); padding: 8px 20px; border-radius: 20px;
@@ -50,178 +47,156 @@
         }
         .nav-btn:hover { background: rgba(0, 0, 0, 0.1); border-color: var(--card-border-hover); }
 
-        /* CENTERED HERO SECTION */
+        /* HERO & SCREEN 1 LAYOUT */
         .hero {
             display: flex; flex-direction: column; align-items: center; text-align: center;
-            padding: 50px 8% 40px 8%; position: relative;
+            padding: 40px 8% 30px 8%; position: relative;
         }
-
-        /* CURVED QUOTE ARC ABOVE EARTH */
         .quote-arc-container {
             margin-bottom: -20px; z-index: 10; width: 100%; max-width: 650px;
             display: flex; justify-content: center;
         }
         .quote-arc {
-            background: rgba(255, 255, 255, 0.8);
-            border: 1px solid var(--card-border);
-            padding: 10px 28px; border-radius: 40px / 20px;
-            backdrop-filter: blur(15px); box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-            color: var(--accent-cyan); font-size: 0.95rem; font-weight: 600; letter-spacing: -0.2px;
+            background: rgba(255, 255, 255, 0.8); border: 1px solid var(--card-border);
+            padding: 10px 28px; border-radius: 40px / 20px; backdrop-filter: blur(15px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04); color: var(--accent-cyan);
+            font-size: 0.95rem; font-weight: 600; letter-spacing: -0.2px;
         }
-
-        /* CENTRAL 100% EARTH GRAPHIC STAGE */
         .hero-center-stage {
             position: relative; width: 100%; max-width: 850px;
-            display: flex; justify-content: center; align-items: center; margin: 10px 0 30px 0;
+            display: flex; justify-content: center; align-items: center; margin: 10px 0 20px 0;
         }
-        .hero-graphic-wrapper {
-            width: 100%; position: relative; display: flex; justify-content: center; align-items: center;
-        }
+        .hero-graphic-wrapper { width: 100%; display: flex; justify-content: center; align-items: center; }
         .hero-graphic-wrapper img {
             width: 100%; max-width: 750px; height: auto; object-fit: contain;
             filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.08));
         }
-
         .hero-subtext {
             max-width: 640px; margin: 0 auto 30px auto; color: var(--text-sub);
-            font-size: 1.05rem; line-height: 1.6; font-weight: 400;
+            font-size: 1.05rem; line-height: 1.6; font-weight: 400; text-align: center;
         }
 
-        /* SECTION HEADERS */
-        .section-header { text-align: center; margin-bottom: 30px; padding: 0 8%; }
+        /* PRIMARY ENTRY SELECTION BUTTONS */
+        .stage-selector-container {
+            display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 10px;
+        }
+        .stage-card-btn {
+            background: var(--bg-secondary); border: 1px solid var(--card-border);
+            border-radius: 18px; padding: 20px 30px; cursor: pointer; transition: all 0.3s ease;
+            display: flex; flex-direction: column; align-items: center; gap: 8px; min-width: 200px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.03);
+        }
+        .stage-card-btn:hover {
+            border-color: var(--accent-cyan); transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(2, 132, 199, 0.12);
+        }
+        .stage-card-btn i { font-size: 1.8rem; color: var(--accent-cyan); }
+        .stage-card-btn span { font-size: 1.05rem; font-weight: 600; color: var(--text-main); }
+
+        /* ROADMAP GRID */
+        .roadmap-section { padding: 60px 8%; border-top: 1px solid var(--card-border); }
+        .section-header { text-align: center; margin-bottom: 30px; }
         .section-header h2 { font-size: 1.8rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.5px; }
-        .section-header p { color: var(--text-sub); font-size: 0.95rem; font-weight: 400; }
+        .section-header p { color: var(--text-sub); font-size: 0.95rem; }
 
-        /* INTERACTIVE MATCHER WIDGET */
-        .matcher-section { padding: 60px 8%; background: var(--bg-secondary); border-top: 1px solid var(--card-border); border-bottom: 1px solid var(--card-border); }
-        .step-block { margin-bottom: 25px; }
-        .step-block h4 { margin-bottom: 12px; color: var(--text-sub); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
-        .option-group { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
-        .opt-btn {
-            background: var(--bg-main); border: 1px solid var(--card-border);
-            color: var(--text-main); padding: 10px 20px; border-radius: 14px; cursor: pointer; transition: 0.3s; font-size: 0.9rem; font-weight: 500;
+        .image-card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 30px; }
+        .image-card {
+            background: var(--bg-secondary); border: 1px solid var(--card-border);
+            border-radius: 20px; overflow: hidden; transition: all 0.4s ease;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
         }
-        .opt-btn:hover, .opt-btn.selected { border-color: var(--accent-cyan); background: #ffffff; color: var(--accent-cyan); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        .image-card:hover { transform: translateY(-6px); border-color: var(--card-border-hover); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08); }
+        .card-img-wrapper { width: 100%; height: 180px; overflow: hidden; background: #e5e5ea; }
+        .card-img-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .image-card:hover .card-img-wrapper img { transform: scale(1.05); }
+        .card-body { padding: 20px; }
+        .card-tag { display: inline-block; padding: 4px 12px; border-radius: 16px; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; margin-bottom: 10px; background: rgba(0, 0, 0, 0.04); color: var(--text-sub); }
+        .card-body h3 { font-size: 1.15rem; font-weight: 600; margin-bottom: 8px; }
+        .card-body p { color: var(--text-sub); font-size: 0.86rem; line-height: 1.5; margin-bottom: 12px; }
+        .roadmap-list { list-style: none; padding-left: 0; }
+        .roadmap-list li { color: var(--text-main); font-size: 0.83rem; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+        .roadmap-list li i { color: var(--text-sub); font-size: 0.78rem; }
 
-        /* DYNAMIC QUALIFICATION & MATCHING CARD */
-        .qualification-card {
-            background: var(--bg-main);
-            border: 1px solid var(--card-border);
-            border-radius: 20px;
-            padding: 30px;
-            max-width: 650px;
-            margin: 30px auto 0 auto;
-            text-align: left;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.03);
-        }
-        .privacy-badge {
-            display: inline-flex; align-items: center; gap: 8px;
-            font-size: 0.8rem; color: var(--accent-cyan); background: rgba(2, 132, 199, 0.08);
-            padding: 6px 14px; border-radius: 20px; margin-bottom: 20px; font-weight: 500;
-        }
-        .form-grid {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px;
-        }
-        @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
+        /* SCREEN 2 CONTAINER (HIDDEN BY DEFAULT) */
+        #details-screen { display: none; padding: 40px 8%; }
         
-        .form-group label {
-            display: block; font-size: 0.85rem; font-weight: 600; color: var(--text-main); margin-bottom: 6px;
+        .screen-top-bar {
+            display: flex; justify-content: space-between; align-items: center;
+            max-width: 800px; margin: 0 auto 20px auto;
         }
+        .back-btn {
+            background: var(--bg-secondary); border: 1px solid var(--card-border);
+            color: var(--text-main); padding: 10px 20px; border-radius: 20px;
+            cursor: pointer; font-size: 0.88rem; font-weight: 600; transition: 0.3s;
+            display: inline-flex; align-items: center; gap: 8px;
+        }
+        .back-btn:hover { border-color: var(--card-border-hover); background: #ffffff; }
+
+        .details-card {
+            background: var(--bg-secondary); border: 1px solid var(--card-border);
+            border-radius: 24px; padding: 35px; max-width: 800px; margin: 0 auto;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.04);
+        }
+        .screen-title-badge {
+            display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem;
+            color: var(--accent-cyan); background: rgba(2, 132, 199, 0.08);
+            padding: 6px 16px; border-radius: 20px; font-weight: 600; margin-bottom: 15px;
+        }
+        .details-card h2 { font-size: 1.6rem; font-weight: 700; margin-bottom: 20px; letter-spacing: -0.5px; }
+
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 25px; }
+        @media (max-width: 650px) { .form-grid { grid-template-columns: 1fr; } }
+
+        .form-group label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--text-main); margin-bottom: 8px; }
         .form-group input, .form-group select {
             width: 100%; padding: 12px 14px; border-radius: 12px;
-            border: 1px solid var(--card-border); background: var(--bg-secondary);
+            border: 1px solid var(--card-border); background: var(--bg-main);
             font-size: 0.9rem; color: var(--text-main); outline: none; transition: 0.3s;
         }
         .form-group input:focus, .form-group select:focus {
-            border-color: var(--accent-cyan); box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+            border-color: var(--accent-cyan); background: #ffffff; box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
         }
 
         .action-btn-main {
             width: 100%; background: var(--accent-cyan); color: #fff; border: none;
-            padding: 14px; border-radius: 14px; font-weight: 600; font-size: 0.95rem;
+            padding: 15px; border-radius: 14px; font-weight: 600; font-size: 0.98rem;
             cursor: pointer; transition: 0.3s; text-align: center;
         }
         .action-btn-main:hover { background: #0274b3; }
 
-        /* RESULTS DISPLAY CONTAINER */
-        .results-container {
-            display: none; margin-top: 25px; padding-top: 20px; border-top: 1px solid var(--card-border);
-        }
+        /* OUTCOME SEAT CONTAINER */
+        .outcomes-box { display: none; margin-top: 30px; padding-top: 25px; border-top: 1px solid var(--card-border); }
         .matched-college-item {
-            background: var(--bg-secondary); border: 1px solid var(--card-border);
-            padding: 14px 18px; border-radius: 14px; margin-bottom: 12px;
-            display: flex; justify-content: space-between; align-items: center; gap: 10px;
+            background: var(--bg-main); border: 1px solid var(--card-border);
+            padding: 16px 20px; border-radius: 16px; margin-bottom: 14px;
+            display: flex; justify-content: space-between; align-items: center; gap: 12px;
         }
-        .matched-college-item h5 { font-size: 0.95rem; font-weight: 600; color: var(--text-main); }
-        .matched-college-item p { font-size: 0.8rem; color: var(--text-sub); }
+        .matched-college-item h5 { font-size: 0.98rem; font-weight: 600; color: var(--text-main); margin-bottom: 4px; }
+        .matched-college-item p { font-size: 0.82rem; color: var(--text-sub); }
         
         .apply-seat-btn {
             background: var(--accent-green); color: #fff; border: none;
-            padding: 8px 16px; border-radius: 20px; font-size: 0.82rem; font-weight: 600;
-            cursor: pointer; transition: 0.3s; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+            padding: 10px 18px; border-radius: 20px; font-size: 0.85rem; font-weight: 600;
+            cursor: pointer; transition: 0.3s; display: inline-flex; align-items: center; gap: 6px; flex-shrink: 0;
         }
+        .apply-seat-btn:hover { background: #1eb954; }
 
+        /* UNSATISFIED CUSTOM MAPPING BOX */
         .unsatisfied-box {
             background: #ffffff; border: 1px dashed var(--accent-cyan);
-            padding: 18px; border-radius: 14px; margin-top: 20px; text-align: center;
+            padding: 20px; border-radius: 16px; margin-top: 25px; text-align: center;
         }
-        .unsatisfied-box p { font-size: 0.85rem; color: var(--text-sub); margin-bottom: 10px; }
+        .unsatisfied-box p { font-size: 0.88rem; color: var(--text-sub); margin-bottom: 14px; }
+        .custom-input-group { display: flex; gap: 10px; max-width: 500px; margin: 0 auto; }
+        @media (max-width: 500px) { .custom-input-group { flex-direction: column; } }
+        .custom-input-group input {
+            flex: 1; padding: 10px 14px; border-radius: 12px; border: 1px solid var(--card-border); font-size: 0.88rem; outline: none;
+        }
         .custom-req-btn {
             background: transparent; color: var(--accent-cyan); border: 1px solid var(--accent-cyan);
-            padding: 8px 18px; border-radius: 20px; font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: 0.3s;
+            padding: 10px 18px; border-radius: 12px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: 0.3s; white-space: nowrap;
         }
         .custom-req-btn:hover { background: rgba(2, 132, 199, 0.08); }
-
-        /* ROADMAP GRID WITH APPLE LIGHT CARDS */
-        .roadmap-section { padding: 70px 8%; }
-        .image-card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 30px; }
-        
-        .image-card {
-            background: var(--bg-secondary); border: 1px solid var(--card-border);
-            border-radius: 20px; overflow: hidden; backdrop-filter: blur(15px);
-            transition: all 0.4s ease; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
-        }
-        .image-card:hover { transform: translateY(-6px); border-color: var(--card-border-hover); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08); }
-        
-        .card-img-wrapper {
-            width: 100%; height: 200px; overflow: hidden; position: relative; background: #e5e5ea;
-        }
-        .card-img-wrapper img {
-            width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;
-        }
-        .image-card:hover .card-img-wrapper img { transform: scale(1.05); }
-        .card-body { padding: 24px; }
-        
-        .card-tag {
-            display: inline-block; padding: 4px 12px; border-radius: 16px; font-size: 0.72rem;
-            font-weight: 600; text-transform: uppercase; margin-bottom: 12px;
-            background: rgba(0, 0, 0, 0.04); border: 1px solid var(--card-border); color: var(--text-sub);
-        }
-        .card-body h3 { font-size: 1.2rem; font-weight: 600; margin-bottom: 10px; letter-spacing: -0.3px; }
-        .card-body p { color: var(--text-sub); font-size: 0.88rem; line-height: 1.5; margin-bottom: 16px; font-weight: 400; }
-        
-        .roadmap-list { list-style: none; padding-left: 0; }
-        .roadmap-list li { color: var(--text-main); font-size: 0.85rem; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; font-weight: 400; }
-        .roadmap-list li i { color: var(--text-sub); font-size: 0.8rem; }
-
-        /* ACTION TRIGGER & COUNSELOR SPOTLIGHT */
-        .conversion-flex { display: flex; gap: 20px; align-items: center; margin-top: 35px; flex-wrap: wrap; justify-content: center; }
-        .whatsapp-btn {
-            background: var(--accent-green); color: #fff; padding: 14px 30px; border-radius: 30px;
-            font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 10px;
-            box-shadow: 0 4px 16px rgba(37, 211, 102, 0.25); transition: 0.3s; border: none; cursor: pointer; font-size: 0.95rem;
-        }
-        .whatsapp-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35); }
-
-        .counselor-card {
-            background: var(--bg-secondary); border: 1px solid var(--card-border);
-            border-radius: 20px; padding: 20px; display: flex; align-items: center; gap: 16px; flex: 1; min-width: 280px; max-width: 450px;
-        }
-        .avatar-box {
-            width: 50px; height: 50px; border-radius: 50%; background: rgba(0, 102, 204, 0.08);
-            display: flex; align-items: center; justify-content: center; font-size: 1.3rem; color: var(--accent-cyan); flex-shrink: 0;
-            border: 1px solid var(--card-border);
-        }
 
         footer { text-align: center; padding: 35px 8%; border-top: 1px solid var(--card-border); color: var(--text-sub); font-size: 0.85rem; }
     </style>
@@ -231,284 +206,344 @@
     <!-- NAVBAR -->
     <nav>
         <div class="logo">IA Educational Services</div>
-        <button onclick="scrollToMatcher()" class="nav-btn">Find My Path</button>
+        <button onclick="goToHomeScreen()" class="nav-btn">Home</button>
     </nav>
 
-    <!-- HERO SECTION -->
-    <section class="hero">
-        
-        <!-- CURVED QUOTE ARC OVER THE EARTH -->
-        <div class="quote-arc-container">
-            <div class="quote-arc">
-                "Empowering Global Careers & Premier College Admissions"
-            </div>
-        </div>
-
-        <!-- CENTRAL 100% EARTH GRAPHIC STAGE -->
-        <div class="hero-center-stage">
-            <div class="hero-graphic-wrapper">
-                <img src="hero.png" alt="IA Educational Services Hero Graphic">
-            </div>
-        </div>
-
-        <p class="hero-subtext">Get 1-on-1 expert college admission guidance completely free of charge. We map your marks and interest directly to guaranteed top-tier institutions.</p>
-
-    </section>
-
-    <!-- INTERACTIVE 3-CLICK MATCHER WIDGET -->
-    <section class="matcher-section" id="matcher">
-        <div class="section-header">
-            <h2>Find Your Career Path</h2>
-            <p>Select your background and primary objective to evaluate your eligible college seats.</p>
-        </div>
-
-        <!-- STEP 1: STAGE -->
-        <div class="step-block" style="text-align: center;">
-            <h4>1. Current Educational Stage</h4>
-            <div class="option-group" id="group-stage">
-                <button class="opt-btn selected" onclick="selectOpt('stage', 'After 10th')">After 10th</button>
-                <button class="opt-btn" onclick="selectOpt('stage', 'After 12th')">After 12th</button>
-                <button class="opt-btn" onclick="selectOpt('stage', 'Diploma / ITI')">Diploma / ITI</button>
-            </div>
-        </div>
-
-        <!-- STEP 2: INTEREST -->
-        <div class="step-block" style="text-align: center;">
-            <h4>2. Primary Interest Field</h4>
-            <div class="option-group" id="group-interest">
-                <button class="opt-btn selected" onclick="selectOpt('interest', 'Medical & Healthcare')">Medical & Healthcare</button>
-                <button class="opt-btn" onclick="selectOpt('interest', 'Engineering & Tech')">Engineering & Tech</button>
-                <button class="opt-btn" onclick="selectOpt('interest', 'Unique Niche Paths')">Unique Niche Paths</button>
-            </div>
-        </div>
-
-        <!-- STEP 3: GOAL -->
-        <div class="step-block" style="text-align: center;">
-            <h4>3. Main Career Goal</h4>
-            <div class="option-group" id="group-goal">
-                <button class="opt-btn selected" onclick="selectOpt('goal', 'High Salary Potential')">High Salary Potential</button>
-                <button class="opt-btn" onclick="selectOpt('goal', 'Fast Job Placement')">Fast Job Placement</button>
-                <button class="opt-btn" onclick="selectOpt('goal', 'Top University Entry')">Top University Entry</button>
-            </div>
-        </div>
-
-        <!-- DYNAMIC INPUT & QUALIFICATION FORM -->
-        <div class="qualification-card">
-            <div class="privacy-badge">
-                <i class="fa-solid fa-user-shield"></i> 100% Confidential Data Guarantee
-            </div>
-
-            <div class="form-grid">
-                <div class="form-group">
-                    <label>Academic Performance / Marks (%)</label>
-                    <select id="user-percentage">
-                        <option value="Above 85%">Above 85% (Distinction)</option>
-                        <option value="70% - 85%">70% - 85% (First Class)</option>
-                        <option value="50% - 70%">50% - 70% (Second Class)</option>
-                        <option value="Pursuing / Awaiting Result">Pursuing / Awaiting Results</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label>Preferred Study Region</label>
-                    <select id="user-region">
-                        <option value="Local State / Nearby Cities">Local State / Nearby Cities</option>
-                        <option value="Pan-India Premier Campuses">Pan-India Premier Campuses</option>
-                        <option value="International / Overseas Universities">International / Overseas</option>
-                    </select>
+    <!-- SCREEN 1: LANDING & CHOICE SELECTION -->
+    <div id="home-screen">
+        <section class="hero">
+            <div class="quote-arc-container">
+                <div class="quote-arc">
+                    "Empowering Global Careers & Premier College Admissions"
                 </div>
             </div>
 
-            <button class="action-btn-main" onclick="generateMatchedColleges()">
-                <i class="fa-solid fa-magnifying-glass-location"></i> Calculate Eligible College Seats
+            <div class="hero-center-stage">
+                <div class="hero-graphic-wrapper">
+                    <img src="hero.png" alt="IA Educational Services Hero Graphic">
+                </div>
+            </div>
+
+            <p class="hero-subtext">Click your qualification stage below to calculate your CAP round eligibility and direct seat allotments.</p>
+
+            <!-- 3 MAIN CLICK BUTTONS -->
+            <div class="stage-selector-container">
+                <button class="stage-card-btn" onclick="openScreen2('10th')">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <span>After 10th</span>
+                </button>
+                <button class="stage-card-btn" onclick="openScreen2('12th')">
+                    <i class="fa-solid fa-book-open-reader"></i>
+                    <span>After 12th</span>
+                </button>
+                <button class="stage-card-btn" onclick="openScreen2('Diploma')">
+                    <i class="fa-solid fa-gears"></i>
+                    <span>Diploma / ITI</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- VISUAL ROADMAP GRID -->
+        <section class="roadmap-section">
+            <div class="section-header">
+                <h2>Academic Pathways</h2>
+                <p>Explore structured journeys tailored to your chosen specialization.</p>
+            </div>
+
+            <div class="image-card-grid">
+                <div class="image-card">
+                    <div class="card-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80" alt="University Degree Students">
+                    </div>
+                    <div class="card-body">
+                        <span class="card-tag">Degree Stream</span>
+                        <h3>University & Degree Programs</h3>
+                        <p>Optimized stream selection and entrance exam roadmaps for top university programs.</p>
+                        <ul class="roadmap-list">
+                            <li><i class="fa-solid fa-check"></i> Subject Choice Optimization</li>
+                            <li><i class="fa-solid fa-check"></i> Entrance Exam Strategy</li>
+                            <li><i class="fa-solid fa-check"></i> Degree to Profession Mapping</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="image-card">
+                    <div class="card-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80" alt="Doctor with Diagnostic Equipment">
+                    </div>
+                    <div class="card-body">
+                        <span class="card-tag">Medical Stream</span>
+                        <h3>Medical & Health Sciences</h3>
+                        <p>Guidance spanning clinical medicine, radiology tech, diagnostic systems, and allied health.</p>
+                        <ul class="roadmap-list">
+                            <li><i class="fa-solid fa-check"></i> Entrance & Seat Allocation Advisory</li>
+                            <li><i class="fa-solid fa-check"></i> Diagnostic Machinery Specializations</li>
+                            <li><i class="fa-solid fa-check"></i> Healthcare Technology Careers</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="image-card">
+                    <div class="card-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" alt="Engineer with Mechanism Gears">
+                    </div>
+                    <div class="card-body">
+                        <span class="card-tag">Engineering Stream</span>
+                        <h3>Engineering & Mechanism Systems</h3>
+                        <p>Roadmaps covering mechanical systems, aeronautical design, robotics, and industrial automation.</p>
+                        <ul class="roadmap-list">
+                            <li><i class="fa-solid fa-check"></i> Aerospace & Aeronautical Streams</li>
+                            <li><i class="fa-solid fa-check"></i> Industrial Gears & Heavy Systems</li>
+                            <li><i class="fa-solid fa-check"></i> Automation & Mechatronics</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="image-card">
+                    <div class="card-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80" alt="Technical Workshop">
+                    </div>
+                    <div class="card-body">
+                        <span class="card-tag">Diploma & ITI</span>
+                        <h3>Polytechnic & Direct Entry</h3>
+                        <p>Fast-track practical pathways and direct lateral entry into second-year engineering degrees.</p>
+                        <ul class="roadmap-list">
+                            <li><i class="fa-solid fa-check"></i> 2nd-Year B.Tech Lateral Entry</li>
+                            <li><i class="fa-solid fa-check"></i> Technical Industry Certifications</li>
+                            <li><i class="fa-solid fa-check"></i> Early Career Placement</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- SCREEN 2: DYNAMIC DETAILS & OUTCOMES PAGE -->
+    <div id="details-screen">
+        <div class="screen-top-bar">
+            <button class="back-btn" onclick="goToHomeScreen()">
+                <i class="fa-solid fa-arrow-left"></i> Change Qualification Choice
+            </button>
+        </div>
+
+        <div class="details-card">
+            <div class="screen-title-badge" id="screen-badge">
+                <i class="fa-solid fa-sliders"></i> Stage Selected
+            </div>
+            <h2 id="screen-heading">Evaluate Your Eligible Seats</h2>
+
+            <!-- DYNAMIC FORM FIELDS INJECTED BASED ON SCREEN 1 CLICK -->
+            <div class="form-grid" id="dynamic-fields">
+                <!-- Injected via JavaScript -->
+            </div>
+
+            <button class="action-btn-main" onclick="calculateOutcomes()">
+                <i class="fa-solid fa-calculator"></i> Calculate CAP Eligibility & Matched Colleges
             </button>
 
-            <!-- RESULTS LIST DISPLAY -->
-            <div class="results-container" id="results-box">
-                <h4 style="font-size: 0.9rem; color: var(--text-sub); margin-bottom: 12px; text-transform: uppercase;">Pre-Screened Matched Institutions:</h4>
-
-                <div id="matched-list">
+            <!-- OUTCOME SEAT MATCHES DISPLAY -->
+            <div class="outcomes-box" id="outcomes-box">
+                <h4 style="font-size: 0.9rem; color: var(--text-sub); margin-bottom: 14px; text-transform: uppercase;">Direct CAP & Institutional Allotment Options:</h4>
+                
+                <div id="colleges-list">
                     <!-- Dynamic Matches Injected Here -->
                 </div>
 
-                <!-- UNSATISFIED OPTION BOX -->
+                <!-- UNSATISFIED OPTION BOX FOR CUSTOM SEAT MAPPING -->
                 <div class="unsatisfied-box">
                     <p><strong>Don't see your desired college or targeted score limit?</strong></p>
-                    <button class="custom-req-btn" onclick="requestCustomCounseling()">
-                        <i class="fa-solid fa-headset"></i> Request Direct Counselor Intervention
-                    </button>
+                    <div class="custom-input-group">
+                        <input type="text" id="target-college-input" placeholder="Enter target college name (e.g., COEP, VJTI, MIT)">
+                        <button class="custom-req-btn" onclick="requestCustomMapping()">
+                            Request Custom Mapping
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <div class="conversion-flex">
-            <button class="whatsapp-btn" onclick="sendToWhatsApp()">
-                <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i> Direct WhatsApp Connect
-            </button>
-
-            <div class="counselor-card">
-                <div class="avatar-box"><i class="fa-solid fa-user-shield"></i></div>
-                <div style="text-align: left;">
-                    <h4 style="font-size: 0.95rem; font-weight: 600; margin-bottom: 2px;">100% Free Admission Guidance</h4>
-                    <p style="color: var(--text-sub); font-size: 0.85rem;">Zero hidden fees. Direct seat allocation support.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- VISUAL ROADMAP GRID WITH LIGHT CARDS -->
-    <section class="roadmap-section">
-        <div class="section-header">
-            <h2>Academic Pathways</h2>
-            <p>Explore structured journeys tailored to your chosen specialization.</p>
-        </div>
-
-        <div class="image-card-grid">
-            
-            <!-- Card 1: University & Degree Programs -->
-            <div class="image-card">
-                <div class="card-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80" alt="University Degree Students">
-                </div>
-                <div class="card-body">
-                    <span class="card-tag">Degree Stream</span>
-                    <h3>University & Degree Programs</h3>
-                    <p>Optimized stream selection and entrance exam roadmaps for top university programs.</p>
-                    <ul class="roadmap-list">
-                        <li><i class="fa-solid fa-check"></i> Subject Choice Optimization</li>
-                        <li><i class="fa-solid fa-check"></i> Entrance Exam Strategy</li>
-                        <li><i class="fa-solid fa-check"></i> Degree to Profession Mapping</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Card 2: Medical & Healthcare -->
-            <div class="image-card">
-                <div class="card-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80" alt="Doctor with Diagnostic Equipment">
-                </div>
-                <div class="card-body">
-                    <span class="card-tag">Medical Stream</span>
-                    <h3>Medical & Health Sciences</h3>
-                    <p>Guidance spanning clinical medicine, radiology tech, diagnostic systems, and allied health.</p>
-                    <ul class="roadmap-list">
-                        <li><i class="fa-solid fa-check"></i> Entrance & Seat Allocation Advisory</li>
-                        <li><i class="fa-solid fa-check"></i> Diagnostic Machinery Specializations</li>
-                        <li><i class="fa-solid fa-check"></i> Healthcare Technology Careers</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Card 3: Engineering & Technology -->
-            <div class="image-card">
-                <div class="card-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" alt="Engineer with Mechanism Gears">
-                </div>
-                <div class="card-body">
-                    <span class="card-tag">Engineering Stream</span>
-                    <h3>Engineering & Mechanism Systems</h3>
-                    <p>Roadmaps covering mechanical systems, aeronautical design, robotics, and industrial automation.</p>
-                    <ul class="roadmap-list">
-                        <li><i class="fa-solid fa-check"></i> Aerospace & Aeronautical Streams</li>
-                        <li><i class="fa-solid fa-check"></i> Industrial Gears & Heavy Systems</li>
-                        <li><i class="fa-solid fa-check"></i> Automation & Mechatronics</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Card 4: Technical Diploma & Direct Entry -->
-            <div class="image-card">
-                <div class="card-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80" alt="Technical Workshop">
-                </div>
-                <div class="card-body">
-                    <span class="card-tag">Diploma & ITI</span>
-                    <h3>Polytechnic & Direct Entry</h3>
-                    <p>Fast-track practical pathways and direct lateral entry into second-year engineering degrees.</p>
-                    <ul class="roadmap-list">
-                        <li><i class="fa-solid fa-check"></i> 2nd-Year B.Tech Lateral Entry</li>
-                        <li><i class="fa-solid fa-check"></i> Technical Industry Certifications</li>
-                        <li><i class="fa-solid fa-check"></i> Early Career Placement</li>
-                    </ul>
-                </div>
-            </div>
-
-        </div>
-    </section>
+    </div>
 
     <footer>
         <p>© 2026 IA Educational Services. All rights reserved. Contact: +91 9822206864</p>
     </footer>
 
-    <!-- INTERACTIVE FUNNEL JAVASCRIPT -->
+    <!-- INTERACTIVE SCREEN SWITCHING LOGIC -->
     <script>
-        let userChoices = {
-            stage: 'After 10th',
-            interest: 'Medical & Healthcare',
-            goal: 'High Salary Potential'
-        };
+        let selectedStage = '';
 
-        function selectOpt(category, value) {
-            userChoices[category] = value;
-            const container = document.getElementById(`group-${category}`);
-            const buttons = container.querySelectorAll('.opt-btn');
-            buttons.forEach(btn => {
-                btn.classList.remove('selected');
-                if (btn.innerText === value || btn.innerText.includes(value.split(' ')[0])) {
-                    btn.classList.add('selected');
-                }
-            });
-            // Hide previous results when user changes top choices to encourage recalculation
-            document.getElementById('results-box').style.display = 'none';
-        }
-
-        function scrollToMatcher() {
-            document.getElementById('matcher').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function generateMatchedColleges() {
-            const perc = document.getElementById('user-percentage').value;
-            const reg = document.getElementById('user-region').value;
-            const listContainer = document.getElementById('matched-list');
+        function openScreen2(stage) {
+            selectedStage = stage;
             
+            // Hide Screen 1, Show Screen 2
+            document.getElementById('home-screen').style.display = 'none';
+            document.getElementById('details-screen').style.display = 'block';
+            document.getElementById('outcomes-box').style.display = 'none';
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            const badge = document.getElementById('screen-badge');
+            const heading = document.getElementById('screen-heading');
+            const fieldsContainer = document.getElementById('dynamic-fields');
+
+            if (stage === '10th') {
+                badge.innerHTML = `<i class="fa-solid fa-graduation-cap"></i> Path: After 10th Standard`;
+                heading.innerText = `10th Grade CAP & Diploma Seat Evaluation`;
+                fieldsContainer.innerHTML = `
+                    <div class="form-group">
+                        <label>10th Overall Board Marks / Percentage</label>
+                        <select id="marks-val">
+                            <option value="Above 80%">Above 80% (Distinction)</option>
+                            <option value="65% - 80%">65% - 80% (First Class)</option>
+                            <option value="50% - 65%">50% - 65% (Second Class)</option>
+                            <option value="Awaiting Result">Pursuing / Awaiting Results</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>State Polytechnic Entrance Exam Status</label>
+                        <select id="exam-val">
+                            <option value="Appeared / Valid Entrance Score">Appeared / Has Entrance Score</option>
+                            <option value="Direct 10th Board Merit Only">Direct 10th Board Merit Only</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Interested Stream</label>
+                        <select id="stream-val">
+                            <option value="Polytechnic Diploma (Engineering)">Polytechnic Diploma (Engineering)</option>
+                            <option value="ITI Technical Skill Trade">ITI Technical Skill Trade</option>
+                            <option value="Science Stream (11th/12th)">Science Stream (11th/12th)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Preferred City / Region</label>
+                        <select id="region-val">
+                            <option value="Home District / Local City">Home District / Local City</option>
+                            <option value="Statewide Top Colleges">Statewide Top Colleges</option>
+                        </select>
+                    </div>
+                `;
+            } else if (stage === '12th') {
+                badge.innerHTML = `<i class="fa-solid fa-book-open-reader"></i> Path: After 12th Standard`;
+                heading.innerText = `12th Grade CAP & Entrance Seat Evaluation`;
+                fieldsContainer.innerHTML = `
+                    <div class="form-group">
+                        <label>12th Stream</label>
+                        <select id="stream-val">
+                            <option value="Science (PCM)">Science (PCM)</option>
+                            <option value="Science (PCB)">Science (PCB)</option>
+                            <option value="Commerce / Arts">Commerce / Arts</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>12th Board Percentage</label>
+                        <select id="marks-val">
+                            <option value="Above 75%">Above 75% (Distinction)</option>
+                            <option value="60% - 75%">60% - 75% (First Class)</option>
+                            <option value="50% - 60%">50% - 60% (Second Class)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Entrance Exam Attempted & Percentile/Score</label>
+                        <select id="exam-val">
+                            <option value="State CET (High Score)">State CET (Qualified CAP)</option>
+                            <option value="JEE Main / NEET Qualified">JEE Main / NEET Qualified</option>
+                            <option value="Non-Entrance / Direct Management Seat">Non-Entrance / Direct Management Seat</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Target Career Goal</label>
+                        <select id="goal-val">
+                            <option value="High Salary Engineering/Medical">High Salary Engineering/Medical</option>
+                            <option value="Fast Job Placement Degrees">Fast Job Placement Degrees</option>
+                        </select>
+                    </div>
+                `;
+            } else if (stage === 'Diploma') {
+                badge.innerHTML = `<i class="fa-solid fa-gears"></i> Path: Diploma / ITI Lateral Entry`;
+                heading.innerText = `Direct 2nd Year B.Tech & Lateral Entry Seat Evaluation`;
+                fieldsContainer.innerHTML = `
+                    <div class="form-group">
+                        <label>Completed Qualification</label>
+                        <select id="stream-val">
+                            <option value="Polytechnic Diploma (Engineering)">Polytechnic Diploma</option>
+                            <option value="ITI Trade Certification">ITI Trade Certification</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Final Diploma CGPA / Marks (%)</label>
+                        <select id="marks-val">
+                            <option value="Above 75% CGPA">Above 75% CGPA</option>
+                            <option value="60% - 75% CGPA">60% - 75% CGPA</option>
+                            <option value="Below 60% CGPA">Below 60% CGPA</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>CAP Allotment Status</label>
+                        <select id="exam-val">
+                            <option value="DSE CAP Round Registration Ready">DSE CAP Round Registration Ready</option>
+                            <option value="Direct Institutional Spot Admission">Direct Institutional Spot Admission</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Preferred Industrial Region</label>
+                        <select id="region-val">
+                            <option value="State Industrial Hub Campuses">State Industrial Hub Campuses</option>
+                            <option value="Pan-India Premier Engineering Hubs">Pan-India Premier Engineering Hubs</option>
+                        </select>
+                    </div>
+                `;
+            }
+        }
+
+        function goToHomeScreen() {
+            document.getElementById('details-screen').style.display = 'none';
+            document.getElementById('home-screen').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function calculateOutcomes() {
+            const stream = document.getElementById('stream-val').value;
+            const marks = document.getElementById('marks-val').value;
+            const exam = document.getElementById('exam-val').value;
+
+            const listContainer = document.getElementById('colleges-list');
             listContainer.innerHTML = `
                 <div class="matched-college-item">
                     <div>
-                        <h5>Premier ${userChoices.interest} Technical Institute</h5>
-                        <p>Eligibility: ${perc} | Location: ${reg}</p>
+                        <h5>Premier ${stream} Institute (CAP Priority)</h5>
+                        <p>Eligibility: ${marks} | Entrance Status: ${exam}</p>
                     </div>
-                    <button class="apply-seat-btn" onclick="applyDirect('Premier ${userChoices.interest} Technical Institute')">
-                        <i class="fa-solid fa-paper-plane"></i> Apply Seat
+                    <button class="apply-seat-btn" onclick="applyDirect('Premier ${stream} Institute')">
+                        <i class="fa-solid fa-paper-plane"></i> Lock CAP Seat
                     </button>
                 </div>
                 <div class="matched-college-item">
                     <div>
-                        <h5>Autonomous Global ${userChoices.stage} Academy</h5>
-                        <p>Eligibility: Direct Seat Mapping Available | ${reg}</p>
+                        <h5>Autonomous Technical Campus (Direct Allotment)</h5>
+                        <p>Eligibility: Direct Spot Allotment Available | ${marks}</p>
                     </div>
-                    <button class="apply-seat-btn" onclick="applyDirect('Autonomous Global Academy')">
-                        <i class="fa-solid fa-paper-plane"></i> Apply Seat
+                    <button class="apply-seat-btn" onclick="applyDirect('Autonomous Technical Campus')">
+                        <i class="fa-solid fa-paper-plane"></i> Lock CAP Seat
                     </button>
                 </div>
             `;
 
-            document.getElementById('results-box').style.display = 'block';
+            document.getElementById('outcomes-box').style.display = 'block';
         }
 
         function applyDirect(collegeName) {
-            const perc = document.getElementById('user-percentage').value;
-            const text = `Hello IA Educational Services, I evaluated my profile on your site:\n\n- Stage: ${userChoices.stage}\n- Stream: ${userChoices.interest}\n- Marks: ${perc}\n- Goal: ${userChoices.goal}\n\nI want to apply for direct seat allocation at: *${collegeName}*. Please contact me with the process.`;
+            const stream = document.getElementById('stream-val').value;
+            const marks = document.getElementById('marks-val').value;
+            const text = `Hello IA Educational Services,\n\nI calculated my profile on your portal:\n- Stage: ${selectedStage}\n- Stream/Field: ${stream}\n- Academic Score: ${marks}\n\nI want to lock my seat allocation at: *${collegeName}*. Please guide me through the CAP/Direct process.`;
             window.open(`https://wa.me/919822206864?text=${encodeURIComponent(text)}`, '_blank');
         }
 
-        function requestCustomCounseling() {
-            const perc = document.getElementById('user-percentage').value;
-            const text = `Hello Counselor, I checked the eligible college options for my ${userChoices.stage} (${userChoices.interest}), but I am looking for a specific target college/university. I would like a 1-on-1 counseling session to discuss custom seat mapping.`;
-            window.open(`https://wa.me/919822206864?text=${encodeURIComponent(text)}`, '_blank');
-        }
-
-        function sendToWhatsApp() {
-            const text = `Hi, I am currently at stage: *${userChoices.stage}*. My main interest field is *${userChoices.interest}* and my primary goal is *${userChoices.goal}*. Please provide me with personalized counseling!`;
+        function requestCustomMapping() {
+            const target = document.getElementById('target-college-input').value;
+            if(!target) {
+                alert('Please enter your target college name.');
+                return;
+            }
+            const text = `Hello Counselor,\n\nI am looking for admission in *${target}* for ${selectedStage}. My automated cutoffs were calculated, but I want a custom seat mapping and 1-on-1 counseling session for this specific college.`;
             window.open(`https://wa.me/919822206864?text=${encodeURIComponent(text)}`, '_blank');
         }
     </script>
