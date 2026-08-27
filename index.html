@@ -3,187 +3,352 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IA Educational Services | Global Admissions & Career Guidance</title>
-    <!-- Font Awesome Icons -->
+    <title>IA Educational Services | Global Career Guidance</title>
+    
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
         :root {
-            --bg-color: #F5F5F7;
-            --card-bg: #FFFFFF;
-            --text-primary: #1D1D1F;
-            --text-sub: #86868B;
-            --accent-blue: #0066CC;
+            /* Apple Soft Light Palette (Muted, Non-Glare) */
+            --bg-main: #f5f5f7;
+            --bg-secondary: #ffffff;
+            --card-glass: rgba(255, 255, 255, 0.7);
+            --card-border: rgba(0, 0, 0, 0.08);
+            --card-border-hover: rgba(0, 0, 0, 0.2);
+            
+            /* Soft Pastel Accents */
+            --accent-purple: #8e44ad;
+            --accent-pink: #d81b60;
+            --accent-cyan: #0284c7;
+            --accent-amber: #d97706;
             --accent-green: #25D366;
-            --border-color: #E5E5EA;
+            
+            --text-main: #1d1d1f;
+            --text-sub: #6e6e73;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg-main); color: var(--text-main); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-primary);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
+        /* NAVIGATION */
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 16px 8%; background: rgba(245, 245, 247, 0.85);
+            backdrop-filter: blur(20px); position: sticky; top: 0; z-index: 100;
+            border-bottom: 1px solid var(--card-border);
         }
-
-        header {
-            width: 100%;
-            max-width: 1100px;
-            padding: 20px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
         .logo {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            text-decoration: none;
-            letter-spacing: -0.5px;
+            font-weight: 700; font-size: 1.25rem; letter-spacing: -0.5px;
+            color: var(--text-main);
+        }
+        .nav-btn {
+            background: rgba(0, 0, 0, 0.05); border: 1px solid var(--card-border);
+            color: var(--text-main); padding: 8px 20px; border-radius: 20px;
+            cursor: pointer; transition: 0.3s; font-size: 0.88rem; font-weight: 500;
+        }
+        .nav-btn:hover { background: rgba(0, 0, 0, 0.1); border-color: var(--card-border-hover); }
+
+        /* CENTERED HERO SECTION */
+        .hero {
+            display: flex; flex-direction: column; align-items: center; text-align: center;
+            padding: 50px 8% 40px 8%; position: relative;
         }
 
-        .hero-section {
-            width: 100%;
-            max-width: 900px;
-            text-align: center;
-            margin-top: 40px;
+        /* CURVED QUOTE ARC ABOVE EARTH */
+        .quote-arc-container {
+            margin-bottom: -20px; z-index: 10; width: 100%; max-width: 650px;
+            display: flex; justify-content: center;
         }
-
-        /* Frosted Quote Arc */
         .quote-arc {
-            display: inline-block;
             background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--border-color);
-            padding: 10px 24px;
-            border-radius: 30px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--accent-blue);
-            margin-bottom: 25px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            border: 1px solid var(--card-border);
+            padding: 10px 28px; border-radius: 40px / 20px;
+            backdrop-filter: blur(15px); box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            color: var(--accent-cyan); font-size: 0.95rem; font-weight: 600; letter-spacing: -0.2px;
         }
 
-        /* Center Image Container */
+        /* CENTRAL 100% EARTH GRAPHIC STAGE */
+        .hero-center-stage {
+            position: relative; width: 100%; max-width: 850px;
+            display: flex; justify-content: center; align-items: center; margin: 10px 0 30px 0;
+        }
         .hero-graphic-wrapper {
-            width: 100%;
-            max-width: 480px;
-            margin: 0 auto 30px auto;
+            width: 100%; position: relative; display: flex; justify-content: center; align-items: center;
         }
-
         .hero-graphic-wrapper img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 16px;
+            width: 100%; max-width: 750px; height: auto; object-fit: contain;
+            filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.08));
         }
 
         .hero-subtext {
-            font-size: 1.15rem;
-            color: var(--text-sub);
-            max-width: 650px;
-            margin: 0 auto 35px auto;
-            line-height: 1.5;
+            max-width: 640px; margin: 0 auto 30px auto; color: var(--text-sub);
+            font-size: 1.05rem; line-height: 1.6; font-weight: 400;
         }
 
-        /* Counselor Card & WhatsApp CTA */
-        .cta-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 16px;
+        /* SECTION HEADERS */
+        .section-header { text-align: center; margin-bottom: 40px; padding: 0 8%; }
+        .section-header h2 { font-size: 1.8rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.5px; }
+        .section-header p { color: var(--text-sub); font-size: 0.95rem; font-weight: 400; }
+
+        /* INTERACTIVE MATCHER WIDGET */
+        .matcher-section { padding: 60px 8%; background: var(--bg-secondary); border-top: 1px solid var(--card-border); border-bottom: 1px solid var(--card-border); }
+        .step-block { margin-bottom: 25px; }
+        .step-block h4 { margin-bottom: 12px; color: var(--text-sub); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        .option-group { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+        .opt-btn {
+            background: var(--bg-main); border: 1px solid var(--card-border);
+            color: var(--text-main); padding: 10px 20px; border-radius: 14px; cursor: pointer; transition: 0.3s; font-size: 0.9rem; font-weight: 500;
         }
+        .opt-btn:hover, .opt-btn.selected { border-color: var(--accent-cyan); background: #ffffff; color: var(--accent-cyan); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+
+        /* ROADMAP GRID WITH APPLE LIGHT CARDS */
+        .roadmap-section { padding: 70px 8%; }
+        .image-card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 30px; }
+        
+        .image-card {
+            background: var(--bg-secondary); border: 1px solid var(--card-border);
+            border-radius: 20px; overflow: hidden; backdrop-filter: blur(15px);
+            transition: all 0.4s ease; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+        }
+        .image-card:hover { transform: translateY(-6px); border-color: var(--card-border-hover); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08); }
+        
+        .card-img-wrapper {
+            width: 100%; height: 200px; overflow: hidden; position: relative; background: #e5e5ea;
+        }
+        .card-img-wrapper img {
+            width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;
+        }
+        .image-card:hover .card-img-wrapper img { transform: scale(1.05); }
+        .card-body { padding: 24px; }
+        
+        .card-tag {
+            display: inline-block; padding: 4px 12px; border-radius: 16px; font-size: 0.72rem;
+            font-weight: 600; text-transform: uppercase; margin-bottom: 12px;
+            background: rgba(0, 0, 0, 0.04); border: 1px solid var(--card-border); color: var(--text-sub);
+        }
+        .card-body h3 { font-size: 1.2rem; font-weight: 600; margin-bottom: 10px; letter-spacing: -0.3px; }
+        .card-body p { color: var(--text-sub); font-size: 0.88rem; line-height: 1.5; margin-bottom: 16px; font-weight: 400; }
+        
+        .roadmap-list { list-style: none; padding-left: 0; }
+        .roadmap-list li { color: var(--text-main); font-size: 0.85rem; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; font-weight: 400; }
+        .roadmap-list li i { color: var(--text-sub); font-size: 0.8rem; }
+
+        /* ACTION TRIGGER & COUNSELOR SPOTLIGHT */
+        .conversion-flex { display: flex; gap: 20px; align-items: center; margin-top: 35px; flex-wrap: wrap; justify-content: center; }
+        .whatsapp-btn {
+            background: var(--accent-green); color: #fff; padding: 14px 30px; border-radius: 30px;
+            font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 10px;
+            box-shadow: 0 4px 16px rgba(37, 211, 102, 0.25); transition: 0.3s; border: none; cursor: pointer; font-size: 0.95rem;
+        }
+        .whatsapp-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35); }
 
         .counselor-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 16px 24px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            background: var(--bg-secondary); border: 1px solid var(--card-border);
+            border-radius: 20px; padding: 20px; display: flex; align-items: center; gap: 16px; flex: 1; min-width: 280px; max-width: 450px;
         }
-
         .avatar-box {
-            background: #EBF5FF;
-            color: var(--accent-blue);
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
+            width: 50px; height: 50px; border-radius: 50%; background: rgba(0, 102, 204, 0.08);
+            display: flex; align-items: center; justify-content: center; font-size: 1.3rem; color: var(--accent-cyan); flex-shrink: 0;
+            border: 1px solid var(--card-border);
         }
 
-        .whatsapp-btn {
-            background-color: var(--accent-green);
-            color: white;
-            font-size: 1.05rem;
-            font-weight: 600;
-            padding: 16px 36px;
-            border-radius: 30px;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.3);
-            transition: transform 0.2s ease;
-        }
-
-        .whatsapp-btn:hover {
-            transform: translateY(-2px);
-        }
+        footer { text-align: center; padding: 35px 8%; border-top: 1px solid var(--card-border); color: var(--text-sub); font-size: 0.85rem; }
     </style>
 </head>
 <body>
 
-    <header>
-        <a href="#" class="logo">IA Educational Services</a>
-    </header>
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo">IA Educational Services</div>
+        <button onclick="scrollToMatcher()" class="nav-btn">Find My Path</button>
+    </nav>
 
-    <main class="hero-section">
-        <!-- TOP ARC QUOTE -->
-        <div class="quote-arc">
-            "Empowering Global Careers & Premier College Admissions"
+    <!-- HERO SECTION -->
+    <section class="hero">
+        
+        <!-- CURVED QUOTE ARC OVER THE EARTH -->
+        <div class="quote-arc-container">
+            <div class="quote-arc">
+                "Empowering Global Careers & Premier College Admissions"
+            </div>
         </div>
 
-        <!-- CENTER IMAGE -->
-        <div class="hero-graphic-wrapper">
-            <img src="hero.png" alt="IA Educational Services Hero Graphic">
+        <!-- CENTRAL 100% EARTH GRAPHIC STAGE -->
+        <div class="hero-center-stage">
+            <div class="hero-graphic-wrapper">
+                <img src="hero.png" alt="IA Educational Services Hero Graphic">
+            </div>
         </div>
 
-        <!-- ZERO-COST SUBTEXT -->
-        <p class="hero-subtext">
-            Get 1-on-1 expert college admission guidance completely free of charge. 
-            We map your academic profile directly to top-tier institutions.
-        </p>
+        <p class="hero-subtext">Get 1-on-1 expert college admission guidance completely free of charge. We map your marks and interest directly to guaranteed top-tier institutions.</p>
 
-        <!-- CTA AND COUNSELOR GUARANTEE -->
-        <div class="cta-container">
+    </section>
+
+    <!-- INTERACTIVE 3-CLICK MATCHER WIDGET -->
+    <section class="matcher-section" id="matcher">
+        <div class="section-header">
+            <h2>Find Your Career Path</h2>
+            <p>Select your background and primary objective to build your action plan.</p>
+        </div>
+
+        <div class="step-block" style="text-align: center;">
+            <h4>1. Current Educational Stage</h4>
+            <div class="option-group" id="group-stage">
+                <button class="opt-btn selected" onclick="selectOpt('stage', 'After 10th')">After 10th</button>
+                <button class="opt-btn" onclick="selectOpt('stage', 'After 12th')">After 12th</button>
+                <button class="opt-btn" onclick="selectOpt('stage', 'Diploma / ITI')">Diploma / ITI</button>
+            </div>
+        </div>
+
+        <div class="step-block" style="text-align: center;">
+            <h4>2. Primary Interest Field</h4>
+            <div class="option-group" id="group-interest">
+                <button class="opt-btn selected" onclick="selectOpt('interest', 'Medical & Healthcare')">Medical & Healthcare</button>
+                <button class="opt-btn" onclick="selectOpt('interest', 'Engineering & Tech')">Engineering & Tech</button>
+                <button class="opt-btn" onclick="selectOpt('interest', 'Unique Niche Paths')">Unique Niche Paths</button>
+            </div>
+        </div>
+
+        <div class="step-block" style="text-align: center;">
+            <h4>3. Main Career Goal</h4>
+            <div class="option-group" id="group-goal">
+                <button class="opt-btn selected" onclick="selectOpt('goal', 'High Salary Potential')">High Salary Potential</button>
+                <button class="opt-btn" onclick="selectOpt('goal', 'Fast Job Placement')">Fast Job Placement</button>
+                <button class="opt-btn" onclick="selectOpt('goal', 'Top University Entry')">Top University Entry</button>
+            </div>
+        </div>
+
+        <div class="conversion-flex">
+            <button class="whatsapp-btn" onclick="sendToWhatsApp()">
+                <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i> Connect via WhatsApp
+            </button>
+
             <div class="counselor-card">
                 <div class="avatar-box"><i class="fa-solid fa-user-shield"></i></div>
                 <div style="text-align: left;">
-                    <h4 style="font-size: 0.95rem; font-weight: 600;">100% Free Admission Guidance</h4>
+                    <h4 style="font-size: 0.95rem; font-weight: 600; margin-bottom: 2px;">100% Free Admission Guidance</h4>
                     <p style="color: var(--text-sub); font-size: 0.85rem;">Zero hidden fees. Direct seat allocation support.</p>
                 </div>
             </div>
-
-            <a href="https://wa.me/1234567890?text=Hello%20IA%20Educational%20Services,%20I%20would%20like%20to%20book%20a%20free%201-on-1%20counseling%20session." class="whatsapp-btn">
-                <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i> Connect with Senior Counselor
-            </a>
         </div>
-    </main>
+    </section>
 
+    <!-- VISUAL ROADMAP GRID WITH LIGHT CARDS -->
+    <section class="roadmap-section">
+        <div class="section-header">
+            <h2>Academic Pathways</h2>
+            <p>Explore structured journeys tailored to your chosen specialization.</p>
+        </div>
+
+        <div class="image-card-grid">
+            
+            <!-- Card 1: University & Degree Programs -->
+            <div class="image-card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80" alt="University Degree Students">
+                </div>
+                <div class="card-body">
+                    <span class="card-tag">Degree Stream</span>
+                    <h3>University & Degree Programs</h3>
+                    <p>Optimized stream selection and entrance exam roadmaps for top university programs.</p>
+                    <ul class="roadmap-list">
+                        <li><i class="fa-solid fa-check"></i> Subject Choice Optimization</li>
+                        <li><i class="fa-solid fa-check"></i> Entrance Exam Strategy</li>
+                        <li><i class="fa-solid fa-check"></i> Degree to Profession Mapping</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Card 2: Medical & Healthcare -->
+            <div class="image-card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80" alt="Doctor with Diagnostic Equipment">
+                </div>
+                <div class="card-body">
+                    <span class="card-tag">Medical Stream</span>
+                    <h3>Medical & Health Sciences</h3>
+                    <p>Guidance spanning clinical medicine, radiology tech, diagnostic systems, and allied health.</p>
+                    <ul class="roadmap-list">
+                        <li><i class="fa-solid fa-check"></i> Entrance & Seat Allocation Advisory</li>
+                        <li><i class="fa-solid fa-check"></i> Diagnostic Machinery Specializations</li>
+                        <li><i class="fa-solid fa-check"></i> Healthcare Technology Careers</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Card 3: Engineering & Technology -->
+            <div class="image-card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" alt="Engineer with Mechanism Gears">
+                </div>
+                <div class="card-body">
+                    <span class="card-tag">Engineering Stream</span>
+                    <h3>Engineering & Mechanism Systems</h3>
+                    <p>Roadmaps covering mechanical systems, aeronautical design, robotics, and industrial automation.</p>
+                    <ul class="roadmap-list">
+                        <li><i class="fa-solid fa-check"></i> Aerospace & Aeronautical Streams</li>
+                        <li><i class="fa-solid fa-check"></i> Industrial Gears & Heavy Systems</li>
+                        <li><i class="fa-solid fa-check"></i> Automation & Mechatronics</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Card 4: Technical Diploma & Direct Entry -->
+            <div class="image-card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80" alt="Technical Workshop">
+                </div>
+                <div class="card-body">
+                    <span class="card-tag">Diploma & ITI</span>
+                    <h3>Polytechnic & Direct Entry</h3>
+                    <p>Fast-track practical pathways and direct lateral entry into second-year engineering degrees.</p>
+                    <ul class="roadmap-list">
+                        <li><i class="fa-solid fa-check"></i> 2nd-Year B.Tech Lateral Entry</li>
+                        <li><i class="fa-solid fa-check"></i> Technical Industry Certifications</li>
+                        <li><i class="fa-solid fa-check"></i> Early Career Placement</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 IA Educational Services. All rights reserved. Contact: +91 9822206864</p>
+    </footer>
+
+    <!-- INTERACTIVE JAVASCRIPT -->
+    <script>
+        let userChoices = {
+            stage: 'After 10th',
+            interest: 'Medical & Healthcare',
+            goal: 'High Salary Potential'
+        };
+
+        function selectOpt(category, value) {
+            userChoices[category] = value;
+            const container = document.getElementById(`group-${category}`);
+            const buttons = container.querySelectorAll('.opt-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('selected');
+                if (btn.innerText === value || btn.innerText.includes(value.split(' ')[0])) {
+                    btn.classList.add('selected');
+                }
+            });
+        }
+
+        function scrollToMatcher() {
+            document.getElementById('matcher').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function sendToWhatsApp() {
+            const phoneNumber = "919822206864";
+            const text = `Hi, I am currently at stage: *${userChoices.stage}*. My main interest field is *${userChoices.interest}* and my primary goal is *${userChoices.goal}*. Please provide me with personalized guidance!`;
+            const encodedText = encodeURIComponent(text);
+            window.open(`https://wa.me/${phoneNumber}?text=${encodedText}`, '_blank');
+        }
+    </script>
 </body>
 </html>
