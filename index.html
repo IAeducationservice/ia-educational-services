@@ -50,44 +50,26 @@
         /* HERO & SCREEN 1 LAYOUT */
         .hero {
             display: flex; flex-direction: column; align-items: center; text-align: center;
-            padding: 40px 8% 30px 8%; position: relative;
+            padding: 30px 8% 30px 8%; position: relative;
         }
+        
+        .hero-center-stage {
+            position: relative; width: 100%; max-width: 750px;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            margin: 0 auto 20px auto;
+        }
+        
         .quote-arc-container {
-            margin-bottom: -20px; z-index: 10; width: 100%; max-width: 650px;
-            display: flex; justify-content: center;
+            width: 100%; max-width: 650px; height: 70px;
+            margin-bottom: -35px; z-index: 10; pointer-events: none;
         }
-        .quote-arc {
-            background: rgba(255, 255, 255, 0.8); border: 1px solid var(--card-border);
-            padding: 10px 28px; border-radius: 40px / 20px; backdrop-filter: blur(15px);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.04); color: var(--accent-cyan);
-            font-size: 0.95rem; font-weight: 600; letter-spacing: -0.2px;
+        
+        .hero-graphic-wrapper { width: 100%; display: flex; justify-content: center; align-items: center; }
+        .hero-graphic-wrapper img {
+            width: 100%; max-width: 750px; height: auto; object-fit: contain;
+            filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.08));
         }
-  .hero-center-stage {
-    position: relative;
-    width: 100%;
-    max-width: 750px;
-    display: flex;
-    flex-direction: column; /* Forces vertical stacking: SVG on top, image on bottom */
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 20px auto;
-}
-
-.quote-arc-container {
-    width: 100%;
-    max-width: 650px;
-    height: 70px; /* Controls SVG height to prevent pushing elements sideways */
-    margin-bottom: -35px; /* Pulls the curved text down so it rests on top of the earth */
-    z-index: 10;
-    pointer-events: none;
-}
-
-.hero-graphic-wrapper {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+        
         .hero-subtext {
             max-width: 640px; margin: 0 auto 30px auto; color: var(--text-sub);
             font-size: 1.05rem; line-height: 1.6; font-weight: 400; text-align: center;
@@ -226,128 +208,29 @@
         <button onclick="goToHomeScreen()" class="nav-btn">Home</button>
     </nav>
 
-  <!-- SCREEN 1: LANDING & CHOICE SELECTION WITH CURVED TEXT -->
-<div id="home-screen">
-    <section class="hero">
-        
-        <!-- CENTERED STAGE WITH SVG CURVED TEXT DIRECTLY ON TOP OF EARTH -->
-        <div class="hero-center-stage">
+    <!-- SCREEN 1: LANDING & CHOICE SELECTION WITH CURVED TEXT -->
+    <div id="home-screen">
+        <section class="hero">
             
-            <!-- CURVED TEXT SVG -->
-            <div class="quote-arc-container">
-                <svg viewBox="0 0 600 100" width="100%" height="100" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <!-- Arc path designed to curve over the top center of the Earth image -->
-                        <path id="earthArc" d="M 60 90 A 380 380 0 0 1 540 90" fill="transparent" />
-                    </defs>
-                    <text font-family="'Inter', sans-serif" font-size="16" font-weight="600" fill="#0284c7" letter-spacing="0.3">
-                        <textPath href="#earthArc" startOffset="50%" text-anchor="middle">
-                            "Empowering Global Careers & Premier College Admissions"
-                        </textPath>
-                    </text>
-                </svg>
-            </div>
-
-            <!-- EARTH GRAPHIC -->
-            <div class="hero-graphic-wrapper">
-                <img src="hero.png" alt="IA Educational Services Hero Graphic">
-            </div>
-        </div>
-
-        <p class="hero-subtext">Click your qualification stage below to calculate your CAP round eligibility and direct seat allotments.</p>
-
-        <!-- 3 MAIN CLICK BUTTONS -->
-        <div class="stage-selector-container">
-            <button class="stage-card-btn" onclick="openScreen2('10th')">
-                <i class="fa-solid fa-graduation-cap"></i>
-                <span>After 10th</span>
-            </button>
-            <button class="stage-card-btn" onclick="openScreen2('12th')">
-                <i class="fa-solid fa-book-open-reader"></i>
-                <span>After 12th</span>
-            </button>
-            <button class="stage-card-btn" onclick="openScreen2('Diploma')">
-                <i class="fa-solid fa-gears"></i>
-                <span>Diploma / ITI</span>
-            </button>
-        </div>
-    </section>
-
-    <!-- VISUAL ROADMAP GRID -->
-    <section class="roadmap-section">
-        <div class="section-header">
-            <h2>Academic Pathways</h2>
-            <p>Explore structured journeys tailored to your chosen specialization.</p>
-        </div>
-
-        <div class="image-card-grid">
-            <div class="image-card">
-                <div class="card-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80" alt="University Degree Students">
-                </div>
-                <div class="card-body">
-                    <span class="card-tag">Degree Stream</span>
-                    <h3>University & Degree Programs</h3>
-                    <p>Optimized stream selection and entrance exam roadmaps for top university programs.</p>
-                    <ul class="roadmap-list">
-                        <li><i class="fa-solid fa-check"></i> Subject Choice Optimization</li>
-                        <li><i class="fa-solid fa-check"></i> Entrance Exam Strategy</li>
-                        <li><i class="fa-solid fa-check"></i> Degree to Profession Mapping</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="image-card">
-                <div class="card-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80" alt="Doctor with Diagnostic Equipment">
-                </div>
-                <div class="card-body">
-                    <span class="card-tag">Medical Stream</span>
-                    <h3>Medical & Health Sciences</h3>
-                    <p>Guidance spanning clinical medicine, radiology tech, diagnostic systems, and allied health.</p>
-                    <ul class="roadmap-list">
-                        <li><i class="fa-solid fa-check"></i> Entrance & Seat Allocation Advisory</li>
-                        <li><i class="fa-solid fa-check"></i> Diagnostic Machinery Specializations</li>
-                        <li><i class="fa-solid fa-check"></i> Healthcare Technology Careers</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="image-card">
-                <div class="card-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" alt="Engineer with Mechanism Gears">
-                </div>
-                <div class="card-body">
-                    <span class="card-tag">Engineering Stream</span>
-                    <h3>Engineering & Mechanism Systems</h3>
-                    <p>Roadmaps covering mechanical systems, aeronautical design, robotics, and industrial automation.</p>
-                    <ul class="roadmap-list">
-                        <li><i class="fa-solid fa-check"></i> Aerospace & Aeronautical Streams</li>
-                        <li><i class="fa-solid fa-check"></i> Industrial Gears & Heavy Systems</li>
-                        <li><i class="fa-solid fa-check"></i> Automation & Mechatronics</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="image-card">
-                <div class="card-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80" alt="Technical Workshop">
-                </div>
-                <div class="card-body">
-                    <span class="card-tag">Diploma & ITI</span>
-                    <h3>Polytechnic & Direct Entry</h3>
-                    <p>Fast-track practical pathways and direct lateral entry into second-year engineering degrees.</p>
-                    <ul class="roadmap-list">
-                        <li><i class="fa-solid fa-check"></i> 2nd-Year B.Tech Lateral Entry</li>
-                        <li><i class="fa-solid fa-check"></i> Technical Industry Certifications</li>
-                        <li><i class="fa-solid fa-check"></i> Early Career Placement</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
+            <!-- CENTERED STAGE WITH SVG CURVED TEXT DIRECTLY ON TOP OF EARTH -->
             <div class="hero-center-stage">
+                
+                <!-- CURVED TEXT SVG -->
+                <div class="quote-arc-container">
+                    <svg viewBox="0 0 600 100" width="100%" height="100" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <!-- Arc path designed to curve over the top center of the Earth image -->
+                            <path id="earthArc" d="M 60 90 A 380 380 0 0 1 540 90" fill="transparent" />
+                        </defs>
+                        <text font-family="'Inter', sans-serif" font-size="16" font-weight="600" fill="#0284c7" letter-spacing="0.3">
+                            <textPath href="#earthArc" startOffset="50%" text-anchor="middle">
+                                "Empowering Global Careers & Premier College Admissions"
+                            </textPath>
+                        </text>
+                    </svg>
+                </div>
+
+                <!-- EARTH GRAPHIC -->
                 <div class="hero-graphic-wrapper">
                     <img src="hero.png" alt="IA Educational Services Hero Graphic">
                 </div>
