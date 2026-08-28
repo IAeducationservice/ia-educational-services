@@ -212,10 +212,19 @@
     <!-- SCREEN 1: LANDING & CHOICE SELECTION -->
     <div id="home-screen">
         <section class="hero">
-           <div class="quote-arc-container">
-    <div class="quote-arc">
-        Empowering Global Careers & Premier College Admissions
-    </div>
+       <div class="quote-arc-container">
+    <svg viewBox="0 0 600 120" width="100%" height="120" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <!-- Defining the curved arc path -->
+            <path id="earthArc" d="M 50 110 A 400 400 0 0 1 550 110" fill="transparent" />
+        </defs>
+        <text font-family="'Inter', sans-serif" font-size="18" font-weight="600" fill="#0284c7" letter-spacing="0.5">
+            <!-- Binding text to the curved path -->
+            <textPath href="#earthArc" startOffset="50%" text-anchor="middle">
+                "Empowering Global Careers & Premier College Admissions"
+            </textPath>
+        </text>
+    </svg>
 </div>
 
             <div class="hero-center-stage">
