@@ -62,15 +62,32 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.04); color: var(--accent-cyan);
             font-size: 0.95rem; font-weight: 600; letter-spacing: -0.2px;
         }
-        .hero-center-stage {
-            position: relative; width: 100%; max-width: 850px;
-            display: flex; justify-content: center; align-items: center; margin: 10px 0 20px 0;
-        }
-        .hero-graphic-wrapper { width: 100%; display: flex; justify-content: center; align-items: center; }
-        .hero-graphic-wrapper img {
-            width: 100%; max-width: 750px; height: auto; object-fit: contain;
-            filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.08));
-        }
+  .hero-center-stage {
+    position: relative;
+    width: 100%;
+    max-width: 750px;
+    display: flex;
+    flex-direction: column; /* Forces vertical stacking: SVG on top, image on bottom */
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px auto;
+}
+
+.quote-arc-container {
+    width: 100%;
+    max-width: 650px;
+    height: 70px; /* Controls SVG height to prevent pushing elements sideways */
+    margin-bottom: -35px; /* Pulls the curved text down so it rests on top of the earth */
+    z-index: 10;
+    pointer-events: none;
+}
+
+.hero-graphic-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
         .hero-subtext {
             max-width: 640px; margin: 0 auto 30px auto; color: var(--text-sub);
             font-size: 1.05rem; line-height: 1.6; font-weight: 400; text-align: center;
