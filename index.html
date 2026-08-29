@@ -224,7 +224,7 @@
         }
         .select-track-action-btn:hover { background: var(--accent-cyan); color: #ffffff; }
 
-        /* STREAM SELECTION CARDS (FOR 12TH & ITI SCREEN) */
+        /* STREAM SELECTION CARDS (FOR 12TH, ITI, DIPLOMA SCREEN) */
         .stream-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 25px; }
         .stream-card {
             background: #ffffff; border: 2px solid var(--card-border); border-radius: 16px;
@@ -825,52 +825,105 @@
 
         <div class="details-card">
             <div class="screen-title-badge">
-                <i class="fa-solid fa-gears"></i> Path: Polytechnic Diploma
+                <i class="fa-solid fa-gears"></i> Path: Polytechnic Diploma Graduates
             </div>
-            <h2>Direct 2nd-Year B.E. / B.Tech Admissions (DSE)</h2>
+            <h2>Further Degree Admissions & Allotment Search</h2>
             <p style="color: var(--text-sub); font-size: 0.9rem; margin-bottom: 25px;">
-                Input your diploma branch and final aggregate percentage to find eligible engineering colleges for lateral entry.
+                Input your diploma stream, desired higher education target, and aggregate percentage to discover eligible colleges and lateral entry seat allotments.
             </p>
 
             <div class="form-group">
-                <label>1. Select Your Diploma Branch</label>
-                <select id="diploma-branch-selector">
+                <label>1. Select Your Completed Diploma Branch</label>
+                <select id="diploma-branch-selector" onchange="handleDiplomaBranchChange(this.value)">
                     <option value="">-- Choose Your Branch --</option>
                     <option value="Mechanical Engineering">Mechanical Engineering</option>
-                    <option value="Electrical Engineering">Electrical Engineering</option>
                     <option value="Computer Science / IT">Computer Science / IT</option>
                     <option value="Civil Engineering">Civil Engineering</option>
+                    <option value="Electrical Engineering">Electrical Engineering</option>
                     <option value="Electronics & Telecommunication">Electronics & Telecommunication</option>
                     <option value="Chemical Engineering">Chemical Engineering</option>
-                    <option value="Other Branch">Other Diploma Branch</option>
+                    <option value="Automobile Engineering">Automobile Engineering</option>
+                    <option value="Interior Design / Fashion / Architecture">Interior Design / Fashion / Architecture</option>
+                    <option value="Other Diploma Branch">Other Diploma Branch</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label>2. Enter Diploma Aggregate Percentage (%)</label>
-                <input type="number" id="user-diploma-marks" placeholder="Enter final percentage e.g. 84.2" step="0.01" min="1" max="100">
+                <label>2. Select Target Higher Degree / Further Pathway</label>
+                <div class="stream-grid">
+                    <div class="stream-card" id="dip-path-btech" onclick="selectDiplomaPathway('B.Tech Direct 2nd Year', this)">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        <h4>B.Tech / B.E. (Direct 2nd Yr)</h4>
+                        <p>Lateral Entry (DSE)</p>
+                    </div>
+                    <div class="stream-card" id="dip-path-bca" onclick="selectDiplomaPathway('BCA / B.Sc IT', this)">
+                        <i class="fa-solid fa-laptop-code"></i>
+                        <h4>BCA / B.Sc IT</h4>
+                        <p>Software & Tech Track</p>
+                    </div>
+                    <div class="stream-card" id="dip-path-bdes" onclick="selectDiplomaPathway('B.Des (Bachelor of Design)', this)">
+                        <i class="fa-solid fa-pen-nib"></i>
+                        <h4>B.Des (Design)</h4>
+                        <p>Fashion / Interior / UX</p>
+                    </div>
+                    <div class="stream-card" id="dip-path-bvoc" onclick="selectDiplomaPathway('B.Voc (Skill Degree)', this)">
+                        <i class="fa-solid fa-microchip"></i>
+                        <h4>B.Voc (Vocational Degree)</h4>
+                        <p>3-Yr Industry Skill Track</p>
+                    </div>
+                    <div class="stream-card" id="dip-path-bba" onclick="selectDiplomaPathway('BBA / BMS (Management)', this)">
+                        <i class="fa-solid fa-chart-line"></i>
+                        <h4>BBA / BMS</h4>
+                        <p>Business & Management</p>
+                    </div>
+                    <div class="stream-card" id="dip-path-job" onclick="selectDiplomaPathway('Government / Job Exams', this)">
+                        <i class="fa-solid fa-building-flag"></i>
+                        <h4>Govt Exams & Job Placement</h4>
+                        <p>SSC JE / RRB JE / Direct Placement</p>
+                    </div>
+                </div>
             </div>
 
             <div class="form-group">
-                <label>3. Select Admission Category</label>
+                <label>3. Entrance Exam Status / Mode of Admission</label>
+                <select id="diploma-exam-status" onchange="handleDiplomaExamStatusChange(this.value)">
+                    <option value="Direct Merit">Direct Merit Entry (Diploma Aggregate Percentage / CAP)</option>
+                    <option value="LEET State Exam">State Entrance Exam (LEET / DCET / ECET / JELET / OJEE)</option>
+                    <option value="CUET / IPU CET">CUET / University Specific Entrance Test</option>
+                    <option value="Design Entrance">Design Entrance (NID / NIFT / UCEED)</option>
+                </select>
+            </div>
+
+            <div class="form-group" id="diploma-exam-score-group" style="display: none;">
+                <label id="diploma-exam-score-label">Enter Entrance Exam Percentile / Rank</label>
+                <input type="number" id="user-diploma-exam-score" placeholder="e.g. 88.5" step="0.01" min="1" max="100">
+            </div>
+
+            <div class="form-group">
+                <label>4. Enter Your Aggregate Diploma Percentage or CGPA (%)</label>
+                <input type="number" id="user-diploma-marks" placeholder="Enter final diploma percentage e.g. 84.2" step="0.01" min="1" max="100">
+            </div>
+
+            <div class="form-group">
+                <label>5. Select Admission Category</label>
                 <select id="user-diploma-category">
                     <option value="OPEN">OPEN / General</option>
                     <option value="OBC">OBC</option>
                     <option value="SC">SC</option>
                     <option value="ST">ST</option>
                     <option value="EWS">EWS</option>
-                    <option value="TFWS">TFWS</option>
+                    <option value="TFWS">TFWS (Tuition Fee Waiver)</option>
                 </select>
             </div>
 
             <button class="action-btn-main" onclick="checkEligibleCollegesDiploma()">
-                <i class="fa-solid fa-magnifying-glass-location"></i> Check Eligible Engineering Colleges
+                <i class="fa-solid fa-magnifying-glass-location"></i> Check Eligible Colleges & Allotment Pathways
             </button>
 
             <div class="bottom-confusion-banner">
-                <h3>Confused About DSE / Lateral Entry CAP Rounds?</h3>
-                <p>Direct 2nd-Year Engineering seats are highly competitive. Get guidance on Option Form filling and cutoff trends.</p>
-                <a href="https://wa.me/919822206864?text=Hello%20Counselor,%20I%20completed%20my%20Diploma%20and%20need%20guidance%20on%20Direct%20Second%20Year%20B.Tech%20admissions." target="_blank" class="banner-counselor-btn">
+                <h3>Confused About DSE / Lateral Entry & CAP Cutoffs?</h3>
+                <p>Direct 2nd-Year Engineering and specialized degree seats are highly competitive. Get personalized counseling on Option Form filling and allotment cutoffs.</p>
+                <a href="https://wa.me/919822206864?text=Hello%20Counselor,%20I%20completed%20my%20Diploma%20and%20need%20guidance%20on%20Direct%20Second%20Year%20B.Tech%20and%20other%20degree%20admissions." target="_blank" class="banner-counselor-btn">
                     <i class="fa-brands fa-whatsapp"></i> Connect with an Expert Counselor
                 </a>
             </div>
@@ -880,7 +933,7 @@
     <div id="college-results-screen">
         <div class="screen-top-bar">
             <button class="back-btn" onclick="goBackToPreviousScreen()">
-                <i class="fa-solid fa-arrow-left"></i> Modify Exam & Marks
+                <i class="fa-solid fa-arrow-left"></i> Modify Selection & Marks
             </button>
         </div>
 
@@ -888,7 +941,7 @@
             <div class="results-header-bar">
                 <div>
                     <div class="screen-title-badge"><i class="fa-solid fa-building-columns"></i> Seat Allotment Search</div>
-                    <h2>Eligible Colleges & Recommended Institutes</h2>
+                    <h2>Eligible Colleges & Pathway Recommendations</h2>
                 </div>
                 <button class="filter-btn-trigger" onclick="toggleFilterDrawer()">
                     <i class="fa-solid fa-sliders"></i> Filter Options <i class="fa-solid fa-chevron-down"></i>
@@ -899,25 +952,33 @@
                 <div class="form-group" style="margin-bottom:0;">
                     <label>Location Preference</label>
                     <select id="filter-location" onchange="applyCollegeFilters()">
-                        <option value="All">All Locations (Global)</option>
-                        <option value="Maharashtra">Maharashtra / Local</option>
+                        <option value="All">All Locations (Global / National)</option>
+                        <option value="Maharashtra">Maharashtra / State Colleges</option>
                         <option value="National">National (Pan-India)</option>
                         <option value="International">International (Study Abroad)</option>
                     </select>
                 </div>
                 <div class="form-group" style="margin-bottom:0;">
-                    <label>Institute Tier / Rating</label>
+                    <label>Institute Rating / Type</label>
                     <select id="filter-rating" onchange="applyCollegeFilters()">
-                        <option value="All">All Ratings</option>
-                        <option value="5">5-Star Premier Tier-1</option>
-                        <option value="4">4-Star Top Autonomous / Private</option>
-                        <option value="3">3-Star Direct Allotment</option>
+                        <option value="All">All Ratings & Tiers</option>
+                        <option value="5">5-Star Premier Tier-1 / Govt</option>
+                        <option value="4">4-Star Top Autonomous / Deemed</option>
+                        <option value="3">3-Star Direct Allotment / Private</option>
+                    </select>
+                </div>
+                <div class="form-group" style="margin-bottom:0;">
+                    <label>Admission Mode</label>
+                    <select id="filter-mode" onchange="applyCollegeFilters()">
+                        <option value="All">All Admission Modes</option>
+                        <option value="Direct Merit">Direct Merit Entry</option>
+                        <option value="Entrance Exam">Entrance Exam Accepted</option>
                     </select>
                 </div>
             </div>
 
             <div class="college-grid" id="college-grid-container">
-                </div>
+            </div>
         </div>
     </div>
 
@@ -979,6 +1040,7 @@
         let activeChosenTrack = '';
         let currentScreenStage = '';
         let chosenItiPathway = '';
+        let chosenDiplomaPathway = 'B.Tech Direct 2nd Year';
         let currentActiveUserScore = 75;
 
         // DYNAMIC EXAM DATA BASED ON STRICT STREAM ELIGIBILITY
@@ -1028,21 +1090,32 @@
             ]
         };
 
-        // MOCK GLOBAL COLLEGE DATABASE
+        // MOCK GLOBAL COLLEGE DATABASE (INCLUDES DIPLOMA & HIGHER DEGREE TARGETS)
         const collegeDatabase = [
-            { name: "COEP Technological University", location: "Maharashtra", rating: 5, minCutoff: 90, stream: "Science PCM" },
-            { name: "ICT Mumbai (Institute of Chemical Technology)", location: "Maharashtra", rating: 5, minCutoff: 92, stream: "Science PCM" },
-            { name: "Government Medical College (GMC)", location: "Maharashtra", rating: 5, minCutoff: 95, stream: "Science PCB" },
-            { name: "ILS Law College", location: "Maharashtra", rating: 5, minCutoff: 88, stream: "All" },
-            { name: "Mit Academy of Engineering", location: "Maharashtra", rating: 4, minCutoff: 75, stream: "Science PCM" },
-            { name: "National Institute of Design (NID)", location: "National", rating: 5, minCutoff: 85, stream: "All" },
-            { name: "BITS Pilani", location: "National", rating: 5, minCutoff: 88, stream: "Science PCM" },
-            { name: "Symbiosis Institute of Business / Law", location: "National", rating: 4, minCutoff: 70, stream: "All" },
-            { name: "Technical University of Munich (TUM)", location: "International", rating: 5, minCutoff: 85, stream: "Science PCM" },
-            { name: "Monash University", location: "International", rating: 4, minCutoff: 70, stream: "All" },
-            { name: "Government Polytechnic College", location: "Maharashtra", rating: 4, minCutoff: 70, stream: "ITI / Diploma" },
-            { name: "National Skill Training Institute (NSTI)", location: "National", rating: 5, minCutoff: 65, stream: "ITI / Diploma" },
-            { name: "Regional Polytechnic & Direct Institute", location: "Maharashtra", rating: 3, minCutoff: 40, stream: "All" }
+            { name: "COEP Technological University (Lateral Entry)", location: "Maharashtra", rating: 5, minCutoff: 90, stream: "Diploma", pathway: "B.Tech Direct 2nd Year", mode: "Direct Merit" },
+            { name: "VJTI Mumbai (Direct Second Year B.Tech)", location: "Maharashtra", rating: 5, minCutoff: 92, stream: "Diploma", pathway: "B.Tech Direct 2nd Year", mode: "Direct Merit" },
+            { name: "MIT World Peace University (DSE Engineering)", location: "Maharashtra", rating: 4, minCutoff: 72, stream: "Diploma", pathway: "B.Tech Direct 2nd Year", mode: "Direct Merit" },
+            { name: "Lovely Professional University (LPU Direct B.Tech / B.Des)", location: "National", rating: 4, minCutoff: 60, stream: "Diploma", pathway: "B.Tech Direct 2nd Year", mode: "Direct Merit" },
+            { name: "Chandigarh University (Lateral Entry B.Tech / BCA)", location: "National", rating: 4, minCutoff: 60, stream: "Diploma", pathway: "B.Tech Direct 2nd Year", mode: "Direct Merit" },
+            { name: "DTU / NSUT Delhi (LEET Entrance)", location: "National", rating: 5, minCutoff: 80, stream: "Diploma", pathway: "B.Tech Direct 2nd Year", mode: "Entrance Exam" },
+            { name: "National Institute of Design (NID - B.Des)", location: "National", rating: 5, minCutoff: 75, stream: "Diploma", pathway: "B.Des (Bachelor of Design)", mode: "Entrance Exam" },
+            { name: "Symbiosis Institute of Design (B.Des)", location: "National", rating: 4, minCutoff: 65, stream: "Diploma", pathway: "B.Des (Bachelor of Design)", mode: "Direct Merit" },
+            { name: "Tata Institute of Social Sciences (B.Voc Degree)", location: "Maharashtra", rating: 5, minCutoff: 60, stream: "Diploma", pathway: "B.Voc (Skill Degree)", mode: "Direct Merit" },
+            { name: "Government Skill University (B.Voc Technical)", location: "Maharashtra", rating: 4, minCutoff: 55, stream: "Diploma", pathway: "B.Voc (Skill Degree)", mode: "Direct Merit" },
+            { name: "Christ University (BCA / BBA Direct)", location: "National", rating: 5, minCutoff: 70, stream: "Diploma", pathway: "BCA / B.Sc IT", mode: "Direct Merit" },
+            { name: "NMIMS School of Commerce / Management (BBA)", location: "Maharashtra", rating: 5, minCutoff: 75, stream: "Diploma", pathway: "BBA / BMS (Management)", mode: "Entrance Exam" },
+            { name: "Public Sector Technical Placement / SSC JE Portal", location: "National", rating: 5, minCutoff: 50, stream: "Diploma", pathway: "Government / Job Exams", mode: "Direct Merit" },
+            
+            // 12th & ITI Standard Mappings
+            { name: "COEP Technological University", location: "Maharashtra", rating: 5, minCutoff: 90, stream: "Science PCM", pathway: "All", mode: "Entrance Exam" },
+            { name: "ICT Mumbai (Institute of Chemical Technology)", location: "Maharashtra", rating: 5, minCutoff: 92, stream: "Science PCM", pathway: "All", mode: "Entrance Exam" },
+            { name: "Government Medical College (GMC)", location: "Maharashtra", rating: 5, minCutoff: 95, stream: "Science PCB", pathway: "All", mode: "Entrance Exam" },
+            { name: "ILS Law College", location: "Maharashtra", rating: 5, minCutoff: 88, stream: "All", pathway: "All", mode: "Entrance Exam" },
+            { name: "Mit Academy of Engineering", location: "Maharashtra", rating: 4, minCutoff: 75, stream: "Science PCM", pathway: "All", mode: "Entrance Exam" },
+            { name: "BITS Pilani", location: "National", rating: 5, minCutoff: 88, stream: "Science PCM", pathway: "All", mode: "Entrance Exam" },
+            { name: "Government Polytechnic College", location: "Maharashtra", rating: 4, minCutoff: 70, stream: "ITI / Diploma", pathway: "All", mode: "Direct Merit" },
+            { name: "National Skill Training Institute (NSTI)", location: "National", rating: 5, minCutoff: 65, stream: "ITI / Diploma", pathway: "All", mode: "Direct Merit" },
+            { name: "Regional Polytechnic & Direct Institute", location: "Maharashtra", rating: 3, minCutoff: 40, stream: "All", pathway: "All", mode: "Direct Merit" }
         ];
 
         function hideAllScreens() {
@@ -1237,6 +1310,33 @@
         }
 
         /* POLYTECHNIC DIPLOMA LOGIC */
+        function selectDiplomaPathway(pathwayName, cardElement) {
+            chosenDiplomaPathway = pathwayName;
+            document.querySelectorAll('#details-screen-diploma .stream-card').forEach(c => c.classList.remove('selected'));
+            cardElement.classList.add('selected');
+        }
+
+        function handleDiplomaBranchChange(branchName) {
+            // Auto preset standard suggested pathways based on branch
+            const bdesCard = document.getElementById('dip-path-bdes');
+            const bcaCard = document.getElementById('dip-path-bca');
+            if (branchName.includes('Interior') || branchName.includes('Fashion')) {
+                selectDiplomaPathway('B.Des (Bachelor of Design)', bdesCard);
+            } else if (branchName.includes('Computer Science')) {
+                selectDiplomaPathway('B.Tech Direct 2nd Year', document.getElementById('dip-path-btech'));
+            }
+        }
+
+        function handleDiplomaExamStatusChange(statusVal) {
+            const scoreGroup = document.getElementById('diploma-exam-score-group');
+            if (statusVal === 'Direct Merit') {
+                scoreGroup.style.display = 'none';
+            } else {
+                scoreGroup.style.display = 'block';
+                document.getElementById('diploma-exam-score-label').innerText = `Enter Score / Percentile for ${statusVal}`;
+            }
+        }
+
         function checkEligibleCollegesDiploma() {
             const branch = document.getElementById('diploma-branch-selector').value;
             if (!branch) {
@@ -1246,11 +1346,11 @@
 
             const marks = parseFloat(document.getElementById('user-diploma-marks').value);
             if (!marks || marks < 1 || marks > 100) {
-                alert('Please enter a valid aggregate percentage.');
+                alert('Please enter a valid aggregate percentage or CGPA equivalent.');
                 return;
             }
 
-            activeChosenTrack = `Diploma in ${branch} -> 2nd-Yr B.Tech`;
+            activeChosenTrack = `Diploma in ${branch} -> ${chosenDiplomaPathway}`;
             currentActiveUserScore = marks;
             hideAllScreens();
             document.getElementById('college-results-screen').style.display = 'block';
@@ -1271,22 +1371,34 @@
 
             const locFilter = document.getElementById('filter-location').value;
             const ratFilter = document.getElementById('filter-rating').value;
+            const modeFilter = document.getElementById('filter-mode').value;
 
             const filtered = collegeDatabase.filter(col => {
                 const locMatch = (locFilter === 'All' || col.location === locFilter);
                 const ratMatch = (ratFilter === 'All' || col.rating == ratFilter);
-                const streamMatch = (col.stream === 'All' || col.stream === 'ITI / Diploma' || col.stream === chosen12thStream);
-                return locMatch && ratMatch && streamMatch;
+                const modeMatch = (modeFilter === 'All' || col.mode === modeFilter);
+                
+                let streamMatch = false;
+                if (currentScreenStage === 'Diploma') {
+                    streamMatch = (col.stream === 'Diploma' || col.stream === 'All') && 
+                                  (col.pathway === 'All' || col.pathway === chosenDiplomaPathway);
+                } else if (currentScreenStage === '12th') {
+                    streamMatch = (col.stream === 'All' || col.stream === chosen12thStream);
+                } else {
+                    streamMatch = (col.stream === 'All' || col.stream === 'ITI / Diploma');
+                }
+
+                return locMatch && ratMatch && modeMatch && streamMatch;
             });
 
             if (filtered.length === 0) {
-                gridContainer.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--text-sub);">No colleges found matching your exact filter criteria. Try adjusting your filters.</p>`;
+                gridContainer.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--text-sub); padding: 30px;">No exact colleges found matching all filter criteria. Try adjusting your location or tier rating filters.</p>`;
                 return;
             }
 
             filtered.forEach(col => {
                 const isHighChance = userScore >= col.minCutoff;
-                const badgeText = isHighChance ? 'High Admission Chance' : 'Competitive Cutoff Match';
+                const badgeText = isHighChance ? 'High Allotment Chance' : 'Competitive Cutoff Match';
                 const badgeColor = isHighChance ? 'background: rgba(37, 211, 102, 0.1); color: #15803d;' : 'background: rgba(217, 119, 6, 0.1); color: #b45309;';
 
                 const cardHtml = `
@@ -1296,9 +1408,9 @@
                                 <h3>${col.name}</h3>
                                 <span class="star-rating"><i class="fa-solid fa-star"></i> ${col.rating}.0</span>
                             </div>
-                            <div class="college-location"><i class="fa-solid fa-location-dot"></i> ${col.location}</div>
+                            <div class="college-location"><i class="fa-solid fa-location-dot"></i> ${col.location} • <small style="color:var(--accent-cyan); font-weight:600;">${col.mode || 'Direct Merit'}</small></div>
                             <br>
-                            <span class="match-badge" style="${badgeColor}">${badgeText}</span>
+                            <span class="match-badge" style="${badgeColor}">${badgeText} (Min Cutoff ~${col.minCutoff}%)</span>
                         </div>
                         <button class="college-apply-btn" onclick="selectCollegeForApplication('${col.name}')">
                             Apply via CAP / Direct Allotment
