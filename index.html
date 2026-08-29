@@ -23,6 +23,7 @@
             --accent-cyan: #0284c7;
             --accent-amber: #d97706;
             --accent-green: #25D366;
+            --accent-red: #e11d48;
             
             --text-main: #1d1d1f;
             --text-sub: #6e6e73;
@@ -146,7 +147,7 @@
         }
         .details-card h2 { font-size: 1.6rem; font-weight: 700; margin-bottom: 15px; letter-spacing: -0.5px; }
 
-        /* OPTIONAL ELIGIBILITY BOX */
+        /* OPTIONAL ELIGIBILITY BOX & LOW SCORE HANDLER */
         .eligibility-check-box {
             background: var(--bg-main); border: 1px solid var(--card-border);
             border-radius: 16px; padding: 20px; margin-bottom: 25px;
@@ -163,7 +164,16 @@
             border-radius: 10px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: 0.3s;
         }
         .inline-check-btn:hover { background: #0274b3; }
-        .eligibility-status-msg { margin-top: 10px; font-size: 0.85rem; font-weight: 600; color: var(--accent-cyan); display: none; }
+        
+        .eligibility-status-msg { margin-top: 12px; font-size: 0.86rem; font-weight: 500; display: none; line-height: 1.5; }
+        .eligibility-status-msg.pass { color: var(--accent-cyan); font-weight: 600; }
+        .eligibility-status-msg.fail { color: var(--accent-red); }
+        
+        .counselor-fail-btn {
+            display: inline-flex; align-items: center; gap: 8px; margin-top: 10px;
+            background: var(--accent-green); color: #fff; text-decoration: none;
+            padding: 8px 16px; border-radius: 12px; font-size: 0.82rem; font-weight: 600;
+        }
 
         /* ACCORDION EXPANDABLE STYLES FOR SCREEN 2 */
         .accordion-container { display: flex; flex-direction: column; gap: 16px; margin-top: 20px; }
@@ -191,26 +201,44 @@
             background: #fafafa;
         }
         
-        /* SUB-CATEGORY ACCORDIONS (LEVEL 2 & 3) */
-        .sub-category-list { margin-top: 15px; display: flex; flex-direction: column; gap: 12px; }
+        /* SUB-CATEGORY CARDS */
+        .sub-category-list { margin-top: 15px; display: flex; flex-direction: column; gap: 14px; }
         .sub-category-card {
-            background: #ffffff; border: 1px solid var(--card-border); border-radius: 12px; padding: 16px;
+            background: #ffffff; border: 1px solid var(--card-border); border-radius: 12px; padding: 18px;
         }
-        .sub-category-card h4 { font-size: 0.95rem; font-weight: 600; color: var(--text-main); margin-bottom: 6px; }
-        .sub-category-card p { font-size: 0.84rem; color: var(--text-sub); line-height: 1.4; margin-bottom: 10px; }
+        .sub-category-card h4 { font-size: 0.98rem; font-weight: 600; color: var(--text-main); margin-bottom: 6px; }
+        .sub-category-card p { font-size: 0.84rem; color: var(--text-sub); line-height: 1.4; margin-bottom: 12px; }
         
-        .outcome-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+        .high-paid-title { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--accent-amber); letter-spacing: 0.3px; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+
+        .outcome-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
         .outcome-tag {
-            background: rgba(0,0,0,0.04); color: var(--text-main); font-size: 0.75rem;
-            padding: 4px 10px; border-radius: 12px; font-weight: 500;
+            background: rgba(217, 119, 6, 0.08); color: #b45309; font-size: 0.78rem;
+            padding: 5px 12px; border-radius: 12px; font-weight: 600; border: 1px solid rgba(217, 119, 6, 0.15);
         }
 
         .select-track-action-btn {
             background: rgba(2, 132, 199, 0.08); color: var(--accent-cyan); border: 1px solid rgba(2, 132, 199, 0.2);
-            padding: 8px 16px; border-radius: 10px; font-size: 0.82rem; font-weight: 600; cursor: pointer;
+            padding: 9px 18px; border-radius: 10px; font-size: 0.84rem; font-weight: 600; cursor: pointer;
             transition: 0.3s; display: inline-flex; align-items: center; gap: 6px;
         }
         .select-track-action-btn:hover { background: var(--accent-cyan); color: #ffffff; }
+
+        /* BOTTOM CONFUSION COUNSELOR BANNER (SCREEN 2) */
+        .bottom-confusion-banner {
+            background: linear-gradient(135deg, rgba(2, 132, 199, 0.06), rgba(37, 211, 102, 0.08));
+            border: 1px solid rgba(2, 132, 199, 0.2); border-radius: 18px;
+            padding: 24px; margin-top: 35px; text-align: center;
+        }
+        .bottom-confusion-banner h3 { font-size: 1.1rem; font-weight: 700; color: var(--text-main); margin-bottom: 6px; }
+        .bottom-confusion-banner p { font-size: 0.86rem; color: var(--text-sub); margin-bottom: 16px; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .banner-counselor-btn {
+            background: var(--accent-green); color: #ffffff; text-decoration: none;
+            padding: 12px 24px; border-radius: 20px; font-size: 0.9rem; font-weight: 600;
+            display: inline-flex; align-items: center; gap: 8px; transition: 0.3s;
+            box-shadow: 0 4px 14px rgba(37, 211, 102, 0.25);
+        }
+        .banner-counselor-btn:hover { background: #1eb954; transform: translateY(-2px); }
 
         /* FORM ELEMENTS SCREEN 3 */
         .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 25px; }
@@ -232,18 +260,6 @@
             cursor: pointer; transition: 0.3s; text-align: center; display: flex; justify-content: center; align-items: center; gap: 8px;
         }
         .action-btn-main:hover { background: #1eb954; }
-
-        /* COUNSELOR CONTACT BOX */
-        .counselor-callout-box {
-            background: rgba(37, 211, 102, 0.08); border: 1px dashed var(--accent-green);
-            border-radius: 16px; padding: 18px; margin-top: 25px; text-align: center;
-        }
-        .counselor-callout-box p { font-size: 0.88rem; color: var(--text-main); font-weight: 500; margin-bottom: 10px; }
-        .counselor-direct-btn {
-            background: var(--accent-green); color: #ffffff; border: none; padding: 10px 20px;
-            border-radius: 20px; font-size: 0.85rem; font-weight: 600; cursor: pointer;
-            text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
-        }
 
         footer { text-align: center; padding: 35px 8%; border-top: 1px solid var(--card-border); color: var(--text-sub); font-size: 0.85rem; }
     </style>
@@ -379,16 +395,16 @@
             <div class="screen-title-badge" id="screen-badge">
                 <i class="fa-solid fa-graduation-cap"></i> Path: After 10th Standard
             </div>
-            <h2>Explore Pathways & Career Goals</h2>
+            <h2>Explore Pathways & High-Paying Careers</h2>
             <p style="color: var(--text-sub); font-size: 0.9rem; margin-bottom: 20px;">
-                Check your eligibility optionally, or click on any pathway below to expand and view detailed career options.
+                Check your eligibility optionally, or expand any stream below to review top career opportunities and apply.
             </p>
 
             <div class="eligibility-check-box">
                 <h4>Check General Eligibility (Optional)</h4>
-                <p>Entering 10th percentage verifies eligibility status across all educational tracks.</p>
+                <p>Entering 10th percentage verifies standard CAP eligibility across all educational tracks.</p>
                 <div class="input-inline-group">
-                    <input type="number" id="user-10th-marks" placeholder="Enter 10th Marks (%)" min="35" max="100">
+                    <input type="number" id="user-10th-marks" placeholder="Enter 10th Marks (%)" min="1" max="100">
                     <button class="inline-check-btn" onclick="checkMarksEligibility()">Verify</button>
                 </div>
                 <div id="eligibility-status" class="eligibility-status-msg"></div>
@@ -399,88 +415,98 @@
                 <div class="accordion-item">
                     <div class="accordion-header" onclick="toggleAccordion(this)">
                         <div class="header-title-box">
-                            <i class="fa-solid fa-book-open"></i>
+                            <i class="fa-solid fa-atom"></i>
                             <div>
-                                <h3>Higher Secondary Education (11th & 12th / +2)</h3>
-                                <p>Science (PCM/PCB), Commerce, and Arts/Humanities foundations.</p>
+                                <h3>Science Stream (11th & 12th)</h3>
+                                <p>PCM, PCB & PCMB combinations covering medical, engineering & aviation.</p>
                             </div>
                         </div>
                         <i class="fa-solid fa-chevron-down accordion-arrow"></i>
                     </div>
                     <div class="accordion-content">
                         <div class="sub-category-list">
-                            
                             <div class="sub-category-card">
-                                <h4>Science - PCM (Physics, Chemistry, Mathematics)</h4>
-                                <p>Standard pathway for non-medical, engineering, aviation, and pure science professions.</p>
+                                <h4>Unified Science (Maths / Biology / Combined)</h4>
+                                <p>Flexible foundation for elite engineering, clinical medicine, aerospace, and advanced technological fields.</p>
+                                
+                                <div class="high-paid-title"><i class="fa-solid fa-sack-dollar"></i> Top High-Paying Career Goals:</div>
                                 <div class="outcome-tags">
-                                    <span class="outcome-tag">Engineering (B.Tech/B.E.)</span>
-                                    <span class="outcome-tag">Architecture (B.Arch)</span>
-                                    <span class="outcome-tag">Commercial Pilot</span>
-                                    <span class="outcome-tag">Aircraft Maintenance (AME)</span>
-                                    <span class="outcome-tag">NDA (Defence)</span>
+                                    <span class="outcome-tag">Doctor & Specialist Surgeon ($$$$)</span>
+                                    <span class="outcome-tag">AI & Software Architect ($$$$)</span>
+                                    <span class="outcome-tag">Commercial Pilot & Aviation ($$$$)</span>
+                                    <span class="outcome-tag">Aircraft Maintenance Engineer ($$$)</span>
+                                    <span class="outcome-tag">Biotechnology & Research ($$$)</span>
+                                    <span class="outcome-tag">Defence Forces (NDA) ($$$)</span>
                                 </div>
-                                <button class="select-track-action-btn" onclick="goToScreen3('11th/12th Science (PCM)')">
+                                <button class="select-track-action-btn" onclick="goToScreen3('11th/12th Science')">
                                     Select & Apply to Colleges <i class="fa-solid fa-arrow-right"></i>
                                 </button>
                             </div>
+                        </div>
+                    </div>
+                </div>
 
-                            <div class="sub-category-card">
-                                <h4>Science - PCB (Physics, Chemistry, Biology)</h4>
-                                <p>Healthcare pathway covering medical, pharmacy, nursing, and life sciences beyond doctors.</p>
-                                <div class="outcome-tags">
-                                    <span class="outcome-tag">MBBS / BDS</span>
-                                    <span class="outcome-tag">Pharmacy (B.Pharm)</span>
-                                    <span class="outcome-tag">B.Sc Nursing</span>
-                                    <span class="outcome-tag">Diagnostic Technology</span>
-                                    <span class="outcome-tag">Biotechnology</span>
-                                </div>
-                                <button class="select-track-action-btn" onclick="goToScreen3('11th/12th Science (PCB)')">
-                                    Select & Apply to Colleges <i class="fa-solid fa-arrow-right"></i>
-                                </button>
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <div class="header-title-box">
+                            <i class="fa-solid fa-chart-line"></i>
+                            <div>
+                                <h3>Commerce Stream (11th & 12th)</h3>
+                                <p>Corporate finance, banking, accounting, and business administration.</p>
                             </div>
-
+                        </div>
+                        <i class="fa-solid fa-chevron-down accordion-arrow"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="sub-category-list">
                             <div class="sub-category-card">
-                                <h4>Science - PCMB (Combined Science)</h4>
-                                <p>Provides complete flexibility to apply for both Engineering and Medical/Life Science entrance exams.</p>
+                                <h4>Commerce & Business Operations</h4>
+                                <p>Core track for corporate financial leadership, management advisory, and wealth management operations.</p>
+                                
+                                <div class="high-paid-title"><i class="fa-solid fa-sack-dollar"></i> Top High-Paying Career Goals:</div>
                                 <div class="outcome-tags">
-                                    <span class="outcome-tag">Biomedical Engineering</span>
-                                    <span class="outcome-tag">All Engineering Tracks</span>
-                                    <span class="outcome-tag">All Medical Tracks</span>
-                                </div>
-                                <button class="select-track-action-btn" onclick="goToScreen3('11th/12th Science (PCMB)')">
-                                    Select & Apply to Colleges <i class="fa-solid fa-arrow-right"></i>
-                                </button>
-                            </div>
-
-                            <div class="sub-category-card">
-                                <h4>Commerce Stream</h4>
-                                <p>Focuses on corporate finance, accounting, business administration, and management careers.</p>
-                                <div class="outcome-tags">
-                                    <span class="outcome-tag">Chartered Accountant (CA)</span>
-                                    <span class="outcome-tag">Company Secretary (CS)</span>
-                                    <span class="outcome-tag">BBA / B.Com</span>
-                                    <span class="outcome-tag">Banking & Finance</span>
+                                    <span class="outcome-tag">Chartered Accountant (CA) ($$$$)</span>
+                                    <span class="outcome-tag">Investment Banker ($$$$)</span>
+                                    <span class="outcome-tag">Company Secretary (CS) ($$$$)</span>
+                                    <span class="outcome-tag">Product & Brand Manager ($$$)</span>
+                                    <span class="outcome-tag">Financial Risk Analyst ($$$)</span>
                                 </div>
                                 <button class="select-track-action-btn" onclick="goToScreen3('11th/12th Commerce')">
                                     Select & Apply to Colleges <i class="fa-solid fa-arrow-right"></i>
                                 </button>
                             </div>
+                        </div>
+                    </div>
+                </div>
 
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <div class="header-title-box">
+                            <i class="fa-solid fa-scale-balanced"></i>
+                            <div>
+                                <h3>Arts & Humanities (11th & 12th)</h3>
+                                <p>Legal systems, civil service administration, media, and design.</p>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-chevron-down accordion-arrow"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="sub-category-list">
                             <div class="sub-category-card">
-                                <h4>Arts & Humanities Stream</h4>
-                                <p>Prepares students for legal studies, civil service examinations, media, and creative industries.</p>
+                                <h4>Humanities & Governance</h4>
+                                <p>Foundation for public service, judiciary, high-level corporate law, media strategy, and UX design.</p>
+                                
+                                <div class="high-paid-title"><i class="fa-solid fa-sack-dollar"></i> Top High-Paying Career Goals:</div>
                                 <div class="outcome-tags">
-                                    <span class="outcome-tag">Law (5-Yr BA-LLB)</span>
-                                    <span class="outcome-tag">Civil Services (UPSC)</span>
-                                    <span class="outcome-tag">Journalism</span>
-                                    <span class="outcome-tag">Design & Fine Arts</span>
+                                    <span class="outcome-tag">Corporate & Cyber Lawyer ($$$$)</span>
+                                    <span class="outcome-tag">Civil Services Officer (UPSC) ($$$$)</span>
+                                    <span class="outcome-tag">UX/UI Product Designer ($$$)</span>
+                                    <span class="outcome-tag">Media & Brand Strategist ($$$)</span>
                                 </div>
                                 <button class="select-track-action-btn" onclick="goToScreen3('11th/12th Arts')">
                                     Select & Apply to Colleges <i class="fa-solid fa-arrow-right"></i>
                                 </button>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -491,7 +517,7 @@
                             <i class="fa-solid fa-gears"></i>
                             <div>
                                 <h3>Polytechnic Diploma Tracks (3-Year Technical)</h3>
-                                <p>Early practical training with direct lateral entry into 2nd-Year B.Tech Engineering.</p>
+                                <p>Practical engineering training with direct 2nd-Year B.Tech lateral entry.</p>
                             </div>
                         </div>
                         <i class="fa-solid fa-chevron-down accordion-arrow"></i>
@@ -499,30 +525,16 @@
                     <div class="accordion-content">
                         <div class="sub-category-list">
                             <div class="sub-category-card">
-                                <h4>Core Engineering Branches</h4>
-                                <p>Practical technical foundation providing immediate Junior Engineer eligibility or degree progression.</p>
+                                <h4>Engineering & Technology Diploma</h4>
+                                <p>Accelerated practical route providing early industry jobs or direct 2nd-year B.Tech entry.</p>
+                                
+                                <div class="high-paid-title"><i class="fa-solid fa-sack-dollar"></i> Top High-Paying Career Goals:</div>
                                 <div class="outcome-tags">
-                                    <span class="outcome-tag">Mechanical Engineering</span>
-                                    <span class="outcome-tag">Civil Engineering</span>
-                                    <span class="outcome-tag">Electrical Engineering</span>
-                                    <span class="outcome-tag">Computer Science / IT</span>
-                                    <span class="outcome-tag">Electronics & Telecomm</span>
+                                    <span class="outcome-tag">Direct 2nd-Yr B.Tech Engineer ($$$$)</span>
+                                    <span class="outcome-tag">PSU / Railway Junior Engineer ($$$)</span>
+                                    <span class="outcome-tag">Automation & Robotics Tech ($$$)</span>
                                 </div>
-                                <button class="select-track-action-btn" onclick="goToScreen3('Polytechnic Diploma (Core Engineering)')">
-                                    Select & Apply to Colleges <i class="fa-solid fa-arrow-right"></i>
-                                </button>
-                            </div>
-
-                            <div class="sub-category-card">
-                                <h4>Specialized Technical Trades</h4>
-                                <p>Targeted high-demand technical specializations for direct industrial placement.</p>
-                                <div class="outcome-tags">
-                                    <span class="outcome-tag">Aeronautical Engineering</span>
-                                    <span class="outcome-tag">Mechatronics & Robotics</span>
-                                    <span class="outcome-tag">Automobile Engineering</span>
-                                    <span class="outcome-tag">Chemical Engineering</span>
-                                </div>
-                                <button class="select-track-action-btn" onclick="goToScreen3('Polytechnic Diploma (Specialized Branches)')">
+                                <button class="select-track-action-btn" onclick="goToScreen3('Polytechnic Diploma')">
                                     Select & Apply to Colleges <i class="fa-solid fa-arrow-right"></i>
                                 </button>
                             </div>
@@ -536,7 +548,7 @@
                             <i class="fa-solid fa-wrench"></i>
                             <div>
                                 <h3>Industrial Training Institutes (ITI Trades)</h3>
-                                <p>1 to 2-year vocational skill certifications for immediate technical employment.</p>
+                                <p>1 to 2-year practical skill training for early technical trade employment.</p>
                             </div>
                         </div>
                         <i class="fa-solid fa-chevron-down accordion-arrow"></i>
@@ -544,59 +556,16 @@
                     <div class="accordion-content">
                         <div class="sub-category-list">
                             <div class="sub-category-card">
-                                <h4>Engineering Trades (1-2 Years)</h4>
-                                <p>Hands-on trade training leading to government technical jobs or diploma lateral entry.</p>
+                                <h4>Technical Trade Certifications</h4>
+                                <p>Job-ready technical skill tracks for immediate industrial employment or government trade posts.</p>
+                                
+                                <div class="high-paid-title"><i class="fa-solid fa-sack-dollar"></i> Top High-Paying Career Goals:</div>
                                 <div class="outcome-tags">
-                                    <span class="outcome-tag">Electrician</span>
-                                    <span class="outcome-tag">Fitter</span>
-                                    <span class="outcome-tag">Machinist</span>
-                                    <span class="outcome-tag">Motor Vehicle Mechanic</span>
-                                    <span class="outcome-tag">Welder / Turner</span>
+                                    <span class="outcome-tag">Industrial Automation Technician ($$)</span>
+                                    <span class="outcome-tag">Government Railways Trade Specialist ($$)</span>
+                                    <span class="outcome-tag">Precision CNC Operator ($$)</span>
                                 </div>
-                                <button class="select-track-action-btn" onclick="goToScreen3('ITI Engineering Trade')">
-                                    Select & Apply to Colleges <i class="fa-solid fa-arrow-right"></i>
-                                </button>
-                            </div>
-
-                            <div class="sub-category-card">
-                                <h4>Non-Engineering Trades (1 Year)</h4>
-                                <p>Computer operation, media support, and administrative trade certifications.</p>
-                                <div class="outcome-tags">
-                                    <span class="outcome-tag">COPA (Computer Operator)</span>
-                                    <span class="outcome-tag">Digital Photography</span>
-                                    <span class="outcome-tag">Desk Top Publishing</span>
-                                </div>
-                                <button class="select-track-action-btn" onclick="goToScreen3('ITI Non-Engineering Trade')">
-                                    Select & Apply to Colleges <i class="fa-solid fa-arrow-right"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion-item">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <div class="header-title-box">
-                            <i class="fa-solid fa-notes-medical"></i>
-                            <div>
-                                <h3>Paramedical & Vocational Certifications</h3>
-                                <p>Short-term healthcare assistant and practical diagnostic certifications.</p>
-                            </div>
-                        </div>
-                        <i class="fa-solid fa-chevron-down accordion-arrow"></i>
-                    </div>
-                    <div class="accordion-content">
-                        <div class="sub-category-list">
-                            <div class="sub-category-card">
-                                <h4>Healthcare & Diagnostic Technician Courses</h4>
-                                <p>6-month to 2-year certificate courses for immediate hospital and lab placement.</p>
-                                <div class="outcome-tags">
-                                    <span class="outcome-tag">DMLT (Lab Technology)</span>
-                                    <span class="outcome-tag">Radiology Assistant</span>
-                                    <span class="outcome-tag">Operation Theatre Tech</span>
-                                    <span class="outcome-tag">Ophthalmic Assistant</span>
-                                </div>
-                                <button class="select-track-action-btn" onclick="goToScreen3('Paramedical Certificate Track')">
+                                <button class="select-track-action-btn" onclick="goToScreen3('ITI Vocational Trade')">
                                     Select & Apply to Colleges <i class="fa-solid fa-arrow-right"></i>
                                 </button>
                             </div>
@@ -605,6 +574,15 @@
                 </div>
 
             </div>
+
+            <div class="bottom-confusion-banner">
+                <h3>Confused About Which Stream to Select?</h3>
+                <p>Choosing between Science, Commerce, Arts, or Diploma can feel overwhelming. Get personalized 1-on-1 guidance from our expert counseling team before locking in your choice.</p>
+                <a href="https://wa.me/919822206864?text=Hello%20Counselor,%20I%20am%20confused%20about%20which%20stream%20to%20select%20after%2010th.%20Please%20guide%20me." target="_blank" class="banner-counselor-btn">
+                    <i class="fa-brands fa-whatsapp"></i> Connect with an Expert Counselor
+                </a>
+            </div>
+
         </div>
     </div>
 
@@ -653,13 +631,6 @@
                     <i class="fa-solid fa-file-export"></i> Submit Application & Generate Admission Ticket
                 </button>
             </form>
-
-            <div class="counselor-callout-box">
-                <p>Have questions regarding stream selection or college cutoffs?</p>
-                <a href="https://wa.me/919822206864?text=Hello%20Counselor,%20I%20need%20help%20choosing%20my%20college/stream." target="_blank" class="counselor-direct-btn">
-                    <i class="fa-brands fa-whatsapp"></i> Speak Directly with an Educational Counselor
-                </a>
-            </div>
         </div>
     </div>
 
@@ -693,13 +664,28 @@
         }
 
         function checkMarksEligibility() {
-            const marks = document.getElementById('user-10th-marks').value;
+            const marksInput = document.getElementById('user-10th-marks').value;
             const statusDiv = document.getElementById('eligibility-status');
-            if (marks >= 35 && marks <= 100) {
-                statusDiv.style.display = 'block';
-                statusDiv.innerText = `Eligible Status: Qualified (${marks}%)! You can expand and apply for any pathway below.`;
+            
+            if (!marksInput || marksInput < 1 || marksInput > 100) {
+                alert('Please enter a valid percentage between 1 and 100.');
+                return;
+            }
+
+            const marks = parseFloat(marksInput);
+            statusDiv.style.display = 'block';
+
+            if (marks >= 35) {
+                statusDiv.className = 'eligibility-status-msg pass';
+                statusDiv.innerText = `Eligible Status: Qualified (${marks}%)! You meet standard pass requirements for CAP admissions across streams below.`;
             } else {
-                alert('Please enter a valid percentage between 35 and 100.');
+                statusDiv.className = 'eligibility-status-msg fail';
+                statusDiv.innerHTML = `
+                    You have scored below the standard passing percentage (${marks}%). Standard CAP round admissions require a pass status, but you still have skill & re-examination options!<br>
+                    <a href="https://wa.me/919822206864?text=Hello%20Counselor,%20I%20scored%20${marks}%%20in%2010th.%20Please%20guide%20me%20on%20my%20available%20options." target="_blank" class="counselor-fail-btn">
+                        <i class="fa-brands fa-whatsapp"></i> Talk to Counselor for Guidance
+                    </a>
+                `;
             }
         }
 
@@ -709,13 +695,11 @@
             
             const isOpen = item.classList.contains('active');
             
-            // Close all items
             document.querySelectorAll('.accordion-item').forEach(acc => {
                 acc.classList.remove('active');
                 acc.querySelector('.accordion-content').style.display = 'none';
             });
 
-            // Toggle current item
             if (!isOpen) {
                 item.classList.add('active');
                 content.style.display = 'block';
