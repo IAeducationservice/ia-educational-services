@@ -3,642 +3,213 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduPath - Diploma & Higher Education Pathways</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        .glass-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-        }
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 6px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 4px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 4px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
-        }
-    </style>
+    <title>EduPathfinder - Higher Education & Career Advisor</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="bg-slate-50 font-sans text-slate-800 min-h-screen flex flex-col">
+<body>
 
-    <!-- Header / Navbar -->
-    <header class="bg-indigo-700 text-white shadow-lg sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <div class="flex items-center space-x-3 cursor-pointer" onclick="navigateTo('screen-home')">
-                <div class="bg-white text-indigo-700 p-2 rounded-lg font-bold text-xl flex items-center justify-center w-10 h-10 shadow">
-                    <i class="fa-solid font-black">EP</i>
-                </div>
-                <div>
-                    <h1 class="font-bold text-xl tracking-wide leading-none">EduPath</h1>
-                    <span class="text-xs text-indigo-200">Career & Admission Navigator</span>
-                </div>
-            </div>
-
-            <!-- Breadcrumb Navigation -->
-            <nav id="breadcrumb" class="hidden md:flex items-center space-x-2 text-sm text-indigo-200">
-                <span class="hover:text-white cursor-pointer" onclick="navigateTo('screen-home')">Home</span>
-                <span id="bc-step1-arrow" class="hidden"><i class="fa-solid fa-chevron-right text-xs"></i></span>
-                <span id="bc-step1" class="hidden hover:text-white cursor-pointer" onclick="navigateTo('screen-input')">Preferences</span>
-                <span id="bc-step2-arrow" class="hidden"><i class="fa-solid fa-chevron-right text-xs"></i></span>
-                <span id="bc-step2" class="hidden font-semibold text-white">Recommendations</span>
-            </nav>
+    <!-- Top Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo" onclick="navigateTo('screen-home')">EduPathfinder</div>
+        <div class="nav-links">
+            <button class="nav-btn" onclick="navigateTo('screen-home')">Home</button>
+            <button class="nav-btn primary" onclick="startFlow('diploma')">Diploma Pathway</button>
+            <button class="nav-btn secondary" onclick="startFlow('12th')">12th Grade Pathway</button>
         </div>
-    </header>
+    </nav>
 
-    <!-- Main Content Container -->
-    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <main class="container">
 
-        <!-- SCREEN 1: HOME SCREEN (Qualification Selection) -->
-        <section id="screen-home" class="block space-y-8 transition-all duration-300">
-            <div class="text-center max-w-3xl mx-auto space-y-3">
-                <span class="px-3 py-1 bg-indigo-100 text-indigo-700 font-semibold text-xs rounded-full uppercase tracking-wider">Start Your Journey</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Select Your Current Qualification</h2>
-                <p class="text-slate-600">Choose your academic background to unlock personalized higher education pathways, entrance exam details, and top college recommendations.</p>
+        <!-- SCREEN 1: Home / Qualification Selector -->
+        <section id="screen-home" class="screen active">
+            <div class="hero">
+                <h1>Find Your Next Educational Step</h1>
+                <p>Personalized college recommendations and higher degree pathways tailored for 12th Graduates and Technical Diploma Holders.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto pt-4">
-                <!-- 12th Standard Card (Disabled/Previous Reference) -->
-                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between hover:shadow-md transition opacity-75 relative">
-                    <span class="absolute top-4 right-4 bg-slate-100 text-slate-600 text-xs px-2.5 py-1 rounded-full font-medium">Standard Flow</span>
-                    <div>
-                        <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center text-xl mb-4">
-                            <i class="fa-solid fa-graduation-cap"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-slate-800 mb-2">12th Grade (HSC / CBSE)</h3>
-                        <p class="text-slate-600 text-sm mb-4">Explore traditional undergraduate degrees like B.Tech, B.Sc, B.Com, BA, and Medical pathways after High School.</p>
-                    </div>
-                    <button class="w-full py-2.5 bg-slate-100 text-slate-400 font-semibold rounded-xl cursor-not-allowed">Active in 12th Module</button>
+            <div class="selection-cards">
+                <!-- 12th Grade Option -->
+                <div class="pathway-card" onclick="selectPathway('12th')">
+                    <div class="card-badge">Standard Route</div>
+                    <h2>12th Grade Graduate</h2>
+                    <p>Higher secondary graduates looking for direct entry into B.Tech, BCA, BBA, B.Sc, B.Com, and other undergrad programs.</p>
+                    <button class="btn btn-outline">Proceed with 12th</button>
                 </div>
 
-                <!-- Polytechnic Diploma Card (Active Focus) -->
-                <div class="bg-white rounded-2xl shadow-md border-2 border-indigo-500 p-6 flex flex-col justify-between hover:shadow-xl transition relative group">
-                    <span class="absolute top-4 right-4 bg-indigo-100 text-indigo-700 text-xs px-2.5 py-1 rounded-full font-semibold">Active Selection</span>
-                    <div>
-                        <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition">
-                            <i class="fa-solid fa-microchip"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-slate-900 mb-2">Polytechnic Diploma</h3>
-                        <p class="text-slate-600 text-sm mb-4">Lateral Entry to 2nd year B.Tech/B.E., BCA, B.Sc, B.Des, B.Voc, and Direct Public Sector Technical Jobs.</p>
-                    </div>
-                    <button onclick="selectQualification('diploma')" class="w-full py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl transition flex items-center justify-center space-x-2 shadow-md hover:shadow-indigo-200">
-                        <span>Continue as Diploma Holder</span>
-                        <i class="fa-solid fa-arrow-right text-sm"></i>
-                    </button>
+                <!-- Diploma Option -->
+                <div class="pathway-card highlighted" onclick="selectPathway('diploma')">
+                    <div class="card-badge special">Lateral Entry & Skill Route</div>
+                    <h2>Polytechnic / Technical Diploma</h2>
+                    <p>Diploma graduates looking for B.Tech Direct 2nd Year (Lateral Entry), B.Voc, B.Des, BCA/BBA, or Govt Job pathways.</p>
+                    <button class="btn btn-primary">Proceed with Diploma</button>
                 </div>
             </div>
         </section>
 
-        <!-- SCREEN 2: DIPLOMA STUDENT INPUT & PREFERENCE FORM -->
-        <section id="screen-input" class="hidden max-w-3xl mx-auto space-y-6 transition-all duration-300">
-            <div class="flex items-center justify-between border-b border-slate-200 pb-4">
-                <div>
-                    <h2 class="text-2xl font-bold text-slate-900">Diploma Student Preferences</h2>
-                    <p class="text-slate-500 text-sm">Tell us about your diploma stream and academic goals.</p>
-                </div>
-                <button onclick="navigateTo('screen-home')" class="text-sm text-indigo-600 hover:text-indigo-800 font-medium">
-                    <i class="fa-solid fa-arrow-left mr-1"></i> Change Qualification
-                </button>
-            </div>
+        <!-- SCREEN 2: Student Input & Preference Form (Diploma Flow) -->
+        <section id="screen-input-diploma" class="screen">
+            <div class="form-container">
+                <button class="back-link" onclick="navigateTo('screen-home')">← Back to Selection</button>
+                <h2>Diploma Graduate Details & Preferences</h2>
+                <p class="subtitle">Fill in your stream and academic score to unlock matched colleges and lateral entry options.</p>
 
-            <form id="diplomaForm" onsubmit="handleFormSubmit(event)" class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8 space-y-6">
-                <!-- 1. Diploma Stream Selection -->
-                <div>
-                    <label class="block text-sm font-semibold text-slate-700 mb-2">
-                        1. Select Your Diploma Branch / Specialization <span class="text-rose-500">*</span>
-                    </label>
-                    <select id="diplomaBranch" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
-                        <option value="" disabled selected>-- Select Diploma Stream --</option>
-                        <option value="Computer Engineering / IT">Computer Engineering / IT</option>
-                        <option value="Mechanical Engineering">Mechanical Engineering</option>
-                        <option value="Civil Engineering">Civil Engineering</option>
-                        <option value="Electrical & Electronics">Electrical & Electronics</option>
-                        <option value="Fashion & Interior Design">Fashion & Interior Design</option>
-                        <option value="Multimedia & Animation">Multimedia & Animation</option>
-                        <option value="Chemical Engineering">Chemical Engineering</option>
-                    </select>
-                </div>
-
-                <!-- 2. Academic Score Input -->
-                <div>
-                    <label class="block text-sm font-semibold text-slate-700 mb-2">
-                        2. Academic Performance (Aggregate % or CGPA) <span class="text-rose-500">*</span>
-                    </label>
-                    <div class="relative">
-                        <input type="number" id="diplomaScore" min="40" max="100" step="0.1" required placeholder="e.g. 78.5" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
-                        <span class="absolute right-4 top-3.5 text-slate-400 font-semibold">%</span>
-                    </div>
-                </div>
-
-                <!-- 3. Target Higher Education Degree -->
-                <div>
-                    <label class="block text-sm font-semibold text-slate-700 mb-2">
-                        3. What Education Do You Want to Pursue Next? <span class="text-rose-500">*</span>
-                    </label>
-                    <select id="targetDegree" required onchange="toggleExamSelector()" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
-                        <option value="" disabled selected>-- Select Preferred Pathway --</option>
-                        <option value="B.Tech / B.E. (Lateral Entry 2nd Year)">B.Tech / B.E. (Lateral Entry - Direct 2nd Year)</option>
-                        <option value="BCA (Bachelor of Computer Applications)">BCA (Bachelor of Computer Applications)</option>
-                        <option value="B.Sc (Bachelor of Science)">B.Sc (IT / Computer Science / General)</option>
-                        <option value="BBA / BMS (Management)">BBA / BMS (Bachelor of Business Administration/Management)</option>
-                        <option value="B.Des (Bachelor of Design)">B.Des (Fashion / Interior / Multimedia)</option>
-                        <option value="B.Voc (Bachelor of Vocation)">B.Voc (Software / Automotive / Healthcare)</option>
-                        <option value="Professional Certifications">Professional Certifications (AI/ML, CAD, Data Science)</option>
-                        <option value="Government Job Pathways">Direct Government Technical Exams (SSC JE, RRB JE)</option>
-                    </select>
-                </div>
-
-                <!-- 4. Entrance Exam Status -->
-                <div>
-                    <label class="block text-sm font-semibold text-slate-700 mb-2">
-                        4. Entrance Exam Status <span class="text-rose-500">*</span>
-                    </label>
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                        <label class="flex items-center space-x-3 p-3 bg-slate-50 border border-slate-200 rounded-xl cursor-pointer hover:bg-slate-100">
-                            <input type="radio" name="examStatus" value="Appeared" onchange="toggleExamDetails(true)" class="text-indigo-600 focus:ring-indigo-500">
-                            <span class="text-sm font-medium text-slate-700">Appeared</span>
-                        </label>
-                        <label class="flex items-center space-x-3 p-3 bg-slate-50 border border-slate-200 rounded-xl cursor-pointer hover:bg-slate-100">
-                            <input type="radio" name="examStatus" value="Planning" onchange="toggleExamDetails(true)" class="text-indigo-600 focus:ring-indigo-500">
-                            <span class="text-sm font-medium text-slate-700">Planning to Appear</span>
-                        </label>
-                        <label class="flex items-center space-x-3 p-3 bg-slate-50 border border-slate-200 rounded-xl cursor-pointer hover:bg-slate-100">
-                            <input type="radio" name="examStatus" value="Direct" checked onchange="toggleExamDetails(false)" class="text-indigo-600 focus:ring-indigo-500">
-                            <span class="text-sm font-medium text-slate-700">Direct Merit Entry</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Exam Selection Container (Conditional) -->
-                <div id="examSelectionContainer" class="hidden space-y-4 p-4 bg-indigo-50 rounded-xl border border-indigo-100">
-                    <div>
-                        <label class="block text-xs font-semibold text-indigo-900 uppercase tracking-wider mb-1">Select Entrance Exam Target</label>
-                        <select id="entranceExam" class="w-full bg-white border border-indigo-200 rounded-lg px-3 py-2 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                            <option value="JELET">JELET (West Bengal Lateral Entry)</option>
-                            <option value="DCET">DCET (Karnataka Lateral Entry)</option>
-                            <option value="TS/AP ECET">ECET (Telangana / Andhra Pradesh)</option>
-                            <option value="LEET">LEET (Haryana / Punjab)</option>
-                            <option value="CUET-UG">CUET-UG / IPU CET</option>
-                            <option value="OJEE">OJEE (Odisha Lateral Entry)</option>
+                <form id="diploma-form" onsubmit="handleDiplomaFormSubmit(event)">
+                    <!-- 1. Diploma Branch Selection -->
+                    <div class="form-group">
+                        <label for="diploma-branch">1. Select Your Diploma Stream / Branch *</label>
+                        <select id="diploma-branch" required>
+                            <option value="">-- Select Branch --</option>
+                            <option value="CS">Computer Science / IT</option>
+                            <option value="ME">Mechanical Engineering</option>
+                            <option value="CE">Civil Engineering</option>
+                            <option value="EE">Electrical Engineering</option>
+                            <option value="EC">Electronics & Communication</option>
+                            <option value="Design">Fashion / Textile / Interior Design</option>
+                            <option value="Other">Other Specialized Stream</option>
                         </select>
                     </div>
-                </div>
 
-                <!-- Submit Button -->
-                <button type="submit" class="w-full py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-lg hover:shadow-indigo-200 transition flex items-center justify-center space-x-2">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <span>Search Colleges & Pathways</span>
-                </button>
-            </form>
+                    <!-- 2. Academic Score -->
+                    <div class="form-group">
+                        <label for="diploma-score">2. Diploma Aggregate Percentage / CGPA (%) *</label>
+                        <input type="number" id="diploma-score" min="40" max="100" step="0.1" placeholder="e.g. 78.5" required>
+                    </div>
+
+                    <!-- 3. Target Higher Degree -->
+                    <div class="form-group">
+                        <label for="target-degree">3. What Education/Pathway Do You Want to Pursue Next? *</label>
+                        <select id="target-degree" onchange="toggleExamSelector()" required>
+                            <option value="">-- Select Target Degree --</option>
+                            <option value="BTech_Lateral">B.Tech / B.E. (Direct 2nd Year Lateral Entry)</option>
+                            <option value="BCA">BCA (Bachelor of Computer Applications)</option>
+                            <option value="BBA">BBA / BMS (Business & Management)</option>
+                            <option value="BSc">B.Sc / B.Sc IT</option>
+                            <option value="BDes">B.Des (Bachelor of Design)</option>
+                            <option value="BVoc">B.Voc (Bachelor of Vocation - Skill Focused)</option>
+                        </select>
+                    </div>
+
+                    <!-- 4. Entrance Exam Status -->
+                    <div class="form-group">
+                        <label>4. Entrance Exam Status *</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="exam-status" value="appeared" onchange="toggleExamSelector()"> Appeared / Have Score</label>
+                            <label><input type="radio" name="exam-status" value="planning" onchange="toggleExamSelector()"> Planning to Appear</label>
+                            <label><input type="radio" name="exam-status" value="none" checked onchange="toggleExamSelector()"> Direct Merit Admission Only (No Exam)</label>
+                        </div>
+                    </div>
+
+                    <!-- Conditional Exam Selector -->
+                    <div class="form-group hidden" id="exam-selector-box">
+                        <label for="entrance-exam">Select Entrance Exam Taken / Target Exam</label>
+                        <select id="entrance-exam">
+                            <option value="LEET">LEET (State Lateral Entry Exam - Haryana/Punjab/etc.)</option>
+                            <option value="JELET">JELET (West Bengal)</option>
+                            <option value="DCET">DCET (Karnataka)</option>
+                            <option value="ECET">TS/AP ECET (Telangana/Andhra)</option>
+                            <option value="OJEE">OJEE (Odisha)</option>
+                            <option value="CUET">CUET-UG</option>
+                            <option value="IPUCET">IPU CET</option>
+                        </select>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-primary full-width">Search Eligible Colleges & Pathways →</button>
+                </form>
+            </div>
         </section>
 
-        <!-- SCREEN 3: COLLEGE RECOMMENDATION & FILTER SCREEN -->
-        <section id="screen-results" class="hidden space-y-6 transition-all duration-300">
-            <!-- Active Filter Banner / Summary -->
-            <div class="bg-indigo-900 text-white rounded-2xl p-6 shadow-md flex flex-col md:flex-row md:items-center justify-between gap-4">
-                <div>
-                    <div class="flex items-center space-x-2 text-indigo-300 text-xs uppercase font-bold tracking-wider mb-1">
-                        <span>Matched Recommendations</span>
-                        <span>•</span>
-                        <span id="summaryBranch">CS / IT</span>
+        <!-- SCREEN 2: Student Input Form (12th Grade Flow Placeholder) -->
+        <section id="screen-input-12th" class="screen">
+            <div class="form-container">
+                <button class="back-link" onclick="navigateTo('screen-home')">← Back to Selection</button>
+                <h2>12th Grade Student Input</h2>
+                <p class="subtitle">Standard admission path input form.</p>
+                <form onsubmit="handle12thFormSubmit(event)">
+                    <div class="form-group">
+                        <label for="12th-stream">Select 12th Stream *</label>
+                        <select id="12th-stream" required>
+                            <option value="PCM">Science (PCM)</option>
+                            <option value="PCB">Science (PCB)</option>
+                            <option value="Commerce">Commerce</option>
+                            <option value="Arts">Arts / Humanities</option>
+                        </select>
                     </div>
-                    <h2 class="text-2xl font-bold">Recommended Colleges & Options</h2>
-                    <p class="text-indigo-200 text-sm mt-1">Based on your score (<span id="summaryScore" class="font-bold text-white">75%</span>) and target (<span id="summaryTarget" class="font-bold text-white">B.Tech Lateral Entry</span>).</p>
+                    <div class="form-group">
+                        <label for="12th-score">12th Aggregate Percentage (%) *</label>
+                        <input type="number" id="12th-score" min="40" max="100" placeholder="e.g. 82.0" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary full-width">Find 12th Eligible Colleges →</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- SCREEN 3: College Recommendation & Filter Screen -->
+        <section id="screen-results" class="screen">
+            <div class="results-header">
+                <div>
+                    <h2>Recommended Colleges & Pathways</h2>
+                    <p id="results-summary-text">Showing matches based on your academic profile.</p>
                 </div>
-                <button onclick="navigateTo('screen-input')" class="px-4 py-2 bg-white/10 hover:bg-white/20 text-white text-sm font-semibold rounded-xl backdrop-blur transition border border-white/20 flex items-center justify-center space-x-2 self-start md:self-auto">
-                    <i class="fa-solid fa-pen-to-square"></i>
-                    <span>Edit Preferences</span>
-                </button>
+                <button class="btn btn-outline" onclick="goBackToInput()">Modify Preferences</button>
             </div>
 
-            <!-- Content Grid (Filters Sidebar + College List) -->
-            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
-                
+            <div class="results-layout">
                 <!-- Filters Sidebar -->
-                <aside class="lg:col-span-1 space-y-4">
-                    <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200 space-y-5 sticky top-20">
-                        <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-                            <h3 class="font-bold text-slate-800 flex items-center space-x-2">
-                                <i class="fa-solid fa-sliders text-indigo-600"></i>
-                                <span>Filter Results</span>
-                            </h3>
-                            <button onclick="resetFilters()" class="text-xs text-indigo-600 hover:underline">Reset All</button>
-                        </div>
+                <aside class="filters-sidebar">
+                    <h3>Filter Results</h3>
 
-                        <!-- Filter: Location / State -->
-                        <div>
-                            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Location</label>
-                            <select id="filterLocation" onchange="applyFilters()" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                                <option value="all">All Locations</option>
-                                <option value="Karnataka">Karnataka</option>
-                                <option value="Maharashtra">Maharashtra</option>
-                                <option value="West Bengal">West Bengal</option>
-                                <option value="Punjab">Punjab</option>
-                                <option value="Delhi NCR">Delhi NCR</option>
-                            </select>
-                        </div>
+                    <div class="filter-group">
+                        <label for="filter-location">Location / State</label>
+                        <select id="filter-location" onchange="applyFilters()">
+                            <option value="all">All Locations</option>
+                            <option value="Karnataka">Karnataka</option>
+                            <option value="Maharashtra">Maharashtra</option>
+                            <option value="Delhi NCR">Delhi NCR</option>
+                            <option value="Punjab">Punjab</option>
+                            <option value="West Bengal">West Bengal</option>
+                        </select>
+                    </div>
 
-                        <!-- Filter: College Type -->
-                        <div>
-                            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">College Type</label>
-                            <div class="space-y-2 text-sm text-slate-600">
-                                <label class="flex items-center space-x-2">
-                                    <input type="checkbox" value="Government" onchange="applyFilters()" class="filterType rounded text-indigo-600 focus:ring-indigo-500" checked>
-                                    <span>Government</span>
-                                </label>
-                                <label class="flex items-center space-x-2">
-                                    <input type="checkbox" value="Private Deemed" onchange="applyFilters()" class="filterType rounded text-indigo-600 focus:ring-indigo-500" checked>
-                                    <span>Private / Deemed</span>
-                                </label>
-                            </div>
-                        </div>
+                    <div class="filter-group">
+                        <label for="filter-type">College Type</label>
+                        <select id="filter-type" onchange="applyFilters()">
+                            <option value="all">All Types</option>
+                            <option value="Government">Government / Autonomous</option>
+                            <option value="Private Deemed">Private Deemed University</option>
+                        </select>
+                    </div>
 
-                        <!-- Filter: Admission Mode -->
-                        <div>
-                            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Admission Mode</label>
-                            <select id="filterMode" onchange="applyFilters()" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                                <option value="all">Direct & Entrance Exams</option>
-                                <option value="Direct Merit">Direct Merit Entry Only</option>
-                                <option value="Entrance Exam">Entrance Exam Accepted</option>
-                            </select>
-                        </div>
+                    <div class="filter-group">
+                        <label for="filter-rating">Minimum Rating</label>
+                        <select id="filter-rating" onchange="applyFilters()">
+                            <option value="0">All Ratings</option>
+                            <option value="4.5">4.5 Stars & above</option>
+                            <option value="4.0">4.0 Stars & above</option>
+                            <option value="3.5">3.5 Stars & above</option>
+                        </select>
+                    </div>
 
-                        <!-- Filter: Rating -->
-                        <div>
-                            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Minimum Rating</label>
-                            <select id="filterRating" onchange="applyFilters()" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                                <option value="0">All Ratings</option>
-                                <option value="4.0">4.0 ⭐ & Above</option>
-                                <option value="4.5">4.5 ⭐ & Above</option>
-                            </select>
-                        </div>
+                    <div class="filter-group">
+                        <label for="filter-mode">Admission Mode</label>
+                        <select id="filter-mode" onchange="applyFilters()">
+                            <option value="all">All Modes</option>
+                            <option value="Direct Merit">Direct Merit Entry</option>
+                            <option value="Entrance Exam">Entrance Exam Required</option>
+                        </select>
                     </div>
                 </aside>
 
-                <!-- College Results List -->
-                <main class="lg:col-span-3 space-y-4">
-                    <!-- Results Counter & Sorting Header -->
-                    <div class="flex items-center justify-between bg-white px-4 py-3 rounded-xl border border-slate-200 text-sm">
-                        <span class="text-slate-600">Showing <strong id="resultCount" class="text-slate-900">0</strong> colleges</span>
-                        <div class="flex items-center space-x-2">
-                            <span class="text-xs text-slate-500">Sort By:</span>
-                            <select id="sortResults" onchange="applyFilters()" class="bg-slate-50 border border-slate-200 rounded-md px-2 py-1 text-xs text-slate-700 focus:outline-none">
-                                <option value="rating">Highest Rated</option>
-                                <option value="fee-low">Fee: Low to High</option>
-                                <option value="fee-high">Fee: High to Low</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <!-- Dynamic Results Container -->
-                    <div id="collegeList" class="space-y-4">
-                        <!-- Items rendered via Javascript -->
-                    </div>
-
-                    <!-- Empty State Container -->
-                    <div id="emptyState" class="hidden bg-white rounded-2xl border border-slate-200 p-8 text-center space-y-3">
-                        <div class="w-12 h-12 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center mx-auto text-xl">
-                            <i class="fa-solid fa-building-circle-exclamation"></i>
-                        </div>
-                        <h4 class="font-bold text-slate-700">No Colleges Match Your Criteria</h4>
-                        <p class="text-slate-500 text-sm max-w-sm mx-auto">Try resetting filters or adjusting your academic performance score to see available options.</p>
-                        <button onclick="resetFilters()" class="px-4 py-2 bg-indigo-600 text-white font-semibold text-xs rounded-lg shadow hover:bg-indigo-700">Reset Filters</button>
-                    </div>
-                </main>
-
+                <!-- College Cards List -->
+                <div class="college-cards-container" id="college-list">
+                    <!-- Dynamically populated via app.js -->
+                </div>
             </div>
         </section>
 
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 text-sm py-6 border-t border-slate-800 mt-auto">
-        <div class="max-w-7xl mx-auto px-4 text-center space-y-2">
-            <p>© 2026 EduPath System • Higher Education Lateral Entry Portal</p>
-            <p class="text-xs text-slate-500">Data provided is for educational & admission advisory guidance.</p>
-        </div>
-    </footer>
-
-    <!-- JavaScript Logic -->
-    <script>
-        // Sample College Database for Diploma Lateral Entry & Pathways
-        const mockColleges = [
-            {
-                id: 1,
-                name: "RV College of Engineering (RVCE)",
-                location: "Karnataka",
-                city: "Bengaluru",
-                type: "Private Deemed",
-                rating: 4.7,
-                fee: "₹2.2 Lakh/Yr",
-                rawFee: 220000,
-                mode: "Entrance Exam",
-                examAccepted: "DCET",
-                minPercentage: 60,
-                eligibleBranches: ["Computer Engineering / IT", "Mechanical Engineering", "Civil Engineering", "Electrical & Electronics"],
-                pathway: "B.Tech / B.E. (Lateral Entry 2nd Year)",
-                seatType: "Government Quota / Management"
-            },
-            {
-                id: 2,
-                name: "Jadavpur University (Faculty of Engg)",
-                location: "West Bengal",
-                city: "Kolkata",
-                type: "Government",
-                rating: 4.8,
-                fee: "₹10,000/Yr",
-                rawFee: 10000,
-                mode: "Entrance Exam",
-                examAccepted: "JELET",
-                minPercentage: 60,
-                eligibleBranches: ["Computer Engineering / IT", "Mechanical Engineering", "Civil Engineering", "Electrical & Electronics", "Chemical Engineering"],
-                pathway: "B.Tech / B.E. (Lateral Entry 2nd Year)",
-                seatType: "State Merit"
-            },
-            {
-                id: 3,
-                name: "Lovely Professional University (LPU)",
-                location: "Punjab",
-                city: "Phagwara",
-                type: "Private Deemed",
-                rating: 4.2,
-                fee: "₹1.6 Lakh/Yr",
-                rawFee: 160000,
-                mode: "Direct Merit",
-                examAccepted: "Direct / LPUNEST",
-                minPercentage: 50,
-                eligibleBranches: ["Computer Engineering / IT", "Mechanical Engineering", "Civil Engineering", "Electrical & Electronics", "Fashion & Interior Design", "Multimedia & Animation"],
-                pathway: "B.Tech / B.E. (Lateral Entry 2nd Year)",
-                seatType: "Direct Seat / Merit Scholarship"
-            },
-            {
-                id: 4,
-                name: "College of Engineering Pune (COEP)",
-                location: "Maharashtra",
-                city: "Pune",
-                type: "Government",
-                rating: 4.6,
-                fee: "₹85,000/Yr",
-                rawFee: 85000,
-                mode: "Direct Merit",
-                examAccepted: "DSE Maharashtra Cap",
-                minPercentage: 75,
-                eligibleBranches: ["Computer Engineering / IT", "Mechanical Engineering", "Civil Engineering", "Electrical & Electronics"],
-                pathway: "B.Tech / B.E. (Lateral Entry 2nd Year)",
-                seatType: "State Merit Quota"
-            },
-            {
-                id: 5,
-                name: "National Institute of Design (NID)",
-                location: "Gujarat",
-                city: "Ahmedabad",
-                type: "Government",
-                rating: 4.9,
-                fee: "₹3.5 Lakh/Yr",
-                rawFee: 350000,
-                mode: "Entrance Exam",
-                examAccepted: "NID DAT",
-                minPercentage: 50,
-                eligibleBranches: ["Fashion & Interior Design", "Multimedia & Animation"],
-                pathway: "B.Des (Bachelor of Design)",
-                seatType: "All India Merit"
-            },
-            {
-                id: 6,
-                name: "Chandigarh University",
-                location: "Punjab",
-                city: "Mohali",
-                type: "Private Deemed",
-                rating: 4.3,
-                fee: "₹1.4 Lakh/Yr",
-                rawFee: 140000,
-                mode: "Direct Merit",
-                examAccepted: "Direct Entry",
-                minPercentage: 55,
-                eligibleBranches: ["Computer Engineering / IT", "Mechanical Engineering", "Civil Engineering", "Electrical & Electronics", "Multimedia & Animation"],
-                pathway: "BCA (Bachelor of Computer Applications)",
-                seatType: "Direct Admission"
-            }
-        ];
-
-        // State Store
-        let userPreferences = {
-            branch: "",
-            score: 0,
-            targetDegree: "",
-            examStatus: "Direct",
-            examName: ""
-        };
-
-        // Navigation Controller
-        function navigateTo(screenId) {
-            document.getElementById('screen-home').classList.add('hidden');
-            document.getElementById('screen-input').classList.add('hidden');
-            document.getElementById('screen-results').classList.add('hidden');
-
-            document.getElementById(screenId).classList.remove('hidden');
-
-            // Breadcrumb updates
-            const bcStep1 = document.getElementById('bc-step1');
-            const bcStep1Arrow = document.getElementById('bc-step1-arrow');
-            const bcStep2 = document.getElementById('bc-step2');
-            const bcStep2Arrow = document.getElementById('bc-step2-arrow');
-
-            if (screenId === 'screen-home') {
-                bcStep1.classList.add('hidden');
-                bcStep1Arrow.classList.add('hidden');
-                bcStep2.classList.add('hidden');
-                bcStep2Arrow.classList.add('hidden');
-            } else if (screenId === 'screen-input') {
-                bcStep1.classList.remove('hidden');
-                bcStep1Arrow.classList.remove('hidden');
-                bcStep2.classList.add('hidden');
-                bcStep2Arrow.classList.add('hidden');
-            } else if (screenId === 'screen-results') {
-                bcStep1.classList.remove('hidden');
-                bcStep1Arrow.classList.remove('hidden');
-                bcStep2.classList.remove('hidden');
-                bcStep2Arrow.classList.remove('hidden');
-            }
-
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // Selection Trigger Screen 1 -> 2
-        function selectQualification(type) {
-            if (type === 'diploma') {
-                navigateTo('screen-input');
-            }
-        }
-
-        // UI Toggle for Entrance Exams
-        function toggleExamDetails(show) {
-            const container = document.getElementById('examSelectionContainer');
-            if (show) {
-                container.classList.remove('hidden');
-            } else {
-                container.classList.add('hidden');
-            }
-        }
-
-        function toggleExamSelector() {
-            const degree = document.getElementById('targetDegree').value;
-            if (degree.includes('B.Tech')) {
-                // Pre-select exam toggle options if relevant
-            }
-        }
-
-        // Handle Screen 2 Form Submit
-        function handleFormSubmit(event) {
-            event.preventDefault();
-
-            userPreferences.branch = document.getElementById('diplomaBranch').value;
-            userPreferences.score = parseFloat(document.getElementById('diplomaScore').value);
-            userPreferences.targetDegree = document.getElementById('targetDegree').value;
-            userPreferences.examStatus = document.querySelector('input[name="examStatus"]:checked').value;
-            userPreferences.examName = document.getElementById('entranceExam').value;
-
-            // Update Summary Header on Screen 3
-            document.getElementById('summaryBranch').textContent = userPreferences.branch;
-            document.getElementById('summaryScore').textContent = userPreferences.score + "%";
-            document.getElementById('summaryTarget').textContent = userPreferences.targetDegree.split(' ')[0];
-
-            // Filter & Render Colleges
-            applyFilters();
-
-            // Transition to Screen 3
-            navigateTo('screen-results');
-        }
-
-        // Screen 3 Filter Logic
-        function applyFilters() {
-            const selectedLocation = document.getElementById('filterLocation').value;
-            const selectedMode = document.getElementById('filterMode').value;
-            const minRating = parseFloat(document.getElementById('filterRating').value);
-            const sortBy = document.getElementById('sortResults').value;
-
-            // Checkboxes
-            const typeCheckboxes = Array.from(document.querySelectorAll('.filterType:checked')).map(cb => cb.value);
-
-            let filtered = mockColleges.filter(college => {
-                // Match Academic Cutoff
-                if (userPreferences.score < college.minPercentage) return false;
-
-                // Match Location
-                if (selectedLocation !== 'all' && college.location !== selectedLocation) return false;
-
-                // Match Type
-                if (typeCheckboxes.length > 0 && !typeCheckboxes.includes(college.type)) return false;
-
-                // Match Mode
-                if (selectedMode !== 'all' && college.mode !== selectedMode) return false;
-
-                // Match Rating
-                if (college.rating < minRating) return false;
-
-                return true;
-            });
-
-            // Sorting
-            if (sortBy === 'rating') {
-                filtered.sort((a, b) => b.rating - a.rating);
-            } else if (sortBy === 'fee-low') {
-                filtered.sort((a, b) => a.rawFee - b.rawFee);
-            } else if (sortBy === 'fee-high') {
-                filtered.sort((a, b) => b.rawFee - a.rawFee);
-            }
-
-            renderCollegeList(filtered);
-        }
-
-        function resetFilters() {
-            document.getElementById('filterLocation').value = 'all';
-            document.getElementById('filterMode').value = 'all';
-            document.getElementById('filterRating').value = '0';
-            document.getElementById('sortResults').value = 'rating';
-            document.querySelectorAll('.filterType').forEach(cb => cb.checked = true);
-            applyFilters();
-        }
-
-        // Render Cards in Screen 3
-        function renderCollegeList(colleges) {
-            const container = document.getElementById('collegeList');
-            const emptyState = document.getElementById('emptyState');
-            const countLabel = document.getElementById('resultCount');
-
-            container.innerHTML = '';
-            countLabel.textContent = colleges.length;
-
-            if (colleges.length === 0) {
-                emptyState.classList.remove('hidden');
-                return;
-            } else {
-                emptyState.classList.add('hidden');
-            }
-
-            colleges.forEach(college => {
-                const isMatch = userPreferences.score >= college.minPercentage;
-
-                const cardHtml = `
-                    <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition space-y-4">
-                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
-                            <div>
-                                <div class="flex items-center space-x-2">
-                                    <span class="px-2.5 py-0.5 bg-emerald-100 text-emerald-800 text-xs font-semibold rounded-full flex items-center space-x-1">
-                                        <i class="fa-solid fa-circle-check text-[10px]"></i>
-                                        <span>Eligible with ${userPreferences.score}% Marks</span>
-                                    </span>
-                                    <span class="text-xs text-slate-400">• ${college.type}</span>
-                                </div>
-                                <h3 class="text-lg font-bold text-slate-900 mt-1">${college.name}</h3>
-                                <p class="text-xs text-slate-500"><i class="fa-solid fa-location-dot mr-1"></i> ${college.city}, ${college.location}</p>
-                            </div>
-                            <div class="flex sm:flex-col items-center sm:items-end justify-between sm:justify-center">
-                                <div class="flex items-center space-x-1 bg-amber-50 text-amber-700 px-2.5 py-1 rounded-lg border border-amber-200 text-sm font-bold">
-                                    <i class="fa-solid fa-star text-amber-500 text-xs"></i>
-                                    <span>${college.rating}</span>
-                                    <span class="text-xs text-slate-400 font-normal">/ 5</span>
-                                </div>
-                                <span class="text-xs text-slate-500 mt-1">${college.seatType}</span>
-                            </div>
-                        </div>
-
-                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 bg-slate-50 p-3 rounded-xl text-xs">
-                            <div>
-                                <span class="text-slate-400 block">Annual Fee</span>
-                                <strong class="text-slate-700 font-bold">${college.fee}</strong>
-                            </div>
-                            <div>
-                                <span class="text-slate-400 block">Admission Mode</span>
-                                <strong class="text-indigo-600 font-bold">${college.mode} (${college.examAccepted})</strong>
-                            </div>
-                            <div class="col-span-2 sm:col-span-1">
-                                <span class="text-slate-400 block">Cutoff Requirement</span>
-                                <strong class="text-slate-700 font-bold">${college.minPercentage}% in Diploma</strong>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center justify-between pt-1">
-                            <span class="text-xs text-slate-500">Lateral Entry seat quota available</span>
-                            <button class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs rounded-xl shadow transition flex items-center space-x-1.5">
-                                <span>Apply Now / Get Counseling</span>
-                                <i class="fa-solid fa-chevron-right text-[10px]"></i>
-                            </button>
-                        </div>
-                    </div>
-                `;
-                container.insertAdjacentHTML('beforeend', cardHtml);
-            });
-        }
-    </script>
+    <script src="app.js"></script>
 </body>
 </html>
