@@ -3,24 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IA Educational Services | CAP & Career Roadmap Portal</title>
+    <title>IA Educational Services | CAP & College Admission Portal</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
+            /* Apple Soft Light Palette */
             --bg-main: #f5f5f7;
             --bg-secondary: #ffffff;
             --card-glass: rgba(255, 255, 255, 0.7);
             --card-border: rgba(0, 0, 0, 0.08);
             --card-border-hover: rgba(0, 0, 0, 0.2);
+            
+            /* Accents */
             --accent-purple: #8e44ad;
             --accent-pink: #d81b60;
             --accent-cyan: #0284c7;
             --accent-amber: #d97706;
             --accent-green: #25D366;
             --accent-red: #e11d48;
+            
             --text-main: #1d1d1f;
             --text-sub: #6e6e73;
         }
@@ -48,32 +52,40 @@
             display: flex; flex-direction: column; align-items: center; text-align: center;
             padding: 20px 5% 30px 5%; position: relative;
         }
+        
         .hero-center-stage {
             position: relative; width: 100%; max-width: 500px;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             margin: 10px auto 15px auto;
         }
+        
         .quote-arc-container {
             width: 100%; max-width: 480px; height: 75px;
-            margin-bottom: -68px; z-index: 10; pointer-events: none; overflow: visible;
+            margin-bottom: -68px; z-index: 10; pointer-events: none;
+            overflow: visible;
         }
+        
         .hero-graphic-wrapper { width: 100%; display: flex; justify-content: center; align-items: center; }
         .hero-graphic-wrapper img {
             width: 100%; max-width: 450px; height: auto; object-fit: contain;
             filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.08));
         }
+        
         @media (min-width: 768px) {
             .hero-center-stage { max-width: 550px; margin: 15px auto 20px auto; }
             .quote-arc-container { max-width: 530px; height: 85px; margin-bottom: -76px; }
             .hero-graphic-wrapper img { max-width: 500px; }
         }
+        
         .hero-subtext {
             max-width: 640px; margin: 0 auto 30px auto; color: var(--text-sub);
             font-size: 1.05rem; line-height: 1.6; font-weight: 400; text-align: center;
         }
 
         /* PRIMARY ENTRY SELECTION BUTTONS */
-        .stage-selector-container { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 10px; }
+        .stage-selector-container {
+            display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 10px;
+        }
         .stage-card-btn {
             background: var(--bg-secondary); border: 1px solid var(--card-border);
             border-radius: 18px; padding: 20px 24px; cursor: pointer; transition: all 0.3s ease;
@@ -96,10 +108,10 @@
         .image-card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 30px; }
         .image-card {
             background: var(--bg-secondary); border: 1px solid var(--card-border);
-            border-radius: 20px; overflow: hidden; transition: all 0.4s ease; cursor: pointer;
+            border-radius: 20px; overflow: hidden; transition: all 0.4s ease;
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
         }
-        .image-card:hover { transform: translateY(-6px); border-color: var(--accent-cyan); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08); }
+        .image-card:hover { transform: translateY(-6px); border-color: var(--card-border-hover); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08); }
         .card-img-wrapper { width: 100%; height: 180px; overflow: hidden; background: #e5e5ea; }
         .card-img-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
         .image-card:hover .card-img-wrapper img { transform: scale(1.05); }
@@ -112,9 +124,9 @@
         .roadmap-list li i { color: var(--text-sub); font-size: 0.78rem; }
 
         /* GENERAL SCREEN CONTAINERS */
-        #details-screen-10th, #details-screen-12th, #details-screen-iti, #details-screen-diploma, #details-screen-roadmap, #college-results-screen, #apply-screen { display: none; padding: 40px 8%; }
+        #details-screen-10th, #details-screen-12th, #details-screen-iti, #details-screen-diploma, #college-results-screen, #apply-screen { display: none; padding: 40px 8%; }
         
-        .screen-top-bar { display: flex; justify-content: space-between; align-items: center; max-width: 900px; margin: 0 auto 20px auto; }
+        .screen-top-bar { display: flex; justify-content: space-between; align-items: center; max-width: 850px; margin: 0 auto 20px auto; }
         .back-btn {
             background: var(--bg-secondary); border: 1px solid var(--card-border);
             color: var(--text-main); padding: 10px 20px; border-radius: 20px;
@@ -125,7 +137,7 @@
 
         .details-card {
             background: var(--bg-secondary); border: 1px solid var(--card-border);
-            border-radius: 24px; padding: 35px; max-width: 900px; margin: 0 auto;
+            border-radius: 24px; padding: 35px; max-width: 850px; margin: 0 auto;
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.04);
         }
         .screen-title-badge {
@@ -135,107 +147,185 @@
         }
         .details-card h2 { font-size: 1.6rem; font-weight: 700; margin-bottom: 15px; letter-spacing: -0.5px; }
 
-        /* ROADMAP DISPLAY MODAL STYLES */
-        .roadmap-branch-selector { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 25px; border-bottom: 1px solid var(--card-border); padding-bottom: 15px; }
-        .branch-chip {
-            padding: 8px 16px; border-radius: 20px; border: 1px solid var(--card-border);
-            background: var(--bg-main); font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: 0.3s;
-        }
-        .branch-chip.active { background: var(--accent-cyan); color: #ffffff; border-color: var(--accent-cyan); }
-
-        .blueprint-section { margin-bottom: 25px; background: #fafafa; border: 1px solid var(--card-border); border-radius: 16px; padding: 20px; }
-        .blueprint-section h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; color: var(--text-main); display: flex; align-items: center; gap: 8px; }
-        .blueprint-section p, .blueprint-section ul { font-size: 0.88rem; color: var(--text-sub); line-height: 1.6; }
-        .blueprint-section ul { padding-left: 20px; margin-top: 8px; }
-
-        .salary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 10px; }
-        @media (max-width: 600px) { .salary-grid { grid-template-columns: 1fr; } }
-        .salary-card { background: #ffffff; border: 1px solid var(--card-border); border-radius: 12px; padding: 15px; }
-        .salary-card h4 { font-size: 0.85rem; color: var(--text-sub); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.5px; }
-        .salary-card .val { font-size: 1.1rem; font-weight: 700; color: var(--accent-amber); }
-
         /* ELIGIBILITY & MARKS INPUT BOX */
-        .eligibility-check-box { background: var(--bg-main); border: 1px solid var(--card-border); border-radius: 16px; padding: 20px; margin-bottom: 25px; }
+        .eligibility-check-box {
+            background: var(--bg-main); border: 1px solid var(--card-border);
+            border-radius: 16px; padding: 20px; margin-bottom: 25px;
+        }
         .eligibility-check-box h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 6px; }
         .eligibility-check-box p { font-size: 0.83rem; color: var(--text-sub); margin-bottom: 12px; }
         .input-inline-group { display: flex; gap: 10px; max-width: 400px; }
-        .input-inline-group input, .input-inline-group select { flex: 1; padding: 10px 14px; border-radius: 10px; border: 1px solid var(--card-border); background: #ffffff; font-size: 0.88rem; outline: none; }
-        .inline-check-btn { background: var(--accent-cyan); color: #fff; border: none; padding: 10px 18px; border-radius: 10px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: 0.3s; }
+        .input-inline-group input, .input-inline-group select {
+            flex: 1; padding: 10px 14px; border-radius: 10px; border: 1px solid var(--card-border);
+            background: #ffffff; font-size: 0.88rem; outline: none;
+        }
+        .inline-check-btn {
+            background: var(--accent-cyan); color: #fff; border: none; padding: 10px 18px;
+            border-radius: 10px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: 0.3s;
+        }
         .inline-check-btn:hover { background: #0274b3; }
+        
         .eligibility-status-msg { margin-top: 12px; font-size: 0.86rem; font-weight: 500; display: none; line-height: 1.5; }
         .eligibility-status-msg.pass { color: var(--accent-cyan); font-weight: 600; }
         .eligibility-status-msg.fail { color: var(--accent-red); }
+        
+        .counselor-fail-btn {
+            display: inline-flex; align-items: center; gap: 8px; margin-top: 10px;
+            background: var(--accent-green); color: #fff; text-decoration: none;
+            padding: 8px 16px; border-radius: 12px; font-size: 0.82rem; font-weight: 600;
+        }
 
         /* ACCORDION EXPANDABLE STYLES FOR SCREEN 2 (10TH) */
         .accordion-container { display: flex; flex-direction: column; gap: 16px; margin-top: 20px; }
-        .accordion-item { border: 1px solid var(--card-border); border-radius: 16px; overflow: hidden; background: #ffffff; transition: 0.3s ease; }
-        .accordion-header { padding: 20px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; background: #ffffff; user-select: none; transition: 0.3s; }
+        
+        .accordion-item {
+            border: 1px solid var(--card-border); border-radius: 16px; overflow: hidden;
+            background: #ffffff; transition: 0.3s ease;
+        }
+        .accordion-header {
+            padding: 20px; display: flex; justify-content: space-between; align-items: center;
+            cursor: pointer; background: #ffffff; user-select: none; transition: 0.3s;
+        }
         .accordion-header:hover { background: rgba(0, 0, 0, 0.015); }
         .header-title-box { display: flex; align-items: center; gap: 12px; }
         .header-title-box i { font-size: 1.3rem; color: var(--accent-cyan); }
         .header-title-box h3 { font-size: 1.05rem; font-weight: 600; }
         .header-title-box p { font-size: 0.82rem; color: var(--text-sub); margin-top: 2px; }
         .accordion-arrow { font-size: 1rem; color: var(--text-sub); transition: transform 0.3s ease; }
+        
         .accordion-item.active .accordion-arrow { transform: rotate(180deg); color: var(--accent-cyan); }
         .accordion-item.active { border-color: var(--accent-cyan); box-shadow: 0 4px 16px rgba(2, 132, 199, 0.08); }
-        .accordion-content { display: none; padding: 0 20px 20px 20px; border-top: 1px solid var(--card-border); background: #fafafa; }
+
+        .accordion-content {
+            display: none; padding: 0 20px 20px 20px; border-top: 1px solid var(--card-border);
+            background: #fafafa;
+        }
         
+        /* SUB-CATEGORY CARDS */
         .sub-category-list { margin-top: 15px; display: flex; flex-direction: column; gap: 14px; }
-        .sub-category-card { background: #ffffff; border: 1px solid var(--card-border); border-radius: 12px; padding: 18px; }
+        .sub-category-card {
+            background: #ffffff; border: 1px solid var(--card-border); border-radius: 12px; padding: 18px;
+        }
         .sub-category-card h4 { font-size: 0.98rem; font-weight: 600; color: var(--text-main); margin-bottom: 6px; }
         .sub-category-card p { font-size: 0.84rem; color: var(--text-sub); line-height: 1.4; margin-bottom: 12px; }
+        
         .high-paid-title { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--accent-amber); letter-spacing: 0.3px; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+
         .outcome-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
-        .outcome-tag { background: rgba(217, 119, 6, 0.08); color: #b45309; font-size: 0.78rem; padding: 5px 12px; border-radius: 12px; font-weight: 600; border: 1px solid rgba(217, 119, 6, 0.15); }
-        .select-track-action-btn { background: rgba(2, 132, 199, 0.08); color: var(--accent-cyan); border: 1px solid rgba(2, 132, 199, 0.2); padding: 9px 18px; border-radius: 10px; font-size: 0.84rem; font-weight: 600; cursor: pointer; transition: 0.3s; display: inline-flex; align-items: center; gap: 6px; }
+        .outcome-tag {
+            background: rgba(217, 119, 6, 0.08); color: #b45309; font-size: 0.78rem;
+            padding: 5px 12px; border-radius: 12px; font-weight: 600; border: 1px solid rgba(217, 119, 6, 0.15);
+        }
+
+        .select-track-action-btn {
+            background: rgba(2, 132, 199, 0.08); color: var(--accent-cyan); border: 1px solid rgba(2, 132, 199, 0.2);
+            padding: 9px 18px; border-radius: 10px; font-size: 0.84rem; font-weight: 600; cursor: pointer;
+            transition: 0.3s; display: inline-flex; align-items: center; gap: 6px;
+        }
         .select-track-action-btn:hover { background: var(--accent-cyan); color: #ffffff; }
 
-        /* FORM ELEMENTS & GROUPS */
+        /* STREAM SELECTION CARDS (FOR 12TH, ITI, DIPLOMA SCREEN) */
         .stream-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 25px; }
-        .stream-card { background: #ffffff; border: 2px solid var(--card-border); border-radius: 16px; padding: 18px; cursor: pointer; text-align: center; transition: 0.3s ease; }
+        .stream-card {
+            background: #ffffff; border: 2px solid var(--card-border); border-radius: 16px;
+            padding: 18px; cursor: pointer; text-align: center; transition: 0.3s ease;
+        }
         .stream-card i { font-size: 1.5rem; color: var(--text-sub); margin-bottom: 8px; display: block; }
         .stream-card h4 { font-size: 0.95rem; font-weight: 600; }
         .stream-card p { font-size: 0.78rem; color: var(--text-sub); margin-top: 4px; }
         .stream-card.selected { border-color: var(--accent-cyan); background: rgba(2, 132, 199, 0.04); }
         .stream-card.selected i { color: var(--accent-cyan); }
 
+        /* FORM ELEMENTS & GROUPS */
         .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 25px; }
         @media (max-width: 650px) { .form-grid { grid-template-columns: 1fr; } }
+
         .form-group { margin-bottom: 20px; }
         .form-group label { display: block; font-size: 0.88rem; font-weight: 600; color: var(--text-main); margin-bottom: 8px; }
-        .form-group input, .form-group select { width: 100%; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--card-border); background: #ffffff; font-size: 0.9rem; color: var(--text-main); outline: none; transition: 0.3s; }
-        .form-group input:focus, .form-group select:focus { border-color: var(--accent-cyan); box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15); }
+        .form-group input, .form-group select {
+            width: 100%; padding: 12px 14px; border-radius: 12px;
+            border: 1px solid var(--card-border); background: #ffffff;
+            font-size: 0.9rem; color: var(--text-main); outline: none; transition: 0.3s;
+        }
+        .form-group input:focus, .form-group select:focus {
+            border-color: var(--accent-cyan); box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+        }
 
         .score-toggle-group { display: flex; gap: 10px; margin-bottom: 12px; }
-        .score-toggle-btn { flex: 1; padding: 8px; border: 1px solid var(--card-border); background: #ffffff; border-radius: 8px; font-size: 0.82rem; font-weight: 600; cursor: pointer; text-align: center; }
+        .score-toggle-btn {
+            flex: 1; padding: 8px; border: 1px solid var(--card-border); background: #ffffff;
+            border-radius: 8px; font-size: 0.82rem; font-weight: 600; cursor: pointer; text-align: center;
+        }
         .score-toggle-btn.active { background: var(--accent-cyan); color: #fff; border-color: var(--accent-cyan); }
 
-        .action-btn-main { width: 100%; background: var(--accent-green); color: #fff; border: none; padding: 15px; border-radius: 14px; font-weight: 600; font-size: 0.98rem; cursor: pointer; transition: 0.3s; text-align: center; display: flex; justify-content: center; align-items: center; gap: 8px; }
+        .action-btn-main {
+            width: 100%; background: var(--accent-green); color: #fff; border: none;
+            padding: 15px; border-radius: 14px; font-weight: 600; font-size: 0.98rem;
+            cursor: pointer; transition: 0.3s; text-align: center; display: flex; justify-content: center; align-items: center; gap: 8px;
+        }
         .action-btn-main:hover { background: #1eb954; }
-        .info-callout-box { background: rgba(2, 132, 199, 0.06); border: 1px solid rgba(2, 132, 199, 0.2); border-radius: 12px; padding: 14px; margin-top: 10px; font-size: 0.85rem; color: var(--text-main); display: none; line-height: 1.5; }
+
+        .info-callout-box {
+            background: rgba(2, 132, 199, 0.06); border: 1px solid rgba(2, 132, 199, 0.2);
+            border-radius: 12px; padding: 14px; margin-top: 10px; font-size: 0.85rem; color: var(--text-main);
+            display: none; line-height: 1.5;
+        }
         .info-callout-box i { color: var(--accent-cyan); margin-right: 6px; }
 
-        .bottom-confusion-banner { background: linear-gradient(135deg, rgba(2, 132, 199, 0.06), rgba(37, 211, 102, 0.08)); border: 1px solid rgba(2, 132, 199, 0.2); border-radius: 18px; padding: 24px; margin-top: 35px; text-align: center; }
+        /* BOTTOM CONFUSION COUNSELOR BANNER */
+        .bottom-confusion-banner {
+            background: linear-gradient(135deg, rgba(2, 132, 199, 0.06), rgba(37, 211, 102, 0.08));
+            border: 1px solid rgba(2, 132, 199, 0.2); border-radius: 18px;
+            padding: 24px; margin-top: 35px; text-align: center;
+        }
         .bottom-confusion-banner h3 { font-size: 1.1rem; font-weight: 700; color: var(--text-main); margin-bottom: 6px; }
         .bottom-confusion-banner p { font-size: 0.86rem; color: var(--text-sub); margin-bottom: 16px; max-width: 600px; margin-left: auto; margin-right: auto; }
-        .banner-counselor-btn { background: var(--accent-green); color: #ffffff; text-decoration: none; padding: 12px 24px; border-radius: 20px; font-size: 0.9rem; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s; box-shadow: 0 4px 14px rgba(37, 211, 102, 0.25); }
+        .banner-counselor-btn {
+            background: var(--accent-green); color: #ffffff; text-decoration: none;
+            padding: 12px 24px; border-radius: 20px; font-size: 0.9rem; font-weight: 600;
+            display: inline-flex; align-items: center; gap: 8px; transition: 0.3s;
+            box-shadow: 0 4px 14px rgba(37, 211, 102, 0.25);
+        }
         .banner-counselor-btn:hover { background: #1eb954; transform: translateY(-2px); }
 
         /* SCREEN 3: COLLEGE RESULTS & FILTER SYSTEM */
-        .results-header-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; flex-wrap: wrap; gap: 15px; }
-        .filter-btn-trigger { background: #ffffff; border: 1px solid var(--card-border); padding: 10px 18px; border-radius: 12px; font-size: 0.88rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: 0.3s; }
+        .results-header-bar {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 25px; flex-wrap: wrap; gap: 15px;
+        }
+        .filter-btn-trigger {
+            background: #ffffff; border: 1px solid var(--card-border);
+            padding: 10px 18px; border-radius: 12px; font-size: 0.88rem; font-weight: 600;
+            cursor: pointer; display: flex; align-items: center; gap: 8px; transition: 0.3s;
+        }
         .filter-btn-trigger:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); }
-        .filter-drawer { display: none; background: #ffffff; border: 1px solid var(--card-border); border-radius: 16px; padding: 20px; margin-bottom: 25px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+
+        .filter-drawer {
+            display: none; background: #ffffff; border: 1px solid var(--card-border);
+            border-radius: 16px; padding: 20px; margin-bottom: 25px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;
+        }
         .filter-drawer.active { display: grid; }
+
         .college-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .college-card { background: #ffffff; border: 1px solid var(--card-border); border-radius: 18px; padding: 22px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 16px rgba(0,0,0,0.02); transition: 0.3s; }
+        .college-card {
+            background: #ffffff; border: 1px solid var(--card-border); border-radius: 18px;
+            padding: 22px; display: flex; flex-direction: column; justify-content: space-between;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.02); transition: 0.3s;
+        }
         .college-card:hover { transform: translateY(-4px); border-color: var(--accent-cyan); box-shadow: 0 12px 30px rgba(0,0,0,0.06); }
         .college-card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
         .college-card h3 { font-size: 1.1rem; font-weight: 700; color: var(--text-main); margin-bottom: 4px; }
         .college-location { font-size: 0.82rem; color: var(--text-sub); display: flex; align-items: center; gap: 5px; }
         .star-rating { color: #f59e0b; font-size: 0.82rem; }
-        .match-badge { background: rgba(37, 211, 102, 0.1); color: #15803d; font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 12px; display: inline-block; margin-bottom: 15px; }
-        .college-apply-btn { background: var(--accent-cyan); color: #ffffff; border: none; padding: 10px; border-radius: 10px; font-weight: 600; font-size: 0.88rem; cursor: pointer; transition: 0.3s; text-align: center; width: 100%; margin-top: 15px; }
+        .match-badge {
+            background: rgba(37, 211, 102, 0.1); color: #15803d; font-size: 0.75rem;
+            font-weight: 700; padding: 4px 10px; border-radius: 12px; display: inline-block; margin-bottom: 15px;
+        }
+        .college-apply-btn {
+            background: var(--accent-cyan); color: #ffffff; border: none; padding: 10px;
+            border-radius: 10px; font-weight: 600; font-size: 0.88rem; cursor: pointer; transition: 0.3s;
+            text-align: center; width: 100%; margin-top: 15px;
+        }
         .college-apply-btn:hover { background: #0274b3; }
 
         footer { text-align: center; padding: 35px 8%; border-top: 1px solid var(--card-border); color: var(--text-sub); font-size: 0.85rem; }
@@ -263,6 +353,7 @@
                         </text>
                     </svg>
                 </div>
+
                 <div class="hero-graphic-wrapper">
                     <img src="hero.png" alt="IA Educational Services Hero Graphic">
                 </div>
@@ -292,71 +383,71 @@
 
         <section class="roadmap-section">
             <div class="section-header">
-                <h2>Interactive Academic Pathways</h2>
-                <p>Click any professional stream below to view its complete career roadmap & entrance strategy.</p>
+                <h2>Academic Pathways</h2>
+                <p>Explore structured journeys tailored to your chosen specialization.</p>
             </div>
 
             <div class="image-card-grid">
-                <div class="image-card" onclick="openRoadmapCategory('engineering')">
+                <div class="image-card">
                     <div class="card-img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" alt="Engineering">
+                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80" alt="University Degree Students">
                     </div>
                     <div class="card-body">
-                        <span class="card-tag">Tech & Systems</span>
-                        <h3>Engineering & Technology</h3>
-                        <p>Explore CSE, AI, Data Science, AME, Mechanical & Robotics roadmaps.</p>
+                        <span class="card-tag">Degree Stream</span>
+                        <h3>University & Degree Programs</h3>
+                        <p>Optimized stream selection and entrance exam roadmaps for top university programs.</p>
                         <ul class="roadmap-list">
-                            <li><i class="fa-solid fa-check"></i> Computer Science & AI Blueprints</li>
-                            <li><i class="fa-solid fa-check"></i> Aircraft Maintenance Engineering</li>
-                            <li><i class="fa-solid fa-check"></i> Indian & Global Salary Maps</li>
+                            <li><i class="fa-solid fa-check"></i> Subject Choice Optimization</li>
+                            <li><i class="fa-solid fa-check"></i> Entrance Exam Strategy</li>
+                            <li><i class="fa-solid fa-check"></i> Degree to Profession Mapping</li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="image-card" onclick="openRoadmapCategory('medical')">
+                <div class="image-card">
                     <div class="card-img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80" alt="Medical">
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80" alt="Doctor with Diagnostic Equipment">
                     </div>
                     <div class="card-body">
-                        <span class="card-tag">Healthcare Stream</span>
+                        <span class="card-tag">Medical Stream</span>
                         <h3>Medical & Health Sciences</h3>
-                        <p>Clinical medicine, MBBS, Radiology, Diagnostics, and B.Pharm tracks.</p>
+                        <p>Guidance spanning clinical medicine, radiology tech, diagnostic systems, and allied health.</p>
                         <ul class="roadmap-list">
-                            <li><i class="fa-solid fa-check"></i> NEET & Clinical Specializations</li>
-                            <li><i class="fa-solid fa-check"></i> Allied Health Tech Pathways</li>
-                            <li><i class="fa-solid fa-check"></i> Licensing & Hospital Pay Scales</li>
+                            <li><i class="fa-solid fa-check"></i> Entrance & Seat Allocation Advisory</li>
+                            <li><i class="fa-solid fa-check"></i> Diagnostic Machinery Specializations</li>
+                            <li><i class="fa-solid fa-check"></i> Healthcare Technology Careers</li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="image-card" onclick="openRoadmapCategory('management')">
+                <div class="image-card">
                     <div class="card-img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80" alt="Management">
+                        <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" alt="Engineer with Mechanism Gears">
                     </div>
                     <div class="card-body">
-                        <span class="card-tag">Business Stream</span>
-                        <h3>Management & Corporate Law</h3>
-                        <p>Integrated BBA-MBA, Corporate Law, Investment Banking & CA tracks.</p>
+                        <span class="card-tag">Engineering Stream</span>
+                        <h3>Engineering & Mechanism Systems</h3>
+                        <p>Roadmaps covering mechanical systems, aeronautical design, robotics, and industrial automation.</p>
                         <ul class="roadmap-list">
-                            <li><i class="fa-solid fa-check"></i> IPMAT & CAT Strategy</li>
-                            <li><i class="fa-solid fa-check"></i> CLAT Corporate Law Blueprints</li>
-                            <li><i class="fa-solid fa-check"></i> Executive & Global Pay Tiers</li>
+                            <li><i class="fa-solid fa-check"></i> Aerospace & Aeronautical Streams</li>
+                            <li><i class="fa-solid fa-check"></i> Industrial Gears & Heavy Systems</li>
+                            <li><i class="fa-solid fa-check"></i> Automation & Mechatronics</li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="image-card" onclick="openRoadmapCategory('diploma_iti')">
+                <div class="image-card">
                     <div class="card-img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80" alt="Diploma & ITI">
+                        <img src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80" alt="Technical Workshop">
                     </div>
                     <div class="card-body">
-                        <span class="card-tag">Direct Practical</span>
-                        <h3>Polytechnic & Trade Advancements</h3>
-                        <p>Direct 2nd-Year B.Tech lateral entry, CITS, and NSTI certifications.</p>
+                        <span class="card-tag">Diploma & ITI</span>
+                        <h3>Polytechnic & Direct Entry</h3>
+                        <p>Fast-track practical pathways and direct lateral entry into second-year engineering degrees.</p>
                         <ul class="roadmap-list">
-                            <li><i class="fa-solid fa-check"></i> DSE B.Tech Lateral Entry</li>
-                            <li><i class="fa-solid fa-check"></i> Government PSU Junior Engineer</li>
-                            <li><i class="fa-solid fa-check"></i> Practical Skill Certifications</li>
+                            <li><i class="fa-solid fa-check"></i> 2nd-Year B.Tech Lateral Entry</li>
+                            <li><i class="fa-solid fa-check"></i> Technical Industry Certifications</li>
+                            <li><i class="fa-solid fa-check"></i> Early Career Placement</li>
                         </ul>
                     </div>
                 </div>
@@ -364,35 +455,6 @@
         </section>
     </div>
 
-    <!-- ROADMAP DISPLAY MODAL SCREEN -->
-    <div id="details-screen-roadmap">
-        <div class="screen-top-bar">
-            <button class="back-btn" onclick="goToHomeScreen()">
-                <i class="fa-solid fa-arrow-left"></i> Back to Main Menu
-            </button>
-        </div>
-
-        <div class="details-card">
-            <div class="screen-title-badge" id="roadmap-domain-badge">
-                <i class="fa-solid fa-compass"></i> Career Blueprint Explorer
-            </div>
-            <h2 id="roadmap-main-title">Select a Branch to View Complete Career Blueprint</h2>
-            
-            <div class="roadmap-branch-selector" id="roadmap-branch-selector">
-                <!-- Branch Chips Injected Dynamically -->
-            </div>
-
-            <div id="blueprint-content-container">
-                <!-- Blueprint Content Injected Dynamically -->
-            </div>
-
-            <button class="action-btn-main" onclick="proceedFromRoadmapToColleges()" style="margin-top:20px;">
-                <i class="fa-solid fa-magnifying-glass-location"></i> Check Eligible Colleges & Cutoffs For This Branch
-            </button>
-        </div>
-    </div>
-
-    <!-- EXISTING 10TH DETAILS SCREEN -->
     <div id="details-screen-10th">
         <div class="screen-top-bar">
             <button class="back-btn" onclick="goToHomeScreen()">
@@ -442,9 +504,10 @@
                                     <span class="outcome-tag">AI & Software Architect ($$$$)</span>
                                     <span class="outcome-tag">Commercial Pilot & Aviation ($$$$)</span>
                                     <span class="outcome-tag">Aircraft Maintenance Engineer ($$$)</span>
+                                    <span class="outcome-tag">Biotechnology & Research ($$$)</span>
                                 </div>
-                                <button class="select-track-action-btn" onclick="openScreen2('12th')">
-                                    Select & Proceed to 12th Stream Entrance Check <i class="fa-solid fa-arrow-right"></i>
+                                <button class="select-track-action-btn" onclick="goToApplyScreen('11th/12th Science')">
+                                    Select & Apply to Colleges <i class="fa-solid fa-arrow-right"></i>
                                 </button>
                             </div>
                         </div>
@@ -472,9 +535,40 @@
                                     <span class="outcome-tag">Chartered Accountant (CA) ($$$$)</span>
                                     <span class="outcome-tag">Investment Banker ($$$$)</span>
                                     <span class="outcome-tag">Company Secretary (CS) ($$$$)</span>
+                                    <span class="outcome-tag">Product & Brand Manager ($$$)</span>
                                 </div>
-                                <button class="select-track-action-btn" onclick="openScreen2('12th')">
-                                    Select & Proceed to 12th Entrance Check <i class="fa-solid fa-arrow-right"></i>
+                                <button class="select-track-action-btn" onclick="goToApplyScreen('11th/12th Commerce')">
+                                    Select & Apply to Colleges <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <div class="header-title-box">
+                            <i class="fa-solid fa-scale-balanced"></i>
+                            <div>
+                                <h3>Arts & Humanities (11th & 12th)</h3>
+                                <p>Legal systems, civil service administration, media, and design.</p>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-chevron-down accordion-arrow"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="sub-category-list">
+                            <div class="sub-category-card">
+                                <h4>Humanities & Governance</h4>
+                                <p>Foundation for public service, judiciary, high-level corporate law, media strategy, and UX design.</p>
+                                <div class="high-paid-title"><i class="fa-solid fa-sack-dollar"></i> Top High-Paying Career Goals:</div>
+                                <div class="outcome-tags">
+                                    <span class="outcome-tag">Corporate & Cyber Lawyer ($$$$)</span>
+                                    <span class="outcome-tag">Civil Services Officer (UPSC) ($$$$)</span>
+                                    <span class="outcome-tag">UX/UI Product Designer ($$$)</span>
+                                </div>
+                                <button class="select-track-action-btn" onclick="goToApplyScreen('11th/12th Arts')">
+                                    Select & Apply to Colleges <i class="fa-solid fa-arrow-right"></i>
                                 </button>
                             </div>
                         </div>
@@ -497,18 +591,59 @@
                             <div class="sub-category-card">
                                 <h4>Engineering & Technology Diploma</h4>
                                 <p>Accelerated practical route providing early industry jobs or direct 2nd-year B.Tech entry.</p>
-                                <button class="select-track-action-btn" onclick="openScreen2('Diploma')">
-                                    Select & Open Diploma Seat Calculator <i class="fa-solid fa-arrow-right"></i>
+                                <div class="high-paid-title"><i class="fa-solid fa-sack-dollar"></i> Top High-Paying Career Goals:</div>
+                                <div class="outcome-tags">
+                                    <span class="outcome-tag">Direct 2nd-Yr B.Tech Engineer ($$$$)</span>
+                                    <span class="outcome-tag">PSU / Railway Junior Engineer ($$$)</span>
+                                </div>
+                                <button class="select-track-action-btn" onclick="goToApplyScreen('Polytechnic Diploma')">
+                                    Select & Apply to Colleges <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <div class="header-title-box">
+                            <i class="fa-solid fa-wrench"></i>
+                            <div>
+                                <h3>Industrial Training Institutes (ITI Trades)</h3>
+                                <p>1 to 2-year practical skill training for early technical trade employment.</p>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-chevron-down accordion-arrow"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="sub-category-list">
+                            <div class="sub-category-card">
+                                <h4>Technical Trade Certifications</h4>
+                                <p>Job-ready technical skill tracks for immediate industrial employment or government trade posts.</p>
+                                <div class="high-paid-title"><i class="fa-solid fa-sack-dollar"></i> Top High-Paying Career Goals:</div>
+                                <div class="outcome-tags">
+                                    <span class="outcome-tag">Industrial Automation Technician ($$)</span>
+                                    <span class="outcome-tag">Government Railways Trade Specialist ($$)</span>
+                                </div>
+                                <button class="select-track-action-btn" onclick="goToApplyScreen('ITI Vocational Trade')">
+                                    Select & Apply to Colleges <i class="fa-solid fa-arrow-right"></i>
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <div class="bottom-confusion-banner">
+                <h3>Confused About Which Stream to Select?</h3>
+                <p>Choosing between Science, Commerce, Arts, or Diploma can feel overwhelming. Get personalized 1-on-1 guidance from our expert counseling team before locking in your choice.</p>
+                <a href="https://wa.me/919822206864?text=Hello%20Counselor,%20I%20am%20confused%20about%20which%20stream%20to%20select%20after%2010th.%20Please%20guide%20me." target="_blank" class="banner-counselor-btn">
+                    <i class="fa-brands fa-whatsapp"></i> Connect with an Expert Counselor
+                </a>
+            </div>
         </div>
     </div>
 
-    <!-- EXISTING 12TH DETAILS SCREEN -->
     <div id="details-screen-12th">
         <div class="screen-top-bar">
             <button class="back-btn" onclick="goToHomeScreen()">
@@ -571,6 +706,7 @@
                     <option value="SC">SC</option>
                     <option value="ST">ST</option>
                     <option value="EWS">EWS</option>
+                    <option value="NT/VJ">NT / VJ / DT</option>
                     <option value="TFWS">TFWS (Tuition Fee Waiver)</option>
                 </select>
             </div>
@@ -578,10 +714,17 @@
             <button class="action-btn-main" onclick="checkEligibleColleges12th()">
                 <i class="fa-solid fa-magnifying-glass-location"></i> Check Eligible Colleges
             </button>
+
+            <div class="bottom-confusion-banner">
+                <h3>Confused About Which Degree or College to Select?</h3>
+                <p>Navigating CAP rounds, entrance cutoffs, and seat matrixes can be complex. Speak directly to our senior academic counselor for direct admission clarity.</p>
+                <a href="https://wa.me/919822206864?text=Hello%20Counselor,%20I%20completed%2012th%20and%20need%20guidance%20on%20entrance%20exams%20and%20college%20allotments." target="_blank" class="banner-counselor-btn">
+                    <i class="fa-brands fa-whatsapp"></i> Connect with an Expert Counselor
+                </a>
+            </div>
         </div>
     </div>
 
-    <!-- EXISTING ITI DETAILS SCREEN -->
     <div id="details-screen-iti">
         <div class="screen-top-bar">
             <button class="back-btn" onclick="goToHomeScreen()">
@@ -594,6 +737,9 @@
                 <i class="fa-solid fa-wrench"></i> Path: After ITI Vocational Trades
             </div>
             <h2>Further Education & Admission Allotment</h2>
+            <p style="color: var(--text-sub); font-size: 0.9rem; margin-bottom: 25px;">
+                Select your completed ITI trade and target education track to discover eligible institute admissions.
+            </p>
 
             <div class="form-group">
                 <label>1. Select Your Pursued ITI Trade</label>
@@ -601,24 +747,75 @@
                     <option value="">-- Choose Your ITI Trade --</option>
                     <option value="Electrician" data-duration="2">Electrician (2-Year Trade)</option>
                     <option value="Fitter" data-duration="2">Fitter (2-Year Trade)</option>
+                    <option value="Turner" data-duration="2">Turner (2-Year Trade)</option>
                     <option value="COPA" data-duration="1">COPA - Computer Operator (1-Year Trade)</option>
+                    <option value="Draughtsman Civil" data-duration="2">Draughtsman Civil (2-Year Trade)</option>
                     <option value="Draughtsman Mechanical" data-duration="2">Draughtsman Mechanical (2-Year Trade)</option>
+                    <option value="Welder" data-duration="1">Welder (1-Year Trade)</option>
+                    <option value="Mechanic Motor Vehicle" data-duration="2">Mechanic Motor Vehicle (2-Year Trade)</option>
+                    <option value="Electronics Mechanic" data-duration="2">Electronics Mechanic (2-Year Trade)</option>
+                    <option value="Plumber" data-duration="1">Plumber (1-Year Trade)</option>
+                    <option value="Other">Other Specialized ITI Trade</option>
                 </select>
                 <div id="trade-info-msg" class="info-callout-box"></div>
             </div>
 
             <div class="form-group">
-                <label>2. Enter Your Aggregate ITI Percentage (%)</label>
+                <label>2. Select Target Further Education Track</label>
+                <div class="stream-grid">
+                    <div class="stream-card" id="iti-path-diploma" onclick="selectItiPathway('Direct 2nd-Year Diploma', this)">
+                        <i class="fa-solid fa-diagram-next"></i>
+                        <h4>Direct 2nd-Yr Diploma</h4>
+                        <p>Polytechnic Lateral Entry</p>
+                    </div>
+                    <div class="stream-card" id="iti-path-cits" onclick="selectItiPathway('CITS Instructor Training', this)">
+                        <i class="fa-solid fa-chalkboard-user"></i>
+                        <h4>CITS (CTI Training)</h4>
+                        <p>Become ITI Instructor</p>
+                    </div>
+                    <div class="stream-card" id="iti-path-nsti" onclick="selectItiPathway('Advanced NSTI Diploma', this)">
+                        <i class="fa-solid fa-microchip"></i>
+                        <h4>Advanced Skill Diploma</h4>
+                        <p>CNC / Automation / Cyber</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group" id="cits-exam-group" style="display: none;">
+                <label>3. AICET (CITS Entrance Exam) Score / Percentile</label>
+                <input type="number" id="cits-exam-score" placeholder="Enter AICET score e.g. 74" min="1" max="100">
+            </div>
+
+            <div class="form-group">
+                <label id="iti-marks-label">3. Enter Your Aggregate ITI Percentage (%)</label>
                 <input type="number" id="user-iti-marks" placeholder="Enter ITI Percentage e.g. 82.5" step="0.01" min="1" max="100">
             </div>
 
+            <div class="form-group">
+                <label>4. Select Admission Category</label>
+                <select id="user-iti-category">
+                    <option value="OPEN">OPEN / General</option>
+                    <option value="OBC">OBC</option>
+                    <option value="SC">SC</option>
+                    <option value="ST">ST</option>
+                    <option value="EWS">EWS</option>
+                </select>
+            </div>
+
             <button class="action-btn-main" onclick="checkEligibleCollegesIti()">
-                <i class="fa-solid fa-magnifying-glass-location"></i> Check Eligible ITI Allotments
+                <i class="fa-solid fa-magnifying-glass-location"></i> Check Eligible ITI Allotments & Colleges
             </button>
+
+            <div class="bottom-confusion-banner">
+                <h3>Confused About Your ITI Career Route?</h3>
+                <p>Unsure whether to take Lateral Entry Diploma, CITS, or Apprenticeships? Speak with our skill training counselors for direct support.</p>
+                <a href="https://wa.me/919822206864?text=Hello%20Counselor,%20I%20have%20completed%20ITI%20and%20need%20guidance%20on%20further%20education%20admissions." target="_blank" class="banner-counselor-btn">
+                    <i class="fa-brands fa-whatsapp"></i> Connect with an Expert Counselor
+                </a>
+            </div>
         </div>
     </div>
 
-    <!-- EXISTING DIPLOMA DETAILS SCREEN -->
     <div id="details-screen-diploma">
         <div class="screen-top-bar">
             <button class="back-btn" onclick="goToHomeScreen()">
@@ -631,34 +828,112 @@
                 <i class="fa-solid fa-gears"></i> Path: Polytechnic Diploma Graduates
             </div>
             <h2>Further Degree Admissions & Allotment Search</h2>
+            <p style="color: var(--text-sub); font-size: 0.9rem; margin-bottom: 25px;">
+                Input your diploma stream, desired higher education target, and aggregate percentage to discover eligible colleges and lateral entry seat allotments.
+            </p>
 
             <div class="form-group">
                 <label>1. Select Your Completed Diploma Branch</label>
-                <select id="diploma-branch-selector">
+                <select id="diploma-branch-selector" onchange="handleDiplomaBranchChange(this.value)">
                     <option value="">-- Choose Your Branch --</option>
                     <option value="Mechanical Engineering">Mechanical Engineering</option>
                     <option value="Computer Science / IT">Computer Science / IT</option>
                     <option value="Civil Engineering">Civil Engineering</option>
                     <option value="Electrical Engineering">Electrical Engineering</option>
+                    <option value="Electronics & Telecommunication">Electronics & Telecommunication</option>
+                    <option value="Chemical Engineering">Chemical Engineering</option>
+                    <option value="Automobile Engineering">Automobile Engineering</option>
+                    <option value="Interior Design / Fashion / Architecture">Interior Design / Fashion / Architecture</option>
+                    <option value="Other Diploma Branch">Other Diploma Branch</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label>2. Enter Your Aggregate Diploma Percentage or CGPA (%)</label>
+                <label>2. Select Target Higher Degree / Further Pathway</label>
+                <div class="stream-grid">
+                    <div class="stream-card" id="dip-path-btech" onclick="selectDiplomaPathway('B.Tech Direct 2nd Year', this)">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        <h4>B.Tech / B.E. (Direct 2nd Yr)</h4>
+                        <p>Lateral Entry (DSE)</p>
+                    </div>
+                    <div class="stream-card" id="dip-path-bca" onclick="selectDiplomaPathway('BCA / B.Sc IT', this)">
+                        <i class="fa-solid fa-laptop-code"></i>
+                        <h4>BCA / B.Sc IT</h4>
+                        <p>Software & Tech Track</p>
+                    </div>
+                    <div class="stream-card" id="dip-path-bdes" onclick="selectDiplomaPathway('B.Des (Bachelor of Design)', this)">
+                        <i class="fa-solid fa-pen-nib"></i>
+                        <h4>B.Des (Design)</h4>
+                        <p>Fashion / Interior / UX</p>
+                    </div>
+                    <div class="stream-card" id="dip-path-bvoc" onclick="selectDiplomaPathway('B.Voc (Skill Degree)', this)">
+                        <i class="fa-solid fa-microchip"></i>
+                        <h4>B.Voc (Vocational Degree)</h4>
+                        <p>3-Yr Industry Skill Track</p>
+                    </div>
+                    <div class="stream-card" id="dip-path-bba" onclick="selectDiplomaPathway('BBA / BMS (Management)', this)">
+                        <i class="fa-solid fa-chart-line"></i>
+                        <h4>BBA / BMS</h4>
+                        <p>Business & Management</p>
+                    </div>
+                    <div class="stream-card" id="dip-path-job" onclick="selectDiplomaPathway('Government / Job Exams', this)">
+                        <i class="fa-solid fa-building-flag"></i>
+                        <h4>Govt Exams & Job Placement</h4>
+                        <p>SSC JE / RRB JE / Direct Placement</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>3. Entrance Exam Status / Mode of Admission</label>
+                <select id="diploma-exam-status" onchange="handleDiplomaExamStatusChange(this.value)">
+                    <option value="Direct Merit">Direct Merit Entry (Diploma Aggregate Percentage / CAP)</option>
+                    <option value="LEET State Exam">State Entrance Exam (LEET / DCET / ECET / JELET / OJEE)</option>
+                    <option value="CUET / IPU CET">CUET / University Specific Entrance Test</option>
+                    <option value="Design Entrance">Design Entrance (NID / NIFT / UCEED)</option>
+                </select>
+            </div>
+
+            <div class="form-group" id="diploma-exam-score-group" style="display: none;">
+                <label id="diploma-exam-score-label">Enter Entrance Exam Percentile / Rank</label>
+                <input type="number" id="user-diploma-exam-score" placeholder="e.g. 88.5" step="0.01" min="1" max="100">
+            </div>
+
+            <div class="form-group">
+                <label>4. Enter Your Aggregate Diploma Percentage or CGPA (%)</label>
                 <input type="number" id="user-diploma-marks" placeholder="Enter final diploma percentage e.g. 84.2" step="0.01" min="1" max="100">
             </div>
 
+            <div class="form-group">
+                <label>5. Select Admission Category</label>
+                <select id="user-diploma-category">
+                    <option value="OPEN">OPEN / General</option>
+                    <option value="OBC">OBC</option>
+                    <option value="SC">SC</option>
+                    <option value="ST">ST</option>
+                    <option value="EWS">EWS</option>
+                    <option value="TFWS">TFWS (Tuition Fee Waiver)</option>
+                </select>
+            </div>
+
             <button class="action-btn-main" onclick="checkEligibleCollegesDiploma()">
-                <i class="fa-solid fa-magnifying-glass-location"></i> Check Eligible Lateral Entry Seats
+                <i class="fa-solid fa-magnifying-glass-location"></i> Check Eligible Colleges & Allotment Pathways
             </button>
+
+            <div class="bottom-confusion-banner">
+                <h3>Confused About DSE / Lateral Entry & CAP Cutoffs?</h3>
+                <p>Direct 2nd-Year Engineering and specialized degree seats are highly competitive. Get personalized counseling on Option Form filling and allotment cutoffs.</p>
+                <a href="https://wa.me/919822206864?text=Hello%20Counselor,%20I%20completed%20my%20Diploma%20and%20need%20guidance%20on%20Direct%20Second%20Year%20B.Tech%20and%20other%20degree%20admissions." target="_blank" class="banner-counselor-btn">
+                    <i class="fa-brands fa-whatsapp"></i> Connect with an Expert Counselor
+                </a>
+            </div>
         </div>
     </div>
 
-    <!-- COLLEGE RESULTS SCREEN -->
     <div id="college-results-screen">
         <div class="screen-top-bar">
             <button class="back-btn" onclick="goBackToPreviousScreen()">
-                <i class="fa-solid fa-arrow-left"></i> Modify Selection
+                <i class="fa-solid fa-arrow-left"></i> Modify Selection & Marks
             </button>
         </div>
 
@@ -666,17 +941,47 @@
             <div class="results-header-bar">
                 <div>
                     <div class="screen-title-badge"><i class="fa-solid fa-building-columns"></i> Seat Allotment Search</div>
-                    <h2>Eligible Colleges & Recommended Pathways</h2>
+                    <h2>Eligible Colleges & Pathway Recommendations</h2>
+                </div>
+                <button class="filter-btn-trigger" onclick="toggleFilterDrawer()">
+                    <i class="fa-solid fa-sliders"></i> Filter Options <i class="fa-solid fa-chevron-down"></i>
+                </button>
+            </div>
+
+            <div class="filter-drawer" id="filter-drawer">
+                <div class="form-group" style="margin-bottom:0;">
+                    <label>Location Preference</label>
+                    <select id="filter-location" onchange="applyCollegeFilters()">
+                        <option value="All">All Locations (Global / National)</option>
+                        <option value="Maharashtra">Maharashtra / State Colleges</option>
+                        <option value="National">National (Pan-India)</option>
+                        <option value="International">International (Study Abroad)</option>
+                    </select>
+                </div>
+                <div class="form-group" style="margin-bottom:0;">
+                    <label>Institute Rating / Type</label>
+                    <select id="filter-rating" onchange="applyCollegeFilters()">
+                        <option value="All">All Ratings & Tiers</option>
+                        <option value="5">5-Star Premier Tier-1 / Govt</option>
+                        <option value="4">4-Star Top Autonomous / Deemed</option>
+                        <option value="3">3-Star Direct Allotment / Private</option>
+                    </select>
+                </div>
+                <div class="form-group" style="margin-bottom:0;">
+                    <label>Admission Mode</label>
+                    <select id="filter-mode" onchange="applyCollegeFilters()">
+                        <option value="All">All Admission Modes</option>
+                        <option value="Direct Merit">Direct Merit Entry</option>
+                        <option value="Entrance Exam">Entrance Exam Accepted</option>
+                    </select>
                 </div>
             </div>
 
             <div class="college-grid" id="college-grid-container">
-                <!-- Colleges populated dynamically -->
             </div>
         </div>
     </div>
 
-    <!-- APPLICATION SUBMISSION SCREEN -->
     <div id="apply-screen">
         <div class="screen-top-bar">
             <button class="back-btn" onclick="goToHomeScreen()">
@@ -686,9 +991,12 @@
 
         <div class="details-card">
             <div class="screen-title-badge" id="selected-track-badge">
-                <i class="fa-solid fa-paper-plane"></i> Direct Allotment Application
+                <i class="fa-solid fa-paper-plane"></i> Application
             </div>
-            <h2 id="apply-heading">Complete Application</h2>
+            <h2 id="apply-heading">Complete Application & Direct Seat Allotment</h2>
+            <p style="color: var(--text-sub); font-size: 0.9rem; margin-bottom: 25px;">
+                Enter location details and upload your marksheets to dispatch your direct admission form.
+            </p>
 
             <form onsubmit="handleFinalFormSubmit(event)">
                 <div class="form-grid">
@@ -702,11 +1010,11 @@
                     </div>
                     <div class="form-group">
                         <label>Preferred District / Location</label>
-                        <input type="text" id="target-location" required placeholder="e.g. Home District / City">
+                        <input type="text" id="target-location" required placeholder="e.g. Home District / Preferred City">
                     </div>
                     <div class="form-group">
                         <label>Target College Name</label>
-                        <input type="text" id="target-college" placeholder="Selected college name">
+                        <input type="text" id="target-college" placeholder="Selected college will populate here">
                     </div>
                 </div>
 
@@ -731,62 +1039,83 @@
         let selectedScoreType = 'Marks';
         let activeChosenTrack = '';
         let currentScreenStage = '';
-        let activeRoadmapCategory = '';
-        let activeSelectedBranchKey = '';
+        let chosenItiPathway = '';
+        let chosenDiplomaPathway = 'B.Tech Direct 2nd Year';
+        let currentActiveUserScore = 75;
 
-        // DYNAMIC ROADMAP BLUEPRINT DATA
-        const careerRoadmaps = {
-            "engineering_ame": {
-                domain: "Engineering & Tech",
-                title: "Aircraft Maintenance Engineering (AME)",
-                overview: "AMEs are licensed technical experts responsible for inspecting, repairing, and certifying aircraft airworthiness before takeoff.",
-                eligibility: "10+2 with Physics, Chemistry & Mathematics (min 50%) OR 3-year Diploma in Mechanical/Electronics.",
-                pathways: [
-                    "Path A (Fastest): 12th PCM -> DGCA Approved Institute (2 Yrs) -> Practical OJT (2 Yrs) -> Full DGCA License.",
-                    "Path B (Degree Route): 12th PCM -> B.Tech Aeronautical -> DGCA Module Papers -> Airline Apprenticeship."
-                ],
-                exams: ["AME CET", "DGCA Modular Papers (Modules 3, 6, 7, 11)", "EASA / FAA Conversion Papers"],
-                growth: "Trainee Technician -> Junior Engineer -> Licensed Certifying AME -> Chief Engineer / QA Director",
-                salaryIndia: { fresher: "₹3.6 - ₹6 Lakhs/yr", mid: "₹18 - ₹42 Lakhs/yr", peak: "₹1.2+ Crore/yr" },
-                salaryForeign: { fresher: "$50,000 USD/yr", mid: "$90,000 USD/yr", peak: "$180,000+ USD/yr (Tax-Free)" },
-                streamMapping: "Science PCM"
-            },
-            "engineering_cse": {
-                domain: "Engineering & Tech",
-                title: "Computer Science & Artificial Intelligence (CSE & AI)",
-                overview: "Core track focused on software engineering, machine learning algorithms, cloud architecture, and full-stack development.",
-                eligibility: "10+2 PCM (min 50%) OR Direct 2nd-Yr Diploma Entry.",
-                pathways: [
-                    "Direct Route: 12th PCM -> Entrance Exam -> 4-Year B.Tech CSE -> Tech Internships -> Software Architect.",
-                    "Lateral Entry: Polytechnic Diploma in CS -> Direct 2nd-Year B.Tech (DSE) -> Software Developer."
-                ],
-                exams: ["JEE Main / Advanced", "MHT-CET / State CETs", "BITSAT / CUET"],
-                growth: "Software Engineer -> Senior Developer -> Tech Lead -> Solutions Architect -> CTO",
-                salaryIndia: { fresher: "₹6 - ₹12 Lakhs/yr", mid: "₹24 - ₹48 Lakhs/yr", peak: "₹1.5+ Crore/yr" },
-                salaryForeign: { fresher: "$85,000 USD/yr", mid: "$150,000 USD/yr", peak: "$300,000+ USD/yr" },
-                streamMapping: "Science PCM"
-            },
-            "medical_mbbs": {
-                domain: "Medical Sciences",
-                title: "Clinical Medicine (MBBS / Specialist Physician)",
-                overview: "Primary medical track focusing on general medicine, clinical diagnostics, surgery, and specialized healthcare delivery.",
-                eligibility: "10+2 with Physics, Chemistry & Biology (PCB) with min 50% aggregate.",
-                pathways: [
-                    "Standard Route: 12th PCB -> Clear NEET-UG -> 4.5 Yrs MBBS + 1 Yr Internship -> NEET-PG -> MD/MS Specialization."
-                ],
-                exams: ["NEET-UG (Mandatory for India & Abroad)", "NXT / NEET-PG", "USMLE (USA) / PLAB (UK)"],
-                growth: "Junior Resident -> Assistant Surgeon -> Consultant Specialist -> Chief Medical Officer / Medical Director",
-                salaryIndia: { fresher: "₹7 - ₹12 Lakhs/yr", mid: "₹25 - ₹50 Lakhs/yr", peak: "₹1.5+ Crore/yr" },
-                salaryForeign: { fresher: "$70,000 USD/yr", mid: "$180,000 USD/yr", peak: "$350,000+ USD/yr" },
-                streamMapping: "Science PCB"
-            }
+        // DYNAMIC EXAM DATA BASED ON STRICT STREAM ELIGIBILITY
+        const examOptionsMap = {
+            'Science PCM': [
+                "JEE Main (Engineering & Arch)",
+                "MHT-CET / State CET (Engineering & Pharmacy)",
+                "NATA (Architecture)",
+                "NDA (National Defence Academy)",
+                "CLAT / Law Entrance (Law)",
+                "CA Foundation (Chartered Accountancy)",
+                "IPMAT / JIPMAT (Management BBA-MBA)",
+                "NIFT / NID (Design)",
+                "CUET (Central Universities)",
+                "UPSC Foundation / Civil Services Prep",
+                "Direct Board Marks (12th PCM)"
+            ],
+            'Science PCB': [
+                "NEET (MBBS, BDS, BAMS, BHMS)",
+                "Nursing & Paramedical Entrance",
+                "State Pharmacy Entrance (B.Pharm)",
+                "CLAT / Law Entrance (Law)",
+                "CA Foundation (Chartered Accountancy)",
+                "IPMAT / JIPMAT (Management)",
+                "NIFT / NID (Design)",
+                "CUET (Central Universities)",
+                "UPSC Foundation / Civil Services Prep",
+                "Direct Board Marks (12th PCB)"
+            ],
+            'Commerce': [
+                "CA Foundation (Chartered Accountancy)",
+                "CSEET (Company Secretary)",
+                "IPMAT / JIPMAT (Management BBA-MBA)",
+                "CLAT / Law Entrance (Law)",
+                "NIFT / NID (Design)",
+                "CUET (Commerce & Economics)",
+                "UPSC Foundation / Civil Services Prep",
+                "Direct Board Marks (12th Commerce)"
+            ],
+            'Arts': [
+                "CLAT / Law Entrance (5-Yr Integrated Law)",
+                "NIFT / NID (Fashion & UX Design)",
+                "NCHMCT JEE (Hotel Management)",
+                "CUET (Arts, Humanities & Media)",
+                "UPSC Foundation / Civil Services Prep",
+                "Direct Board Marks (12th Arts)"
+            ]
         };
 
+        // MOCK GLOBAL COLLEGE DATABASE (INCLUDES DIPLOMA & HIGHER DEGREE TARGETS)
         const collegeDatabase = [
-            { name: "COEP Technological University", location: "Maharashtra", rating: 5, minCutoff: 90, stream: "Science PCM", mode: "Entrance Exam" },
-            { name: "VJTI Mumbai", location: "Maharashtra", rating: 5, minCutoff: 92, stream: "Science PCM", mode: "Entrance Exam" },
-            { name: "Government Medical College (GMC)", location: "Maharashtra", rating: 5, minCutoff: 95, stream: "Science PCB", mode: "Entrance Exam" },
-            { name: "Aero Training Institute (DGCA)", location: "National", rating: 4, minCutoff: 65, stream: "Science PCM", mode: "Direct Merit" }
+            { name: "COEP Technological University (Lateral Entry)", location: "Maharashtra", rating: 5, minCutoff: 90, stream: "Diploma", pathway: "B.Tech Direct 2nd Year", mode: "Direct Merit" },
+            { name: "VJTI Mumbai (Direct Second Year B.Tech)", location: "Maharashtra", rating: 5, minCutoff: 92, stream: "Diploma", pathway: "B.Tech Direct 2nd Year", mode: "Direct Merit" },
+            { name: "MIT World Peace University (DSE Engineering)", location: "Maharashtra", rating: 4, minCutoff: 72, stream: "Diploma", pathway: "B.Tech Direct 2nd Year", mode: "Direct Merit" },
+            { name: "Lovely Professional University (LPU Direct B.Tech / B.Des)", location: "National", rating: 4, minCutoff: 60, stream: "Diploma", pathway: "B.Tech Direct 2nd Year", mode: "Direct Merit" },
+            { name: "Chandigarh University (Lateral Entry B.Tech / BCA)", location: "National", rating: 4, minCutoff: 60, stream: "Diploma", pathway: "B.Tech Direct 2nd Year", mode: "Direct Merit" },
+            { name: "DTU / NSUT Delhi (LEET Entrance)", location: "National", rating: 5, minCutoff: 80, stream: "Diploma", pathway: "B.Tech Direct 2nd Year", mode: "Entrance Exam" },
+            { name: "National Institute of Design (NID - B.Des)", location: "National", rating: 5, minCutoff: 75, stream: "Diploma", pathway: "B.Des (Bachelor of Design)", mode: "Entrance Exam" },
+            { name: "Symbiosis Institute of Design (B.Des)", location: "National", rating: 4, minCutoff: 65, stream: "Diploma", pathway: "B.Des (Bachelor of Design)", mode: "Direct Merit" },
+            { name: "Tata Institute of Social Sciences (B.Voc Degree)", location: "Maharashtra", rating: 5, minCutoff: 60, stream: "Diploma", pathway: "B.Voc (Skill Degree)", mode: "Direct Merit" },
+            { name: "Government Skill University (B.Voc Technical)", location: "Maharashtra", rating: 4, minCutoff: 55, stream: "Diploma", pathway: "B.Voc (Skill Degree)", mode: "Direct Merit" },
+            { name: "Christ University (BCA / BBA Direct)", location: "National", rating: 5, minCutoff: 70, stream: "Diploma", pathway: "BCA / B.Sc IT", mode: "Direct Merit" },
+            { name: "NMIMS School of Commerce / Management (BBA)", location: "Maharashtra", rating: 5, minCutoff: 75, stream: "Diploma", pathway: "BBA / BMS (Management)", mode: "Entrance Exam" },
+            { name: "Public Sector Technical Placement / SSC JE Portal", location: "National", rating: 5, minCutoff: 50, stream: "Diploma", pathway: "Government / Job Exams", mode: "Direct Merit" },
+            
+            // 12th & ITI Standard Mappings
+            { name: "COEP Technological University", location: "Maharashtra", rating: 5, minCutoff: 90, stream: "Science PCM", pathway: "All", mode: "Entrance Exam" },
+            { name: "ICT Mumbai (Institute of Chemical Technology)", location: "Maharashtra", rating: 5, minCutoff: 92, stream: "Science PCM", pathway: "All", mode: "Entrance Exam" },
+            { name: "Government Medical College (GMC)", location: "Maharashtra", rating: 5, minCutoff: 95, stream: "Science PCB", pathway: "All", mode: "Entrance Exam" },
+            { name: "ILS Law College", location: "Maharashtra", rating: 5, minCutoff: 88, stream: "All", pathway: "All", mode: "Entrance Exam" },
+            { name: "Mit Academy of Engineering", location: "Maharashtra", rating: 4, minCutoff: 75, stream: "Science PCM", pathway: "All", mode: "Entrance Exam" },
+            { name: "BITS Pilani", location: "National", rating: 5, minCutoff: 88, stream: "Science PCM", pathway: "All", mode: "Entrance Exam" },
+            { name: "Government Polytechnic College", location: "Maharashtra", rating: 4, minCutoff: 70, stream: "ITI / Diploma", pathway: "All", mode: "Direct Merit" },
+            { name: "National Skill Training Institute (NSTI)", location: "National", rating: 5, minCutoff: 65, stream: "ITI / Diploma", pathway: "All", mode: "Direct Merit" },
+            { name: "Regional Polytechnic & Direct Institute", location: "Maharashtra", rating: 3, minCutoff: 40, stream: "All", pathway: "All", mode: "Direct Merit" }
         ];
 
         function hideAllScreens() {
@@ -795,7 +1124,6 @@
             document.getElementById('details-screen-12th').style.display = 'none';
             document.getElementById('details-screen-iti').style.display = 'none';
             document.getElementById('details-screen-diploma').style.display = 'none';
-            document.getElementById('details-screen-roadmap').style.display = 'none';
             document.getElementById('college-results-screen').style.display = 'none';
             document.getElementById('apply-screen').style.display = 'none';
         }
@@ -809,100 +1137,70 @@
         function openScreen2(stage) {
             hideAllScreens();
             currentScreenStage = stage;
-            if (stage === '10th') document.getElementById('details-screen-10th').style.display = 'block';
-            else if (stage === '12th') document.getElementById('details-screen-12th').style.display = 'block';
-            else if (stage === 'ITI') document.getElementById('details-screen-iti').style.display = 'block';
-            else if (stage === 'Diploma') document.getElementById('details-screen-diploma').style.display = 'block';
+            if (stage === '10th') {
+                document.getElementById('details-screen-10th').style.display = 'block';
+            } else if (stage === '12th') {
+                document.getElementById('details-screen-12th').style.display = 'block';
+            } else if (stage === 'ITI') {
+                document.getElementById('details-screen-iti').style.display = 'block';
+            } else if (stage === 'Diploma') {
+                document.getElementById('details-screen-diploma').style.display = 'block';
+            }
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function openRoadmapCategory(categoryKey) {
-            activeRoadmapCategory = categoryKey;
-            hideAllScreens();
-            document.getElementById('details-screen-roadmap').style.display = 'block';
-
-            const chipSelector = document.getElementById('roadmap-branch-selector');
-            chipSelector.innerHTML = '';
-
-            let branchKeys = [];
-            if (categoryKey === 'engineering') branchKeys = ['engineering_ame', 'engineering_cse'];
-            else if (categoryKey === 'medical') branchKeys = ['medical_mbbs'];
-            else branchKeys = ['engineering_cse'];
-
-            branchKeys.forEach((key, index) => {
-                const data = careerRoadmaps[key];
-                const chip = document.createElement('div');
-                chip.className = `branch-chip ${index === 0 ? 'active' : ''}`;
-                chip.innerText = data.title;
-                chip.onclick = () => renderRoadmapDetails(key, chip);
-                chipSelector.appendChild(chip);
-            });
-
-            renderRoadmapDetails(branchKeys[0]);
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+        function goBackToPreviousScreen() {
+            if (currentScreenStage) {
+                openScreen2(currentScreenStage);
+            } else {
+                goToHomeScreen();
+            }
         }
 
-        function renderRoadmapDetails(branchKey, element) {
-            activeSelectedBranchKey = branchKey;
-            if (element) {
-                document.querySelectorAll('.branch-chip').forEach(c => c.classList.remove('active'));
-                element.classList.add('active');
+        /* 10TH LOGIC */
+        function check10thMarksEligibility() {
+            const marksInput = document.getElementById('user-10th-marks').value;
+            const statusDiv = document.getElementById('eligibility-status-10th');
+            
+            if (!marksInput || marksInput < 1 || marksInput > 100) {
+                alert('Please enter a valid percentage between 1 and 100.');
+                return;
             }
 
-            const data = careerRoadmaps[branchKey];
-            const container = document.getElementById('blueprint-content-container');
+            const marks = parseFloat(marksInput);
+            statusDiv.style.display = 'block';
 
-            let pathwaysHtml = data.pathways.map(p => `<li>${p}</li>`).join('');
-            let examsHtml = data.exams.map(e => `<li>${e}</li>`).join('');
-
-            container.innerHTML = `
-                <div class="blueprint-section">
-                    <h3><i class="fa-solid fa-circle-info"></i> Branch Overview</h3>
-                    <p>${data.overview}</p>
-                </div>
-
-                <div class="blueprint-section">
-                    <h3><i class="fa-solid fa-user-check"></i> Eligibility Criteria</h3>
-                    <p>${data.eligibility}</p>
-                </div>
-
-                <div class="blueprint-section">
-                    <h3><i class="fa-solid fa-route"></i> Shortest Qualification Pathways</h3>
-                    <ul>${pathwaysHtml}</ul>
-                </div>
-
-                <div class="blueprint-section">
-                    <h3><i class="fa-solid fa-file-signature"></i> Key Entrance Exams & Industry Licensing</h3>
-                    <ul>${examsHtml}</ul>
-                </div>
-
-                <div class="blueprint-section">
-                    <h3><i class="fa-solid fa-money-bill-trend-up"></i> Realistic Salary & Earning Scale</h3>
-                    <div class="salary-grid">
-                        <div class="salary-card">
-                            <h4>India Market (INR)</h4>
-                            <p>Fresher: ${data.salaryIndia.fresher}</p>
-                            <p>Mid-Career: ${data.salaryIndia.mid}</p>
-                            <div class="val">Peak: ${data.salaryIndia.peak}</div>
-                        </div>
-                        <div class="salary-card">
-                            <h4>Global Market (Abroad)</h4>
-                            <p>Fresher: ${data.salaryForeign.fresher}</p>
-                            <p>Mid-Career: ${data.salaryForeign.mid}</p>
-                            <div class="val">Peak: ${data.salaryForeign.peak}</div>
-                        </div>
-                    </div>
-                </div>
-            `;
+            if (marks >= 35) {
+                statusDiv.className = 'eligibility-status-msg pass';
+                statusDiv.innerText = `Eligible Status: Qualified (${marks}%)! You meet standard pass requirements for CAP admissions across streams below.`;
+            } else {
+                statusDiv.className = 'eligibility-status-msg fail';
+                statusDiv.innerHTML = `
+                    You have scored below the standard passing percentage (${marks}%). Standard CAP round admissions require a pass status, but you still have skill & re-examination options!<br>
+                    <a href="https://wa.me/919822206864?text=Hello%20Counselor,%20I%20scored%20${marks}%%20in%2010th.%20Please%20guide%20me%20on%20my%20available%20options." target="_blank" class="counselor-fail-btn">
+                        <i class="fa-brands fa-whatsapp"></i> Talk to Counselor for Guidance
+                    </a>
+                `;
+            }
         }
 
-        function proceedFromRoadmapToColleges() {
-            const data = careerRoadmaps[activeSelectedBranchKey];
-            chosen12thStream = data.streamMapping;
-            openScreen2('12th');
+        function toggleAccordion(headerElement) {
+            const item = headerElement.parentElement;
+            const content = item.querySelector('.accordion-content');
+            const isOpen = item.classList.contains('active');
+            
+            document.querySelectorAll('.accordion-item').forEach(acc => {
+                acc.classList.remove('active');
+                acc.querySelector('.accordion-content').style.display = 'none';
+            });
+
+            if (!isOpen) {
+                item.classList.add('active');
+                content.style.display = 'block';
+            }
         }
 
-        /* 12TH EXAM & FORM LOGIC */
+        /* 12TH LOGIC */
         function select12thStream(streamKey, cardElement) {
             chosen12thStream = streamKey;
             document.querySelectorAll('#details-screen-12th .stream-card').forEach(c => c.classList.remove('selected'));
@@ -910,10 +1208,12 @@
 
             const examSelect = document.getElementById('exam-selector');
             examSelect.innerHTML = '';
-            const opts = ["JEE Main / MHT-CET", "NEET-UG", "Direct Board Merit"];
-            opts.forEach(ex => {
+
+            const exams = examOptionsMap[streamKey] || [];
+            exams.forEach(ex => {
                 const opt = document.createElement('option');
-                opt.value = ex; opt.innerText = ex;
+                opt.value = ex;
+                opt.innerText = ex;
                 examSelect.appendChild(opt);
             });
         }
@@ -922,20 +1222,185 @@
             selectedScoreType = type;
             document.getElementById('toggle-marks').classList.toggle('active', type === 'Marks');
             document.getElementById('toggle-percentile').classList.toggle('active', type === 'Percentile');
+            document.getElementById('user-score-val').placeholder = `Enter ${type} e.g. 85.5`;
         }
 
         function checkEligibleColleges12th() {
+            if (!chosen12thStream) {
+                alert('Please select your qualified 12th stream first.');
+                return;
+            }
+
             const scoreVal = parseFloat(document.getElementById('user-score-val').value);
-            if (!scoreVal) { alert('Please enter a valid score.'); return; }
+            if (!scoreVal || scoreVal < 1 || scoreVal > 100) {
+                alert('Please enter a valid numerical score between 1 and 100.');
+                return;
+            }
+
+            activeChosenTrack = chosen12thStream;
+            currentActiveUserScore = scoreVal;
             hideAllScreens();
             document.getElementById('college-results-screen').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
             renderCollegeGrid(scoreVal);
+        }
+
+        /* ITI LOGIC */
+        function handleItiTradeSelection(tradeName) {
+            const infoMsg = document.getElementById('trade-info-msg');
+            const selector = document.getElementById('iti-trade-selector');
+            const selectedOpt = selector.options[selector.selectedIndex];
+            const duration = selectedOpt.getAttribute('data-duration');
+
+            if (!tradeName) {
+                infoMsg.style.display = 'none';
+                return;
+            }
+
+            infoMsg.style.display = 'block';
+            if (duration === "2") {
+                infoMsg.innerHTML = `<i class="fa-solid fa-circle-check"></i> <strong>2-Year NCVT/SCVT Trade Recognized:</strong> Eligible for Direct 2nd-Year Polytechnic Diploma (Lateral Entry), CITS, and Advanced Diplomas.`;
+            } else if (duration === "1") {
+                infoMsg.innerHTML = `<i class="fa-solid fa-circle-info"></i> <strong>1-Year Trade Recognized:</strong> Directly eligible for CITS & Advanced Certifications. <em>Note: Direct 2nd-year Diploma Lateral entry generally requires 2-year trades under AICTE guidelines.</em>`;
+            } else {
+                infoMsg.innerHTML = `<i class="fa-solid fa-circle-info"></i> Trade selected. Choose your target further education pathway below.`;
+            }
+        }
+
+        function selectItiPathway(pathwayName, cardElement) {
+            chosenItiPathway = pathwayName;
+            document.querySelectorAll('#details-screen-iti .stream-card').forEach(c => c.classList.remove('selected'));
+            cardElement.classList.add('selected');
+
+            const examGroup = document.getElementById('cits-exam-group');
+            if (pathwayName.includes('CITS')) {
+                examGroup.style.display = 'block';
+                document.getElementById('iti-marks-label').innerText = "4. Enter Your Aggregate ITI Percentage (%)";
+            } else {
+                examGroup.style.display = 'none';
+                document.getElementById('iti-marks-label').innerText = "3. Enter Your Aggregate ITI Percentage (%)";
+            }
+        }
+
+        function checkEligibleCollegesIti() {
+            const trade = document.getElementById('iti-trade-selector').value;
+            if (!trade) {
+                alert('Please select your completed ITI Trade.');
+                return;
+            }
+            if (!chosenItiPathway) {
+                alert('Please select your desired target further education track.');
+                return;
+            }
+
+            const itiMarks = parseFloat(document.getElementById('user-iti-marks').value);
+            if (!itiMarks || itiMarks < 1 || itiMarks > 100) {
+                alert('Please enter a valid ITI Percentage between 1 and 100.');
+                return;
+            }
+
+            activeChosenTrack = `ITI ${trade} -> ${chosenItiPathway}`;
+            currentActiveUserScore = itiMarks;
+            hideAllScreens();
+            document.getElementById('college-results-screen').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            renderCollegeGrid(itiMarks);
+        }
+
+        /* POLYTECHNIC DIPLOMA LOGIC */
+        function selectDiplomaPathway(pathwayName, cardElement) {
+            chosenDiplomaPathway = pathwayName;
+            document.querySelectorAll('#details-screen-diploma .stream-card').forEach(c => c.classList.remove('selected'));
+            cardElement.classList.add('selected');
+        }
+
+        function handleDiplomaBranchChange(branchName) {
+            // Auto preset standard suggested pathways based on branch
+            const bdesCard = document.getElementById('dip-path-bdes');
+            const bcaCard = document.getElementById('dip-path-bca');
+            if (branchName.includes('Interior') || branchName.includes('Fashion')) {
+                selectDiplomaPathway('B.Des (Bachelor of Design)', bdesCard);
+            } else if (branchName.includes('Computer Science')) {
+                selectDiplomaPathway('B.Tech Direct 2nd Year', document.getElementById('dip-path-btech'));
+            }
+        }
+
+        function handleDiplomaExamStatusChange(statusVal) {
+            const scoreGroup = document.getElementById('diploma-exam-score-group');
+            if (statusVal === 'Direct Merit') {
+                scoreGroup.style.display = 'none';
+            } else {
+                scoreGroup.style.display = 'block';
+                document.getElementById('diploma-exam-score-label').innerText = `Enter Score / Percentile for ${statusVal}`;
+            }
+        }
+
+        function checkEligibleCollegesDiploma() {
+            const branch = document.getElementById('diploma-branch-selector').value;
+            if (!branch) {
+                alert('Please select your completed Diploma Branch.');
+                return;
+            }
+
+            const marks = parseFloat(document.getElementById('user-diploma-marks').value);
+            if (!marks || marks < 1 || marks > 100) {
+                alert('Please enter a valid aggregate percentage or CGPA equivalent.');
+                return;
+            }
+
+            activeChosenTrack = `Diploma in ${branch} -> ${chosenDiplomaPathway}`;
+            currentActiveUserScore = marks;
+            hideAllScreens();
+            document.getElementById('college-results-screen').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            renderCollegeGrid(marks);
+        }
+
+        /* SCREEN 3 RESULTS & FILTERS */
+        function toggleFilterDrawer() {
+            const drawer = document.getElementById('filter-drawer');
+            drawer.classList.toggle('active');
         }
 
         function renderCollegeGrid(userScore) {
             const gridContainer = document.getElementById('college-grid-container');
             gridContainer.innerHTML = '';
-            collegeDatabase.forEach(col => {
+
+            const locFilter = document.getElementById('filter-location').value;
+            const ratFilter = document.getElementById('filter-rating').value;
+            const modeFilter = document.getElementById('filter-mode').value;
+
+            const filtered = collegeDatabase.filter(col => {
+                const locMatch = (locFilter === 'All' || col.location === locFilter);
+                const ratMatch = (ratFilter === 'All' || col.rating == ratFilter);
+                const modeMatch = (modeFilter === 'All' || col.mode === modeFilter);
+                
+                let streamMatch = false;
+                if (currentScreenStage === 'Diploma') {
+                    streamMatch = (col.stream === 'Diploma' || col.stream === 'All') && 
+                                  (col.pathway === 'All' || col.pathway === chosenDiplomaPathway);
+                } else if (currentScreenStage === '12th') {
+                    streamMatch = (col.stream === 'All' || col.stream === chosen12thStream);
+                } else {
+                    streamMatch = (col.stream === 'All' || col.stream === 'ITI / Diploma');
+                }
+
+                return locMatch && ratMatch && modeMatch && streamMatch;
+            });
+
+            if (filtered.length === 0) {
+                gridContainer.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--text-sub); padding: 30px;">No exact colleges found matching all filter criteria. Try adjusting your location or tier rating filters.</p>`;
+                return;
+            }
+
+            filtered.forEach(col => {
+                const isHighChance = userScore >= col.minCutoff;
+                const badgeText = isHighChance ? 'High Allotment Chance' : 'Competitive Cutoff Match';
+                const badgeColor = isHighChance ? 'background: rgba(37, 211, 102, 0.1); color: #15803d;' : 'background: rgba(217, 119, 6, 0.1); color: #b45309;';
+
                 const cardHtml = `
                     <div class="college-card">
                         <div>
@@ -943,12 +1408,12 @@
                                 <h3>${col.name}</h3>
                                 <span class="star-rating"><i class="fa-solid fa-star"></i> ${col.rating}.0</span>
                             </div>
-                            <div class="college-location"><i class="fa-solid fa-location-dot"></i> ${col.location}</div>
+                            <div class="college-location"><i class="fa-solid fa-location-dot"></i> ${col.location} • <small style="color:var(--accent-cyan); font-weight:600;">${col.mode || 'Direct Merit'}</small></div>
                             <br>
-                            <span class="match-badge">Cutoff ~${col.minCutoff}%</span>
+                            <span class="match-badge" style="${badgeColor}">${badgeText} (Min Cutoff ~${col.minCutoff}%)</span>
                         </div>
                         <button class="college-apply-btn" onclick="selectCollegeForApplication('${col.name}')">
-                            Apply via CAP Allotment
+                            Apply via CAP / Direct Allotment
                         </button>
                     </div>
                 `;
@@ -956,30 +1421,38 @@
             });
         }
 
+        function applyCollegeFilters() {
+            renderCollegeGrid(currentActiveUserScore);
+        }
+
         function selectCollegeForApplication(collegeName) {
             hideAllScreens();
             document.getElementById('apply-screen').style.display = 'block';
             document.getElementById('target-college').value = collegeName;
+            document.getElementById('selected-track-badge').innerHTML = `<i class="fa-solid fa-paper-plane"></i> Track: ${activeChosenTrack || 'Technical Track'}`;
+            document.getElementById('apply-heading').innerText = `Apply to ${collegeName}`;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function goToApplyScreen(trackName) {
+            activeChosenTrack = trackName;
+            hideAllScreens();
+            document.getElementById('apply-screen').style.display = 'block';
+            document.getElementById('selected-track-badge').innerHTML = `<i class="fa-solid fa-paper-plane"></i> Track: ${trackName}`;
+            document.getElementById('apply-heading').innerText = `Apply for ${trackName}`;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function handleFinalFormSubmit(e) {
             e.preventDefault();
             const name = document.getElementById('student-name').value;
             const phone = document.getElementById('student-phone').value;
-            const college = document.getElementById('target-college').value;
-            const msg = `Hello IA Educational Services,\n\nI want to apply for: ${college}\nStudent Name: ${name}\nPhone: ${phone}`;
-            window.open(`https://wa.me/919822206864?text=${encodeURIComponent(msg)}`, '_blank');
-        }
+            const location = document.getElementById('target-location').value;
+            const college = document.getElementById('target-college').value || 'Not Specified';
 
-        function toggleAccordion(headerElement) {
-            const item = headerElement.parentElement;
-            const content = item.querySelector('.accordion-content');
-            const isOpen = item.classList.contains('active');
-            document.querySelectorAll('.accordion-item').forEach(acc => {
-                acc.classList.remove('active');
-                acc.querySelector('.accordion-content').style.display = 'none';
-            });
-            if (!isOpen) { item.classList.add('active'); content.style.display = 'block'; }
+            const message = `Hello IA Educational Services,\n\nI have submitted an application via the portal:\n- Student Name: ${name}\n- Contact: ${phone}\n- Track/Stream: *${activeChosenTrack}*\n- Preferred Location: ${location}\n- Target College: ${college}\n\nI have uploaded my marksheet. Please confirm my seat allotment process.`;
+
+            window.open(`https://wa.me/919822206864?text=${encodeURIComponent(message)}`, '_blank');
         }
     </script>
 </body>
