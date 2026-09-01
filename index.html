@@ -3,339 +3,241 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IA Educational Services - Admission & Career Advisory Portal</title>
+    <title>IA Educational Services - Academic Pathways & Career Counseling</title>
     <style>
-        /* BASE & THEME STYLES (Apple-inspired Clean UI) */
         :root {
-            --primary: #0071e3;
-            --primary-hover: #0077ed;
-            --bg-main: #f5f5f7;
-            --surface: #ffffff;
-            --text-dark: #1d1d1f;
-            --text-muted: #86868b;
-            --border: #d2d2d7;
-            --success: #34c759;
-            --radius: 16px;
-            --shadow: 0 10px 30px rgba(0,0,0,0.08);
+            --primary-color: #0f172a;
+            --accent-color: #2563eb;
+            --secondary-accent: #059669;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background-color: var(--bg-main);
+            background-color: var(--bg-light);
             color: var(--text-dark);
-            line-height: 1.5;
-            padding-bottom: 60px;
+            line-height: 1.6;
         }
 
-        /* HEADER & NAVIGATION */
         header {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(20px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid var(--border);
-            padding: 16px 24px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1.5rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
         .logo {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            letter-spacing: -0.5px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ffffff;
         }
 
-        .logo span { color: var(--primary); }
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav button {
+            background: transparent;
+            border: 1px solid white;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        nav button:hover, nav button.active {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+        }
 
         .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 24px 16px;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
         }
 
-        /* NAVIGATION BREADCRUMB / BACK BUTTON */
-        .back-nav {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--primary);
-            font-weight: 600;
-            cursor: pointer;
-            margin-bottom: 20px;
-            background: var(--surface);
-            padding: 8px 16px;
-            border-radius: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            border: 1px solid var(--border);
-            width: fit-content;
+        .screen {
+            display: none;
         }
 
-        /* SCREEN MANAGEMENT */
-        .screen { display: none; }
-        .screen.active { display: block; animation: fadeIn 0.3s ease-in-out; }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
+        .screen.active {
+            display: block;
         }
 
-        /* SCREEN 1: HOMEPAGE GRID */
+        /* Screen 1: Stream Selection */
         .hero {
             text-align: center;
-            margin-bottom: 36px;
+            margin-bottom: 3rem;
         }
 
         .hero h1 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            letter-spacing: -0.8px;
-            margin-bottom: 8px;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
         }
 
         .hero p {
             color: var(--text-muted);
-            font-size: 1.05rem;
+            font-size: 1.1rem;
         }
 
-        .grid {
+        .grid-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
         }
 
         .card {
-            background: var(--surface);
-            border-radius: var(--radius);
-            padding: 24px;
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow);
-            transition: all 0.25s ease;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
             cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .card:hover {
-            transform: translateY(-4px);
-            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border-color: var(--accent-color);
         }
 
         .card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
         }
 
         .card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 16px;
-        }
-
-        .card-badge {
-            align-self: flex-start;
-            background: rgba(0, 113, 227, 0.1);
-            color: var(--primary);
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-
-        /* BRANCH SELECTION LIST (Screen 1 Sub-View) */
-        .branch-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 16px;
-            margin-top: 20px;
-        }
-
-        .branch-item {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            padding: 20px;
-            border-radius: var(--radius);
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .branch-item:hover {
-            border-color: var(--primary);
-            background: #f0f7ff;
-        }
-
-        .branch-item h4 {
-            font-size: 1.1rem;
-            margin-bottom: 6px;
-        }
-
-        .branch-item p {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: var(--text-muted);
         }
 
-        /* SCREEN 2: ROADMAP VIEW */
-        .roadmap-container {
-            background: var(--surface);
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
-            padding: 32px;
-            box-shadow: var(--shadow);
-        }
-
+        /* Screen 2: Roadmap Blueprint */
         .roadmap-header {
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 20px;
-            margin-bottom: 24px;
-        }
-
-        .roadmap-header h2 {
-            font-size: 1.8rem;
-            margin-bottom: 6px;
-        }
-
-        .roadmap-section {
-            margin-bottom: 32px;
-        }
-
-        .roadmap-section h3 {
-            font-size: 1.2rem;
-            color: var(--primary);
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .timeline {
-            list-style: none;
-            padding-left: 16px;
-            border-left: 2px solid var(--primary);
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 20px;
-            padding-left: 16px;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -23px;
-            top: 4px;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--primary);
-        }
-
-        .timeline-item h4 { font-size: 1rem; }
-        .timeline-item p { font-size: 0.9rem; color: var(--text-muted); }
-
-        .salary-box {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 16px;
-            background: #f9f9fb;
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-        }
-
-        .salary-card h4 { font-size: 1rem; color: var(--text-dark); margin-bottom: 8px; }
-        .salary-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
-        .salary-card strong { color: var(--success); }
-
-        .cta-btn {
-            display: block;
-            width: 100%;
-            background: var(--primary);
-            color: white;
-            text-align: center;
-            padding: 16px;
-            border-radius: 12px;
-            font-size: 1.05rem;
-            font-weight: 600;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            margin-top: 32px;
-            transition: background 0.2s ease;
-        }
-
-        .cta-btn:hover { background: var(--primary-hover); }
-
-        /* SCREEN 3: CUTOFF & WhatsApp CALCULATOR */
-        .calculator-card {
-            background: var(--surface);
-            padding: 32px;
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 8px;
-            font-size: 0.95rem;
-        }
-
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 12px 16px;
-            border-radius: 8px;
-            border: 1px solid var(--border);
-            font-size: 1rem;
-            background: #fafafa;
-        }
-
-        .college-result-card {
-            background: #f9f9fb;
-            border: 1px solid var(--border);
-            padding: 20px;
-            border-radius: 12px;
-            margin-top: 16px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 12px;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 1rem;
         }
 
-        .whatsapp-btn {
-            background: #25d366;
-            color: white;
-            padding: 10px 18px;
+        .blueprint-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .detail-card {
+            background: var(--card-bg);
+            border-left: 4px solid var(--accent-color);
+            padding: 1.5rem;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .detail-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .detail-card ul {
+            list-style: none;
+        }
+
+        .detail-card ul li {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            position: relative;
+            padding-left: 1.2rem;
+        }
+
+        .detail-card ul li::before {
+            content: "•";
+            color: var(--accent-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Screen 3: College Allotment Filter */
+        .filter-section {
+            background: var(--card-bg);
+            padding: 1.5rem;
             border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
         }
 
-        .whatsapp-btn:hover { background: #1eb954; }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
 
-        @media (max-width: 600px) {
-            .roadmap-container, .calculator-card { padding: 20px; }
-            .college-result-card { flex-direction: column; align-items: flex-start; }
+        .form-group label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group select, .form-group input {
+            padding: 0.6rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            outline: none;
+        }
+
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .results-table th, .results-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .results-table th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-action {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .btn-action:hover {
+            background: #1d4ed8;
         }
     </style>
 </head>
@@ -343,412 +245,236 @@
 
     <header>
         <div class="logo">IA <span>Educational Services</span></div>
+        <nav>
+            <button id="nav-btn-1" class="active" onclick="switchScreen(1)">Stream Selection</button>
+            <button id="nav-btn-2" onclick="switchScreen(2)">Academic Roadmap</button>
+            <button id="nav-btn-3" onclick="switchScreen(3)">College Finder</button>
+        </nav>
     </header>
 
     <div class="container">
-
-        <!-- ================= SCREEN 1: CATEGORY SELECTION ================= -->
-        <div id="screen-1" class="screen active">
+        
+        <!-- SCREEN 1: STREAM SELECTION -->
+        <section id="screen-1" class="screen active">
             <div class="hero">
-                <h1>Academic & Career Roadmaps</h1>
-                <p>Select your field of interest to explore complete career timelines, entrance exam rules, earning potentials, and cutoff metrics.</p>
+                <h1>Academic Pathways & Career Guidance</h1>
+                <p>Select your current educational level to explore structured career paths, entry requirements, and outcomes.</p>
             </div>
-
-            <!-- Level 1 Category Cards -->
-            <div id="category-cards-grid" class="grid">
-                <div class="card" onclick="selectCategory('engineering')">
-                    <span class="card-badge">High Demand</span>
-                    <h3>Engineering & Technology</h3>
-                    <p>Computer Science, AI, Aircraft Maintenance, Mechanical, Robotics, Civil & Hardware.</p>
-                    <strong>Explore Branches &rarr;</strong>
+            <div class="grid-cards">
+                <div class="card" onclick="selectStream('10th')">
+                    <h3>After 10th Standard</h3>
+                    <p>Explore Science, Commerce, Arts, ITI, and Diploma options.</p>
                 </div>
-
-                <div class="card" onclick="selectCategory('medical')">
-                    <span class="card-badge">Healthcare</span>
-                    <h3>Medical & Health Sciences</h3>
-                    <p>MBBS, BDS, Biotechnology, B.Pharm, Clinical Research & Medical Diagnostics.</p>
-                    <strong>Explore Branches &rarr;</strong>
+                <div class="card" onclick="selectStream('12th_science')">
+                    <h3>After 12th (Science)</h3>
+                    <p>Engineering, Medicine, Pharmacy, Pure Sciences, and Architecture pathways.</p>
                 </div>
-
-                <div class="card" onclick="selectCategory('management')">
-                    <span class="card-badge">Corporate</span>
-                    <h3>Business & Management (MBA Track)</h3>
-                    <p>Integrated BBA-MBA, Data Analytics, Finance, Marketing & Operations.</p>
-                    <strong>Explore Branches &rarr;</strong>
+                <div class="card" onclick="selectStream('12th_commerce')">
+                    <h3>After 12th (Commerce)</h3>
+                    <p>CA, CS, B.Com, BBA, Finance, and Management tracks.</p>
                 </div>
-
-                <div class="card" onclick="selectCategory('law_arch')">
-                    <span class="card-badge">Professional</span>
-                    <h3>Architecture, Law & Design</h3>
-                    <p>B.Arch, 5-Year Integrated Corporate Law (LL.B), UI/UX & Product Design.</p>
-                    <strong>Explore Branches &rarr;</strong>
+                <div class="card" onclick="selectStream('diploma')">
+                    <h3>Diploma / ITI Pathways</h3>
+                    <p>Direct lateral entry into B.Tech, skill-based certifications, and direct employment.</p>
                 </div>
             </div>
+        </section>
 
-            <!-- Sub-Branch Selection View (Hidden by default) -->
-            <div id="sub-branch-wrapper" style="display: none; margin-top: 30px;">
-                <div class="back-nav" onclick="closeSubBranches()">&larr; Back to Main Categories</div>
-                <h2 id="sub-branch-title">Select Specific Stream</h2>
-                <div id="sub-branch-grid" class="branch-grid"></div>
+        <!-- SCREEN 2: ROADMAP BLUEPRINT -->
+        <section id="screen-2" class="screen">
+            <div class="roadmap-header">
+                <div>
+                    <h2 id="roadmap-title">Academic Pathway Blueprint</h2>
+                    <p id="roadmap-subtitle" style="color: var(--text-muted);">Detailed breakdown of your selected pathway</p>
+                </div>
+                <button class="btn-action" onclick="switchScreen(3)">Filter Eligible Colleges</button>
             </div>
-        </div>
-
-        <!-- ================= SCREEN 2: DEEP-DIVE ROADMAP ================= -->
-        <div id="screen-2" class="screen">
-            <div class="back-nav" onclick="navToScreen('screen-1')">&larr; Back to Branch Selection</div>
-            
-            <div class="roadmap-container">
-                <div class="roadmap-header">
-                    <span class="card-badge" id="rm-category-badge">Category</span>
-                    <h2 id="rm-title">Stream Title</h2>
-                    <p id="rm-overview">Comprehensive overview text here.</p>
-                </div>
-
-                <div class="roadmap-section">
-                    <h3>1. Eligibility & Minimum Academic Prerequisites</h3>
-                    <p id="rm-eligibility">Academic requirements...</p>
-                </div>
-
-                <div class="roadmap-section">
-                    <h3>2. Academic Entry Routes (Shortest Paths to Success)</h3>
-                    <div id="rm-routes"></div>
-                </div>
-
-                <div class="roadmap-section">
-                    <h3>3. Key Entrance Exams & Industry Certifications</h3>
-                    <ul id="rm-exams" style="padding-left: 20px; color: var(--text-dark);"></ul>
-                </div>
-
-                <div class="roadmap-section">
-                    <h3>4. Year-by-Year Career Growth Progression</h3>
-                    <ul class="timeline" id="rm-timeline"></ul>
-                </div>
-
-                <div class="roadmap-section">
-                    <h3>5. Earning Potential & Salary Scale (India vs. Abroad)</h3>
-                    <div class="salary-box">
-                        <div class="salary-card">
-                            <h4>India Market Scale</h4>
-                            <p id="rm-salary-india"></p>
-                        </div>
-                        <div class="salary-card">
-                            <h4>International Market Scale</h4>
-                            <p id="rm-salary-foreign"></p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="roadmap-section">
-                    <h3>6. Primary Hiring Partners & Recruiters</h3>
-                    <p id="rm-employers" style="color: var(--text-muted); font-weight: 500;"></p>
-                </div>
-
-                <button class="cta-btn" onclick="proceedToCalculator()">Find Eligible Cutoffs & Colleges for This Track &rarr;</button>
+            <div class="blueprint-grid" id="blueprint-content">
+                <!-- Content generated dynamically via JavaScript -->
             </div>
-        </div>
+        </section>
 
-        <!-- ================= SCREEN 3: COLLEGE & CUTOFF CALCULATOR ================= -->
-        <div id="screen-3" class="screen">
-            <div class="back-nav" onclick="navToScreen('screen-2')">&larr; Back to Roadmap</div>
-
-            <div class="calculator-card">
-                <h2>Check Cutoffs & Target Colleges</h2>
-                <p style="color: var(--text-muted); margin-bottom: 24px;">Enter your current score to compute eligibility based on cutoffs for your selected target branch.</p>
-
+        <!-- SCREEN 3: COLLEGE ALLOTMENT FILTER -->
+        <section id="screen-3" class="screen">
+            <div class="hero" style="text-align: left; margin-bottom: 1.5rem;">
+                <h2>College Allotment & Cutoff Filter</h2>
+                <p>Filter institutions based on score percentile, branch preference, and reservation categories.</p>
+            </div>
+            <div class="filter-section">
                 <div class="form-group">
-                    <label>Selected Target Branch</label>
-                    <input type="text" id="calc-selected-branch" readonly style="font-weight: 600; color: var(--primary);">
-                </div>
-
-                <div class="form-group">
-                    <label>Select Entrance Exam / Merit Track</label>
-                    <select id="calc-exam-type">
-                        <option value="JEE">JEE Main (Percentile)</option>
-                        <option value="CET">MHT-CET / State CET (Percentile)</option>
-                        <option value="NEET">NEET-UG (Score out of 720)</option>
-                        <option value="DIRECT_12TH">12th Board Aggregate (%)</option>
+                    <label for="stream-filter">Stream/Domain</label>
+                    <select id="stream-filter" onchange="filterColleges()">
+                        <option value="all">All Streams</option>
+                        <option value="engineering">Engineering (B.Tech)</option>
+                        <option value="medicine">Medicine (MBBS/BAMS)</option>
+                        <option value="management">Management (BBA/B.Com)</option>
                     </select>
                 </div>
-
                 <div class="form-group">
-                    <label>Your Score / Percentile / Aggregate Marks</label>
-                    <input type="number" id="calc-user-score" placeholder="e.g., 85.5 or 520" min="0" max="720">
+                    <label for="percentile-input">Entrance Percentile / Marks</label>
+                    <input type="number" id="percentile-input" placeholder="e.g. 85" oninput="filterColleges()">
                 </div>
-
-                <button class="cta-btn" onclick="calculateColleges()" style="margin-top: 10px;">Find Matching Institutes</button>
-
-                <div id="college-results" style="margin-top: 30px; display: none;">
-                    <h3>Eligible Colleges & Cutoff Matches</h3>
-                    <div id="college-list"></div>
+                <div class="form-group">
+                    <label for="category-filter">Category</label>
+                    <select id="category-filter" onchange="filterColleges()">
+                        <option value="open">Open / General</option>
+                        <option value="obc">OBC</option>
+                        <option value="sc_st">SC / ST</option>
+                        <option value="ews">EWS</option>
+                    </select>
                 </div>
             </div>
-        </div>
+
+            <table class="results-table">
+                <thead>
+                    <tr>
+                        <th>College Name</th>
+                        <th>Course / Branch</th>
+                        <th>Min Cutoff Required</th>
+                        <th>Avg Package</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="college-table-body">
+                    <!-- Dynamic Rows -->
+                </tbody>
+            </table>
+        </section>
 
     </div>
 
-    <!-- ================= JAVASCRIPT & JSON DATABASE ================= -->
     <script>
-        /* 1. MASTER BRANCH ROADMAP DATA ENGINE */
-        const branchDatabase = {
-            // ENGINEERING & TECH
-            "engineering_cse": {
-                title: "Computer Science, AI & Data Science",
-                category: "Engineering & Technology",
-                overview: "Focuses on algorithms, machine learning systems, software architecture, cloud platforms, and enterprise data analytics.",
-                eligibility: "Must pass 10+2 with Physics, Mathematics, and Chemistry/CS (Minimum 50% aggregate score).",
-                routes: [
-                    "<strong>Path A (Direct 4-Year B.Tech):</strong> 10+2 PCM &rarr; Entrance Exams (JEE/CET) &rarr; 4-Year B.Tech in CSE/AI &rarr; Tech Internships.",
-                    "<strong>Path B (Diploma Lateral Entry):</strong> 10th &rarr; 3-Year Polytechnic Diploma (CS/IT) &rarr; Direct 2nd Year B.Tech (DSE)."
-                ],
-                exams: ["JEE Main / JEE Advanced", "MHT-CET / State CETs", "BITSAT / VITEEE", "AWS Certified Solutions Architect / GCP Data Engineer"],
-                timeline: [
-                    { stage: "Years 0–2 (Entry Level)", desc: "Software Development Engineer Trainee / Associate Data Analyst." },
-                    { stage: "Years 2–5 (Mid Level)", desc: "Full Stack Engineer / AI Specialist. Directs codebases & pipeline design." },
-                    { stage: "Years 5–10 (Senior Level)", desc: "Senior Solutions Architect / Lead Data Scientist." },
-                    { stage: "Years 10+ (Leadership)", desc: "Chief Technology Officer (CTO) / VP of Engineering." }
-                ],
-                salaryIndia: "Fresher: ₹4.5–8.5 LPA<br>Mid-Career (3–6 Yrs): ₹14–28 LPA<br>Peak Potential: <strong>₹80 Lakhs – ₹1.5+ Crore LPA</strong>",
-                salaryForeign: "USA / Europe: $90,000 – $220,000 USD/yr<br>Gulf Region: 180,000 – 360,000 AED/yr (Tax-Free)",
-                employers: "Google, Microsoft, TCS, Infosys, Amazon, Nvidia, Wipro, High-growth AI Startups."
+        // Database for Academic Pathways
+        const pathwayData = {
+            '10th': {
+                title: 'Pathways After 10th Standard',
+                subtitle: 'Key decision points between streams, technical diplomas, and vocational training.',
+                eligibility: ['Completion of 10th Board Exams (SSC/CBSE/ICSE)', 'Minimum aggregate varies by stream choice (typically 35%-60%)'],
+                exams: ['Polytechnic Entrance Exams (State Level)', 'ITI Trade Assessment', 'School Board Selection Criteria'],
+                timeline: ['2 Years: Class 11-12 (Junior College)', '3 Years: Polytechnic Diploma', '1-2 Years: ITI Certification'],
+                careers: ['Technician (Post-ITI)', 'Junior Engineer (Post-Diploma)', 'Higher Education Entry (Post-12th)'],
+                salaries: ['Entry Level: ₹1.8L - ₹3.5L PA (Diploma/ITI)', 'Higher Path: Dependent on degree qualification']
             },
-            "engineering_ame": {
-                title: "Aircraft Maintenance Engineering (AME)",
-                category: "Aviation & Aerospace",
-                overview: "Specialized licensing stream responsible for mandatory safety release certifications, engine maintenance, and airframe airworthiness.",
-                eligibility: "Passed 10+2 with Physics, Chemistry, and Mathematics (Minimum 50% aggregate).",
-                routes: [
-                    "<strong>Path A (DGCA License Fast-Track):</strong> 10+2 PCM &rarr; 2-Year DGCA Approved Institute Training &rarr; 2-Year Practical Airline OJT &rarr; AME License.",
-                    "<strong>Path B (Dual Degree Track):</strong> 10+2 PCM &rarr; B.Tech Aeronautical + Simultaneous DGCA Modular Examinations &rarr; Licensed AME."
-                ],
-                exams: ["AME CET (National Entrance)", "DGCA Modular Papers (Modules 3, 6, 7, 11/12)", "EASA / FAA Conversion Certifications"],
-                timeline: [
-                    { stage: "Years 0–2 (Apprenticeship)", desc: "Aircraft Maintenance Technician / Junior Mechanic under senior supervision." },
-                    { stage: "Years 2–5 (Associate AME)", desc: "Obtains Type Ratings (Airbus A320 / Boeing 737) with partial sign-off rights." },
-                    { stage: "Years 5–10 (Licensed AME)", desc: "Full Certifying Engineer authority. Responsible for final flight safety releases." },
-                    { stage: "Years 10+ (Executive)", desc: "Chief Engineer / Director of Maintenance / Quality Assurance Head." }
-                ],
-                salaryIndia: "Apprentice: ₹20,000 – ₹35,000/mo<br>Licensed AME: ₹18–42 LPA<br>Chief Engineer: <strong>₹90 Lakhs – ₹1.5+ Crore LPA</strong>",
-                salaryForeign: "Gulf Carriers (Emirates/Qatar): $70,000 – $150,000 USD/yr (Tax-Free)<br>US/Canada (FAA): $85,000 – $175,000 USD/yr",
-                employers: "IndiGo, Air India, SpiceJet, AI Engineering Services (AIESL), GMR Aero Technic, Emirates, Qatar Airways."
+            '12th_science': {
+                title: 'Pathways After 12th Science (PCM / PCB)',
+                subtitle: 'Technical, medical, research, and applied science domains.',
+                eligibility: ['12th Science with Physics, Chemistry, Math/Biology', 'Minimum aggregate: 45%-50% for entrance eligibility'],
+                exams: ['JEE Main / JEE Advanced (Engineering)', 'NEET-UG (Medical)', 'MHT-CET / State CETs', 'BITSAT / CUET'],
+                timeline: ['4 Years: B.Tech / B.E.', '5.5 Years: MBBS (including internship)', '4 Years: B.Pharm / B.Sc Agriculture'],
+                careers: ['Software Engineer', 'Medical Doctor', 'Data Scientist', 'Biomedical Researcher', 'Civil/Mechanical Engineer'],
+                salaries: ['Engineering: ₹4.5L - ₹15L+ PA', 'Medical: ₹6L - ₹12L+ PA (Initial)', 'Research: ₹3.5L - ₹7L PA']
             },
-            "engineering_biotech": {
-                title: "Biotechnology & Bio-Medical Engineering",
-                category: "Life Sciences Tech",
-                overview: "Merges biological science with engineering principles to develop diagnostic tools, vaccines, genomic therapies, and medical equipment.",
-                eligibility: "Passed 10+2 with PCM or PCB (Physics, Chemistry, Biology/Maths) with min 50%.",
-                routes: [
-                    "<strong>Path A (B.Tech Biotechnology):</strong> 10+2 PCMB/PCB &rarr; Entrance Exam &rarr; 4-Year B.Tech &rarr; R&D Lab Clinical Internships.",
-                    "<strong>Path B (Integrated Research):</strong> 10+2 &rarr; 5-Year Integrated B.Tech+M.Tech &rarr; Bio-pharmaceutical Research."
-                ],
-                exams: ["JEE Main / MHT-CET", "CUET-UG", "GATE (Biotechnology - for PG/PSU tracks)"],
-                timeline: [
-                    { stage: "Years 0–2 (Entry)", desc: "Junior Research Fellow / Medical Device Field Engineer / QA Analyst." },
-                    { stage: "Years 2–5 (Mid Level)", desc: "Bioprocess Engineer / Clinical Data Analyst." },
-                    { stage: "Years 5–10 (Senior)", desc: "Principal Scientist / Biomedical R&D Lead." },
-                    { stage: "Years 10+ (Leadership)", desc: "Director of Bio-Research / Regulatory Affairs Officer." }
-                ],
-                salaryIndia: "Fresher: ₹3.8–6.5 LPA<br>Mid-Career: ₹10–22 LPA<br>Senior Scientist Peak: <strong>₹50–85+ Lakhs LPA</strong>",
-                salaryForeign: "US / Switzerland / Germany: $80,000 – $165,000 USD/yr",
-                employers: "Biocon, Serum Institute of India, Dr. Reddy's Laboratories, Siemens Healthineers, Medtronic, Syngene."
+            '12th_commerce': {
+                title: 'Pathways After 12th Commerce',
+                subtitle: 'Accounting, finance, business administration, and legal studies.',
+                eligibility: ['12th Standard in Commerce/Any Stream', 'Mathematics required for specific quantitative finance courses'],
+                exams: ['CA Foundation (ICAI)', 'CS Executive Entrance Test (CSEET)', 'IPMAT (Integrated Management)', 'CLAT (Law)'],
+                timeline: ['3 Years: B.Com / BBA', '5 Years: Integrated MBA / Integrated LLB', '3-4 Years: CA / CS Professional Track'],
+                careers: ['Chartered Accountant', 'Company Secretary', 'Financial Analyst', 'Corporate Lawyer', 'Business Consultant'],
+                salaries: ['CA/CS: ₹7L - ₹14L PA', 'BBA/B.Com: ₹3L - ₹6L PA', 'Corporate Law: ₹6L - ₹12L PA']
             },
-
-            // MEDICAL
-            "medical_mbbs": {
-                title: "MBBS & Clinical Healthcare",
-                category: "Medical & Health Sciences",
-                overview: "The primary clinical degree for diagnosing, treating, and performing surgical interventions on human illnesses.",
-                eligibility: "10+2 with Physics, Chemistry, Biology (PCB) with minimum 50% aggregate (40% for reserved categories).",
-                routes: [
-                    "<strong>Standard Route:</strong> 10+2 PCB &rarr; Qualify NEET-UG &rarr; 4.5 Years Academic MBBS + 1-Year Mandatory Rotational Internship &rarr; Registered Medical Practitioner."
-                ],
-                exams: ["NEET-UG (Mandatory for India & Abroad)", "NEXT (National Exit Test for License & PG allotment)"],
-                timeline: [
-                    { stage: "Years 0–1", desc: "Compulsory Rotational Resident Internship in Teaching Hospitals." },
-                    { stage: "Years 2–5", desc: "Junior Resident / Pursuing MD/MS Post-Graduation Specialization." },
-                    { stage: "Years 5–10", desc: "Senior Specialist Consultant (Cardiology, Neurology, General Surgery)." },
-                    { stage: "Years 10+", desc: "Chief Medical Officer / Head of Clinical Department." }
-                ],
-                salaryIndia: "Medical Officer: ₹7.5–12 LPA<br>MD/MS Specialist: ₹24–48 LPA<br>Peak Surgical Specialist: <strong>₹1.2 – ₹2.5+ Crore LPA</strong>",
-                salaryForeign: "UK (NHS): £55,000 – £120,000/yr<br>USA (USMLE Route): $220,000 – $450,000 USD/yr",
-                employers: "Apollo Hospitals, Fortis Healthcare, Max Healthcare, AIIMS, Government Health Services, Private Clinics."
-            },
-
-            // MANAGEMENT
-            "management_mba": {
-                title: "Integrated MBA & Strategic Management",
-                category: "Business & Management",
-                overview: "Prepares professionals for corporate leadership, strategic finance, product management, and enterprise growth operations.",
-                eligibility: "Graduation in any discipline (B.Tech, B.Com, B.A., B.Sc) or 10+2 for 5-Year Integrated IPMAT tracks.",
-                routes: [
-                    "<strong>Path A (Post-UG MBA):</strong> Bachelor Degree (Any Stream) &rarr; National Entrance Exams &rarr; 2-Year Full-Time MBA/PGDM.",
-                    "<strong>Path B (Direct After 12th):</strong> 10+2 (Any Stream) &rarr; IPMAT Exam &rarr; 5-Year Integrated BBA+MBA at IIMs."
-                ],
-                exams: ["CAT / CMAT / MAH-MBA CET", "IPMAT (For 12th Passed Students)", "XAT / MAT / GMAT"],
-                timeline: [
-                    { stage: "Years 0–2", desc: "Management Trainee / Management Consultant / Associate Product Manager." },
-                    { stage: "Years 2–5", desc: "Corporate Strategy Manager / Brand Manager / Senior Financial Analyst." },
-                    { stage: "Years 5–10", desc: "Associate Director / Business Unit Head." },
-                    { stage: "Years 10+", desc: "Chief Executive Officer (CEO) / Chief Operating Officer (COO)." }
-                ],
-                salaryIndia: "Fresher MBA: ₹6.5–18 LPA (Top IIMs: ₹25–34 LPA)<br>Mid-Level: ₹22–45 LPA<br>Peak Executive: <strong>₹1.5 + Crore LPA</strong>",
-                salaryForeign: "Global Finance/Consulting Hubs (Singapore/London/NY): $120,000 – $280,000 USD/yr",
-                employers: "McKinsey, BCG, Deloitte, HDFC Bank, Tata Group, Reliance Industries, Unilever, Amazon."
+            'diploma': {
+                title: 'Diploma & Lateral Entry Pathways',
+                subtitle: 'Practical technical training leading directly to industry roles or degree upgrades.',
+                eligibility: ['3-Year Diploma in Engineering field', 'Minimum 45%-50% aggregate for Lateral Entry admissions'],
+                exams: ['State Lateral Entry Entrance Tests (LEET / Direct 2nd Year Admissions)'],
+                timeline: ['3 Years: Direct Entry into 2nd Year B.Tech (Total 6 years post-10th)'],
+                careers: ['Senior Technical Assistant', 'Site Engineer', 'Design Engineer', 'Plant Supervisor'],
+                salaries: ['Direct Job: ₹2.5L - ₹4L PA', 'Post B.Tech Lateral Entry: ₹4.5L - ₹9L PA']
             }
         };
 
-        /* 2. MOCK COLLEGE CUTOFF DATABASE */
-        const collegeDatabase = [
-            { name: "Government College of Engineering", stream: "engineering_cse", minCutoffPercentile: 94.5, city: "State Capital" },
-            { name: "Institute of Technology & Science", stream: "engineering_cse", minCutoffPercentile: 82.0, city: "Metro Hub" },
-            { name: "National Aviation Training Academy", stream: "engineering_ame", minCutoffPercentile: 65.0, city: "Airport Zone" },
-            { name: "Metropolitan Medical College & Hospital", stream: "medical_mbbs", minCutoffPercentile: 96.0, city: "Central District" },
-            { name: "Apex Institute of Management & Research", stream: "management_mba", minCutoffPercentile: 78.0, city: "Financial Center" }
+        // Database for Colleges
+        const collegeData = [
+            { name: "Government College of Engineering", stream: "engineering", minScore: 88, category: "open", branch: "Computer Science", avgPkg: "₹7.5L PA" },
+            { name: "Institute of Technology & Research", stream: "engineering", minScore: 75, category: "open", branch: "Information Technology", avgPkg: "₹5.5L PA" },
+            { name: "State Medical College", stream: "medicine", minScore: 92, category: "open", branch: "MBBS", avgPkg: "₹9.0L PA" },
+            { name: "City Commerce & Management College", stream: "management", minScore: 65, category: "open", branch: "BBA", avgPkg: "₹4.0L PA" },
+            { name: "Polytechnic Technical Institute", stream: "engineering", minScore: 60, category: "obc", branch: "Mechanical (Lateral)", avgPkg: "₹3.8L PA" },
+            { name: "National Law & Business School", stream: "management", minScore: 82, category: "ews", branch: "Integrated MBA", avgPkg: "₹8.0L PA" }
         ];
 
-        /* STATE VARIABLES */
-        let currentSelectedStream = "";
+        let selectedStreamKey = '12th_science';
 
-        /* 3. NAVIGATION CONTROLLER */
-        function navToScreen(screenId) {
+        function switchScreen(screenNumber) {
             document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-            document.getElementById(screenId).classList.add('active');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+
+            document.getElementById(`screen-${screenNumber}`).classList.add('active');
+            document.getElementById(`nav-btn-${screenNumber}`).classList.add('active');
+
+            if (screenNumber === 2) {
+                renderRoadmap(selectedStreamKey);
+            } else if (screenNumber === 3) {
+                filterColleges();
+            }
         }
 
-        /* 4. HOMEPAGE DYNAMIC CATEGORY ROUTER */
-        function selectCategory(catKey) {
-            const grid = document.getElementById('sub-branch-grid');
-            const wrapper = document.getElementById('sub-branch-wrapper');
-            grid.innerHTML = "";
+        function selectStream(key) {
+            selectedStreamKey = key;
+            switchScreen(2);
+        }
 
-            let branches = [];
-            if(catKey === 'engineering') {
-                branches = [
-                    { key: "engineering_cse", title: "Computer Science, AI & Data Science", sub: "Software, ML, Cloud & Big Data" },
-                    { key: "engineering_ame", title: "Aircraft Maintenance Engineering (AME)", sub: "Avionics, DGCA Licensing & Jets" },
-                    { key: "engineering_biotech", title: "Biotechnology & Bio-Medical", sub: "Pharma Tech, Devices & Genetics" }
-                ];
-            } else if(catKey === 'medical') {
-                branches = [
-                    { key: "medical_mbbs", title: "MBBS & Clinical Healthcare", sub: "Doctor of Medicine & Surgery" }
-                ];
-            } else if(catKey === 'management') {
-                branches = [
-                    { key: "management_mba", title: "Integrated MBA & Corporate Strategy", sub: "Finance, Operations & Leadership" }
-                ];
-            } else {
-                alert("Additional branch data loading into database.");
-                return;
-            }
+        function renderRoadmap(key) {
+            const data = pathwayData[key] || pathwayData['12th_science'];
+            document.getElementById('roadmap-title').innerText = data.title;
+            document.getElementById('roadmap-subtitle').innerText = data.subtitle;
 
-            branches.forEach(b => {
-                grid.innerHTML += `
-                    <div class="branch-item" onclick="openRoadmap('${b.key}')">
-                        <h4>${b.title}</h4>
-                        <p>${b.sub}</p>
-                    </div>
-                `;
+            const container = document.getElementById('blueprint-content');
+            container.innerHTML = `
+                <div class="detail-card">
+                    <h4>Eligibility & Prerequisites</h4>
+                    <ul>${data.eligibility.map(item => `<li>${item}</li>`).join('')}</ul>
+                </div>
+                <div class="detail-card">
+                    <h4>Key Entrance Exams</h4>
+                    <ul>${data.exams.map(item => `<li>${item}</li>`).join('')}</ul>
+                </div>
+                <div class="detail-card">
+                    <h4>Academic Timeline</h4>
+                    <ul>${data.timeline.map(item => `<li>${item}</li>`).join('')}</ul>
+                </div>
+                <div class="detail-card">
+                    <h4>Target Career Roles</h4>
+                    <ul>${data.careers.map(item => `<li>${item}</li>`).join('')}</ul>
+                </div>
+                <div class="detail-card">
+                    <h4>Industry Salary Expectations</h4>
+                    <ul>${data.salaries.map(item => `<li>${item}</li>`).join('')}</ul>
+                </div>
+            `;
+        }
+
+        function filterColleges() {
+            const stream = document.getElementById('stream-filter').value;
+            const score = parseFloat(document.getElementById('percentile-input').value) || 0;
+            const category = document.getElementById('category-filter').value;
+            const tbody = document.getElementById('college-table-body');
+
+            tbody.innerHTML = '';
+
+            const filtered = collegeData.filter(item => {
+                const matchStream = (stream === 'all' || item.stream === stream);
+                const matchScore = (score === 0 || item.minScore <= score);
+                return matchStream && matchScore;
             });
 
-            wrapper.style.display = 'block';
-            window.scrollTo({ top: wrapper.offsetTop - 80, behavior: 'smooth' });
-        }
-
-        function closeSubBranches() {
-            document.getElementById('sub-branch-wrapper').style.display = 'none';
-        }
-
-        /* 5. ROADMAP RENDERER (SCREEN 2) */
-        function openRoadmap(streamKey) {
-            const data = branchDatabase[streamKey];
-            if(!data) {
-                alert("Roadmap detail coming soon!");
+            if (filtered.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; color: var(--text-muted);">No colleges found matching the selected criteria.</td></tr>`;
                 return;
             }
 
-            currentSelectedStream = streamKey;
-
-            document.getElementById('rm-category-badge').innerText = data.category;
-            document.getElementById('rm-title').innerText = data.title;
-            document.getElementById('rm-overview').innerText = data.overview;
-            document.getElementById('rm-eligibility').innerText = data.eligibility;
-
-            // Routes
-            const routesDiv = document.getElementById('rm-routes');
-            routesDiv.innerHTML = data.routes.map(r => `<p style="margin-bottom:8px;">${r}</p>`).join('');
-
-            // Exams
-            const examsUl = document.getElementById('rm-exams');
-            examsUl.innerHTML = data.exams.map(e => `<li>${e}</li>`).join('');
-
-            // Timeline
-            const timelineUl = document.getElementById('rm-timeline');
-            timelineUl.innerHTML = data.timeline.map(t => `
-                <li class="timeline-item">
-                    <h4>${t.stage}</h4>
-                    <p>${t.desc}</p>
-                </li>
-            `).join('');
-
-            // Salaries & Employers
-            document.getElementById('rm-salary-india').innerHTML = data.salaryIndia;
-            document.getElementById('rm-salary-foreign').innerHTML = data.salaryForeign;
-            document.getElementById('rm-employers').innerText = data.employers;
-
-            navToScreen('screen-2');
-        }
-
-        /* 6. CALCULATOR & WHATSAPP INTEGRATION (SCREEN 3) */
-        function proceedToCalculator() {
-            const data = branchDatabase[currentSelectedStream];
-            document.getElementById('calc-selected-branch').value = data ? data.title : "Selected Track";
-            document.getElementById('college-results').style.display = 'none';
-            navToScreen('screen-3');
-        }
-
-        function calculateColleges() {
-            const userScore = parseFloat(document.getElementById('calc-user-score').value);
-            const resultList = document.getElementById('college-list');
-            const resultsWrapper = document.getElementById('college-results');
-
-            if (isNaN(userScore) || userScore <= 0) {
-                alert("Please enter a valid score or percentile.");
-                return;
-            }
-
-            resultList.innerHTML = "";
-            
-            // Filter colleges matching stream and score threshold
-            const matchedColleges = collegeDatabase.filter(c => c.stream === currentSelectedStream);
-
-            if (matchedColleges.length === 0) {
-                resultList.innerHTML = `<p style="color:var(--text-muted);">No specific institutes found matching this exact cutoff filter in mock database. Contact direct advisory below.</p>`;
-            } else {
-                matchedColleges.forEach(col => {
-                    const isEligible = userScore >= col.minCutoffPercentile;
-                    const statusTag = isEligible 
-                        ? `<span style="color:var(--success); font-weight:bold;">High Admission Chance</span>`
-                        : `<span style="color:#ff9500; font-weight:bold;">Management / Cap Round Target</span>`;
-
-                    // WhatsApp Direct Lead Generation Query
-                    const waText = encodeURIComponent(`Hello IA Educational Services, I checked my eligibility on your portal for ${col.name} (${col.stream}). My score is ${userScore}. Please guide me for admission process.`);
-                    const waLink = `https://wa.me/919822206864?text=${waText}`;
-
-                    resultList.innerHTML += `
-                        <div class="college-result-card">
-                            <div>
-                                <h4 style="font-size:1.1rem;">${col.name}</h4>
-                                <p style="font-size:0.85rem; color:var(--text-muted);">${col.city} | Min Required Score/Percentile: ${col.minCutoffPercentile}</p>
-                                <p style="font-size:0.9rem; margin-top:4px;">${statusTag}</p>
-                            </div>
-                            <a href="${waLink}" target="_blank" class="whatsapp-btn">Apply / Contact Advisor &rarr;</a>
-                        </div>
-                    `;
-                });
-            }
-
-            resultsWrapper.style.display = 'block';
-            window.scrollTo({ top: resultsWrapper.offsetTop - 40, behavior: 'smooth' });
+            filtered.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><strong>${item.name}</strong></td>
+                    <td>${item.branch}</td>
+                    <td>${item.minScore}% / Percentile</td>
+                    <td>${item.avgPkg}</td>
+                    <td><button class="btn-action" style="padding: 0.3rem 0.8rem; font-size: 0.85rem;" onclick="alert('Inquiry sent for ${item.name}')">Apply Info</button></td>
+                `;
+                tbody.appendChild(row);
+            });
         }
     </script>
 </body>
