@@ -417,3 +417,182 @@ function handleFinalFormSubmit(e) {
 
     window.open(`https://wa.me/919822206864?text=${encodeURIComponent(message)}`, '_blank');
 }
+// COMPLETE CAREER ROADMAP DATABASE FOR SCREEN 2
+const careerRoadmaps = {
+    "engineering_ame": {
+        title: "Aircraft Maintenance Engineering (AME)",
+        tagline: "Licensing & Maintenance Operations Track",
+        eligibility: "Passed 10+2 with Physics, Chemistry, and Mathematics (min. 50% aggregate) OR 3-year Mechanical/Electronics Diploma.",
+        routes: [
+            "<strong>Path A (Fastest Licensing Route):</strong> 10+2 PCM → Enrol in DGCA-Approved AME Institute (Cat B1/B2) → 2 Years Classroom + DGCA Modular Exams → 2 Years Practical OJT with Airline/MRO → Licensed AME (~4 Years total).",
+            "<strong>Path B (Dual Degree Advantage):</strong> 10+2 PCM / Diploma → 4-Year B.Tech in Aeronautical/Aerospace Engineering → Clear DGCA Modules in parallel → Post-grad Airlines Apprenticeship → Degree + License."
+        ],
+        exams: ["AME CET (National Entrance)", "DGCA Modular Papers (Modules 3, 6, 7, 11, 12)", "Type Rating Exams (Airbus A320 / Boeing 737)", "EASA / FAA Conversion Papers"],
+        timeline: [
+            "<strong>Years 0–2 (Trainee Technician):</strong> Assist senior engineers, maintain logbooks, perform routine aircraft inspections under supervision.",
+            "<strong>Years 2–5 (Associate AME):</strong> Clear remaining DGCA modules, gain type ratings, hold partial sign-off authority for line maintenance.",
+            "<strong>Years 5–10 (Licensed Certifying Engineer):</strong> Full sign-off authority for flight safety releases and overhaul maintenance.",
+            "<strong>Years 10+ (Chief Engineer / Director of Quality):</strong> Fleet operations management, regulatory compliance, MRO facility head."
+        ],
+        salaries: {
+            india: "<strong>Trainee:</strong> ₹15k–₹35k/mo | <strong>Licensed AME (3–6 yrs):</strong> ₹18 LPA – ₹42 LPA | <strong>Senior Certifying Engineer / Chief Engineer:</strong> ₹48 LPA – ₹1.5+ Cr per annum",
+            foreign: "<strong>Gulf (UAE, Qatar - Tax Free):</strong> $60,000 – $130,000/yr (₹50L – ₹1.1 Cr INR) | <strong>US/Canada (FAA Licensed):</strong> $75,000 – $180,000+/yr (₹62L – ₹1.5+ Cr INR)"
+        },
+        recruiters: "IndiGo, Air India, SpiceJet, AIESL, Air Works, GMR Aero Technic, Emirates, Qatar Airways, Etihad, Lufthansa Technik.",
+        streamKey: "Science PCM"
+    },
+    "engineering_cse": {
+        title: "Computer Science, AI & Data Science",
+        tagline: "Software Engineering & Emerging Tech Track",
+        eligibility: "Passed 10+2 with Physics and Mathematics compulsory (min. 45–50% aggregate) OR 3-year Polytechnic CS/IT Diploma.",
+        routes: [
+            "<strong>Path A (Direct B.Tech/B.E.):</strong> 12th PCM → Engineering Entrance Exams → 4-Year B.Tech CSE / AI & ML → Open Source & Cloud Internships → Product/FAANG Placements.",
+            "<strong>Path B (Diploma Lateral Entry):</strong> 3-Year CS/IT Diploma → Direct 2nd-Year B.Tech (DSE) → Specialized Certifications → Core Software Roles."
+        ],
+        exams: ["JEE Main / JEE Advanced", "MHT-CET / State Engineering CETs", "BITSAT", "VITEEE", "CUET-UG", "AWS / GCP Data & Cloud Certifications"],
+        timeline: [
+            "<strong>Years 0–2 (Junior Software Engineer):</strong> Frontend/Backend coding, bug fixes, system testing, agile sprints.",
+            "<strong>Years 2–5 (Senior Software / AI Engineer):</strong> Core architecture design, machine learning models, database optimization, leading feature modules.",
+            "<strong>Years 5–10 (Staff Engineer / Engineering Manager):</strong> System scalability, cross-functional team leadership, tech stack strategy.",
+            "<strong>Years 10+ (Principal Architect / CTO):</strong> Company-wide technical vision, infrastructure budgets, R&D execution."
+        ],
+        salaries: {
+            india: "<strong>Fresher:</strong> ₹4.5 LPA – ₹12 LPA | <strong>Mid-Level (3–6 yrs):</strong> ₹15 LPA – ₹35 LPA | <strong>Staff/Architect (FAANG/Product):</strong> ₹50 LPA – ₹1.8+ Cr per annum",
+            foreign: "<strong>US / North America:</strong> $95,000 – $250,000+/yr (₹78L – ₹2+ Cr INR) | <strong>Europe / UK:</strong> €55,000 – €120,000/yr | <strong>Singapore / UAE:</strong> $80,000 – $160,000/yr"
+        },
+        recruiters: "Google, Microsoft, Amazon, TCS, Infosys, Nvidia, Accenture, Flipkart, Zomato, Global Product Startups.",
+        streamKey: "Science PCM"
+    },
+    "engineering_biotech": {
+        title: "Biotechnology & Biomedical Engineering",
+        tagline: "Healthcare Tech & Genetic Research Track",
+        eligibility: "Passed 10+2 with Physics, Chemistry, and Mathematics/Biology (PCMB or PCB/PCM, min. 50% aggregate).",
+        routes: [
+            "<strong>Path A (B.Tech/B.Sc to R&D):</strong> 12th PCMB/PCB → B.Tech Biotech or B.Sc Life Sciences → M.Tech / M.Sc → Industrial R&D Labs / Bio-pharma.",
+            "<strong>Path B (Biomedical Equipment Track):</strong> 12th PCM/PCB → B.Tech Biomedical Engineering → Hospital Diagnostic Instrumentation & Medical Device Manufacturing."
+        ],
+        exams: ["JEE Main", "NEET-UG (for specific Biotech/Bio-medical entry)", "MHT-CET", "CUET-UG", "GATE (Biotechnology)"],
+        timeline: [
+            "<strong>Years 0–2 (Junior Scientist / Biomedical Technician):</strong> Sample testing, diagnostic equipment calibration, lab compliance.",
+            "<strong>Years 2–5 (Research Associate / Product Specialist):</strong> Clinical trial management, medical device design, bioprocess optimization.",
+            "<strong>Years 5–10 (Senior R&D Scientist / Project Manager):</strong> Patent filings, regulatory approval submissions, clinical team leadership.",
+            "<strong>Years 10+ (VP of R&D / Bio-Pharma Executive):</strong> Global clinical trial strategy, patent portfolio management, biotech startup founding."
+        ],
+        salaries: {
+            india: "<strong>Fresher:</strong> ₹3.5 LPA – ₹7 LPA | <strong>Mid-Level Scientist:</strong> ₹10 LPA – ₹22 LPA | <strong>Senior R&D Director:</strong> ₹35 LPA – ₹90+ LPA",
+            foreign: "<strong>US / Europe (Bio-Hubs):</strong> $70,000 – $160,000+/yr (₹58L – ₹1.3 Cr INR) | <strong>Switzerland / Germany:</strong> CHF 85,000 – CHF 140,000/yr"
+        },
+        recruiters: "Biocon, Dr. Reddy's, Serum Institute of India, GE Healthcare, Siemens Healthineers, Pfizer, Thermo Fisher, Reliance Life Sciences.",
+        streamKey: "Science PCB"
+    }
+};
+
+let activeRoadmapKey = '';
+
+// NAVIGATION SYSTEM
+function hideAllScreens() {
+    document.getElementById('home-screen').style.display = 'none';
+    document.getElementById('details-screen-10th').style.display = 'none';
+    document.getElementById('details-screen-12th').style.display = 'none';
+    document.getElementById('details-screen-iti').style.display = 'none';
+    document.getElementById('details-screen-diploma').style.display = 'none';
+    const roadmapScreen = document.getElementById('details-screen-roadmap');
+    if (roadmapScreen) roadmapScreen.style.display = 'none';
+    document.getElementById('college-results-screen').style.display = 'none';
+    document.getElementById('apply-screen').style.display = 'none';
+}
+
+function goToHomeScreen() {
+    hideAllScreens();
+    document.getElementById('home-screen').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// HOMEPAGE PATHWAY CARD CLICK HANDLER
+function openPathwaySelector(groupType) {
+    if (groupType === 'Engineering') {
+        hideAllScreens();
+        const roadmapScreen = document.getElementById('details-screen-roadmap');
+        roadmapScreen.style.display = 'block';
+        document.getElementById('roadmap-branch-selector-container').style.display = 'block';
+        document.getElementById('roadmap-detail-display-container').style.display = 'none';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+        openScreen2('12th');
+    }
+}
+
+// LOAD DETAILED ROADMAP FOR SELECTED BRANCH
+function loadBranchRoadmap(branchKey) {
+    const data = careerRoadmaps[branchKey];
+    if (!data) return;
+
+    activeRoadmapKey = branchKey;
+    document.getElementById('roadmap-branch-selector-container').style.display = 'none';
+    const detailContainer = document.getElementById('roadmap-detail-display-container');
+    detailContainer.style.display = 'block';
+
+    document.getElementById('rd-title').innerText = data.title;
+    document.getElementById('rd-tagline').innerText = data.tagline;
+    document.getElementById('rd-eligibility').innerHTML = data.eligibility;
+
+    // Load Routes
+    const routesList = document.getElementById('rd-routes');
+    routesList.innerHTML = '';
+    data.routes.forEach(r => {
+        const li = document.createElement('li');
+        li.innerHTML = r;
+        routesList.appendChild(li);
+    });
+
+    // Load Exams
+    const examsContainer = document.getElementById('rd-exams');
+    examsContainer.innerHTML = '';
+    data.exams.forEach(ex => {
+        const span = document.createElement('span');
+        span.className = 'outcome-tag';
+        span.innerText = ex;
+        examsContainer.appendChild(span);
+    });
+
+    // Load Timeline
+    const timelineList = document.getElementById('rd-timeline');
+    timelineList.innerHTML = '';
+    data.timeline.forEach(t => {
+        const li = document.createElement('li');
+        li.innerHTML = t;
+        timelineList.appendChild(li);
+    });
+
+    // Load Salaries & Recruiters
+    document.getElementById('rd-salary-india').innerHTML = data.salaries.india;
+    document.getElementById('rd-salary-foreign').innerHTML = data.salaries.foreign;
+    document.getElementById('rd-recruiters').innerText = data.recruiters;
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function showBranchSelectionMenu() {
+    document.getElementById('roadmap-branch-selector-container').style.display = 'block';
+    document.getElementById('roadmap-detail-display-container').style.display = 'none';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// PASS ROADMAP SELECTION DIRECTLY TO SCREEN 3 (COLLEGE GENERATOR)
+function proceedToCollegesFromRoadmap() {
+    const data = careerRoadmaps[activeRoadmapKey];
+    const streamTarget = data ? data.streamKey : 'Science PCM';
+    
+    hideAllScreens();
+    document.getElementById('details-screen-12th').style.display = 'block';
+    
+    // Auto select stream card in Screen 2 for seamless flow
+    const targetCards = document.querySelectorAll('#details-screen-12th .stream-card');
+    targetCards.forEach(card => {
+        if (card.innerText.includes(streamTarget)) {
+            card.click();
+        }
+    });
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
