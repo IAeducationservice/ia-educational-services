@@ -734,7 +734,90 @@
     <footer>
         <p>© 2026 IA Educational Services. All rights reserved. Contact: +91 9822206864</p>
     </footer>
+<div id="details-screen-roadmap" style="display: none; padding: 40px 8%;">
+    <div class="screen-top-bar">
+        <button class="back-btn" onclick="goToHomeScreen()">
+            <i class="fa-solid fa-arrow-left"></i> Back to Main Menu
+        </button>
+    </div>
 
+    <div class="details-card">
+        <!-- BRANCH SELECTION CONTAINER -->
+        <div id="roadmap-branch-selector-container">
+            <div class="screen-title-badge">
+                <i class="fa-solid fa-compass"></i> Engineering & Tech Specializations
+            </div>
+            <h2>Select Your Specialization Track</h2>
+            <p style="color: var(--text-sub); font-size: 0.9rem; margin-bottom: 20px;">
+                Choose a specific branch to view the complete academic roadmap, DGCA/Entrance exams, and earning potential.
+            </p>
+
+            <div class="roadmap-branch-grid">
+                <div class="branch-select-card" onclick="loadBranchRoadmap('engineering_ame')">
+                    <i class="fa-solid fa-plane-departure"></i>
+                    <h4>Aircraft Maintenance (AME)</h4>
+                    <p>Aviation Licensing & MRO</p>
+                </div>
+                <div class="branch-select-card" onclick="loadBranchRoadmap('engineering_cse')">
+                    <i class="fa-solid fa-laptop-code"></i>
+                    <h4>Computer Science & AI</h4>
+                    <p>Software, Cloud & Machine Learning</p>
+                </div>
+                <div class="branch-select-card" onclick="loadBranchRoadmap('engineering_biotech')">
+                    <i class="fa-solid fa-dna"></i>
+                    <h4>Biotechnology & Bio-Medical</h4>
+                    <p>Genetics, Pharma & Health Devices</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- DEEP-DIVE ROADMAP DISPLAY CONTAINER -->
+        <div id="roadmap-detail-display-container" style="display: none;">
+            <button class="back-btn" onclick="showBranchSelectionMenu()" style="margin-bottom: 20px;">
+                <i class="fa-solid fa-arrow-left"></i> Select Different Branch
+            </button>
+
+            <div class="screen-title-badge" id="rd-tagline">Specialization Pathway</div>
+            <h2 id="rd-title">Branch Title</h2>
+
+            <div class="roadmap-block">
+                <h3><i class="fa-solid fa-graduation-cap"></i> 1. Minimum Eligibility Criteria</h3>
+                <p id="rd-eligibility" style="font-size: 0.9rem; color: var(--text-main); line-height: 1.5;"></p>
+            </div>
+
+            <div class="roadmap-block">
+                <h3><i class="fa-solid fa-route"></i> 2. Optimized Academic Routes (Shortest Paths)</h3>
+                <ul class="roadmap-detail-list" id="rd-routes"></ul>
+            </div>
+
+            <div class="roadmap-block">
+                <h3><i class="fa-solid fa-file-signature"></i> 3. Essential Entrance Exams & Certifications</h3>
+                <div class="outcome-tags" id="rd-exams"></div>
+            </div>
+
+            <div class="roadmap-block">
+                <h3><i class="fa-solid fa-timeline"></i> 4. Career Progression Timeline</h3>
+                <ul class="roadmap-detail-list" id="rd-timeline"></ul>
+            </div>
+
+            <div class="roadmap-block">
+                <h3><i class="fa-solid fa-sack-dollar"></i> 5. Earning Potential (India & International)</h3>
+                <p style="font-size: 0.88rem; margin-bottom: 8px;"><strong>India Market:</strong> <span id="rd-salary-india"></span></p>
+                <p style="font-size: 0.88rem;"><strong>International / Overseas Markets:</strong> <span id="rd-salary-foreign"></span></p>
+            </div>
+
+            <div class="roadmap-block">
+                <h3><i class="fa-solid fa-building"></i> 6. Top Hiring Companies</h3>
+                <p id="rd-recruiters" style="font-size: 0.9rem; color: var(--text-main); line-height: 1.5;"></p>
+            </div>
+
+            <button class="action-btn-main" onclick="proceedToCollegesFromRoadmap()">
+                <i class="fa-solid fa-magnifying-glass-location"></i> Find Eligible Colleges for This Branch
+            </button>
+        </div>
+    </div>
+</div>
+    
     <!-- Custom JS -->
     <script src="script.js"></script>
 </body>
